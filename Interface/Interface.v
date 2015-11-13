@@ -71,3 +71,81 @@ module Interface
 	
     // Instanciate FSM control
 endmodule
+
+
+module controlPath(clock,reset);
+	input clock,reset;
+	
+	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010;
+	
+	wire [3:0]currentState,nextState;
+	
+	
+	always@(posedge clock)
+	if(~reset)
+		currentState=resetState;
+	else
+		currentState=nextState;
+		
+	always@(*)
+	case(currentState)
+		resetState:nextState=gameState;
+		gameState:nextState=gameOverState;
+		gameOverState:nextState=resetState;
+	endcase
+	
+	always@(*)
+	case(currentState)
+	resetState:
+	
+endmodule
+
+module dataPath();
+
+endmodule
+
+module oneMinClock(clock,reset,out,enable);
+	input clock,reset,enable;
+	output reg out;
+	reg [31:0]q;
+	
+	always @ (posedge clock)
+		if((~reset)||(q==32'd0)) begin
+			q<=32'b10110010110100000101111000000000;
+			out=1;
+		end
+		else begin
+			q<=q-32'b1;
+			out=0;
+		end
+		
+endmodule
+
+module twoSecClock(clock,reset,out,enable);
+	input clock,reset,enable;
+	output reg out;
+	reg [26:0]q;
+	
+	always @ (posedge clock)
+		if((~reset)||(q==27'd0)) begin
+			q<=27'b101111101011110000100000000;
+			out=1;
+		end
+		else begin
+			q<=q-27'b1;
+			out=0;
+		end
+		
+endmodule
+
+module scoreCounter(clock,reset,out,enable);
+	input clock,reset,enable;
+	output reg [7:0]out;
+	always @ (posedge clock)
+		if((~reset)) begin
+			out=8'b0;
+		end
+		else if(enable)
+			out=out+8'b00000001;
+		end
+endmodule
