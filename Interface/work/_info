@@ -1,0 +1,249 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dW:/ECE241/ECE241project/Interface
+vBGcounter
+Z1 !s110 1447609206
+!i10b 1
+!s100 _3=gDHJVd[BEaagCJbah<3
+I`ojGW3<hBa8`:kDIDlX_B1
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+Z3 w1447609202
+Z4 8Interface.v
+Z5 FInterface.v
+L0 360
+Z6 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z7 !s108 1447609205.944000
+Z8 !s107 Interface.v|
+Z9 !s90 -reportprogress|300|Interface.v|
+!i113 1
+n@b@gcounter
+vcontrolPath
+Z10 !s110 1447609205
+!i10b 1
+!s100 LVBc<02?ll3;<n=LSke]`0
+IIja^Pa1R@BU[36OIUIBHU3
+R2
+R0
+R3
+R4
+R5
+L0 75
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+ncontrol@path
+vdataPath
+R10
+!i10b 1
+!s100 ^zDX<m?<`kX[3Fl2@cJT42
+I1fOSB1kzWTj3;mDK63kIO0
+R2
+R0
+R3
+R4
+R5
+L0 209
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+ndata@path
+vInterface
+R10
+!i10b 1
+!s100 L37h4:]]nhD][7GC<m^nS3
+IUi4ZhP2<U`E^gW3kgczQV3
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+n@interface
+vnextPosition
+R10
+!i10b 1
+!s100 5XUPn9inM8?GbBIgE=8:Z3
+I;SX74==e[@`hi>N>>ifBe1
+R2
+R0
+R3
+R4
+R5
+L0 214
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+nnext@position
+voneMinClock
+R1
+!i10b 1
+!s100 TE<Q0ki263MT]dn7@ThGj2
+Ich`<V]>3@m]Y9OJR[=c;@1
+R2
+R0
+R3
+R4
+R5
+L0 263
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+none@min@clock
+voneSecClock
+R1
+!i10b 1
+!s100 h<5V164hP605VlX8zfdR32
+IFf;Tf74n]kHo`1]6JnUMi1
+R2
+R0
+R3
+R4
+R5
+L0 328
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+none@sec@clock
+vposition
+R1
+!i10b 1
+!s100 kl;[ZlPm@ihL`K0MG4YcB3
+IiBQDa]W:CAONON48^eO>93
+R2
+R0
+R3
+R4
+R5
+L0 247
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vrobotCounter
+R1
+!i10b 1
+!s100 @CVK49J4coz_UKbFn>[ZR2
+IPN0@lC4_l52X`MP>2d`>53
+R2
+R0
+R3
+R4
+R5
+L0 345
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+nrobot@counter
+vscoreCounter
+R1
+!i10b 1
+!s100 cEUD>Q3WGk4AYUdQDeG]13
+IeA53Z;<kUPc6^Yh`cT4?n2
+R2
+R0
+R3
+R4
+R5
+L0 297
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+nscore@counter
+vsixtyHzClock
+R1
+!i10b 1
+!s100 In;c>O:T5izg9KFfma5]O2
+I=LV7oA0Sc31fdLd?[61AG3
+R2
+R0
+R3
+R4
+R5
+L0 309
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+nsixty@hz@clock
+vtwoSecClock
+R1
+!i10b 1
+!s100 7<KSG^=h39E3TdOEPHNhZ0
+IAN1BN7j5BEiEcoN:50hFo1
+R2
+R0
+R3
+R4
+R5
+L0 280
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+ntwo@sec@clock
