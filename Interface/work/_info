@@ -8,242 +8,383 @@ z2
 !i10f 100
 cModel Technology
 Z0 dW:/ECE241/ECE241project/Interface
-vBGcounter
-Z1 !s110 1447609206
+vBG
+!s110 1447684687
 !i10b 1
-!s100 _3=gDHJVd[BEaagCJbah<3
-I`ojGW3<hBa8`:kDIDlX_B1
-Z2 V`JN@9S9cnhjKRR_L]QIcM3
+!s100 lV37EIoZ47[zNDP30jEJ@0
+Ig]o_D:W5I<]fVCQhC;:3P1
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
 R0
-Z3 w1447609202
-Z4 8Interface.v
-Z5 FInterface.v
-L0 360
-Z6 OV;L;10.3d;59
+w1447684681
+FBG.v
+Z2 8Interface.v
+Z3 FInterface.v
+L0 40
+Z4 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z7 !s108 1447609205.944000
-Z8 !s107 Interface.v|
-Z9 !s90 -reportprogress|300|Interface.v|
+!s108 1447684687.529000
+!s107 BG.v|Interface.v|
+Z5 !s90 -reportprogress|300|Interface.v|
+!i113 1
+n@b@g
+vBGcounter
+Z6 !s110 1447721903
+!i10b 1
+!s100 =?^D3=>NM@W7X]R`2VSFR0
+I]Y08InATcT13QlX;Bj4eP0
+R1
+R0
+Z7 w1447721869
+R2
+R3
+L0 495
+R4
+r1
+!s85 0
+31
+Z8 !s108 1447721903.432000
+Z9 !s107 vga_adapter/vga_pll.v|vga_adapter/vga_controller.v|vga_adapter/vga_address_translator.v|vga_adapter/vga_adapter.v|Interface.v|
+R5
 !i113 1
 n@b@gcounter
 vcontrolPath
-Z10 !s110 1447609205
-!i10b 1
-!s100 LVBc<02?ll3;<n=LSke]`0
-IIja^Pa1R@BU[36OIUIBHU3
-R2
-R0
-R3
-R4
-R5
-L0 75
 R6
+!i10b 1
+!s100 _65I5SED[C<IVACWfJSSI3
+IB9MokPcZHHlZ`QHh33>z22
+R1
+R0
+R7
+R2
+R3
+L0 129
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 ncontrol@path
 vdataPath
-R10
-!i10b 1
-!s100 ^zDX<m?<`kX[3Fl2@cJT42
-I1fOSB1kzWTj3;mDK63kIO0
-R2
-R0
-R3
-R4
-R5
-L0 209
 R6
+!i10b 1
+!s100 XzVh:7Smk=3KS^D^S[j^13
+IdU@h@@;h=U>OBRBP791CA2
+R1
+R0
+R7
+R2
+R3
+L0 85
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 ndata@path
 vInterface
-R10
-!i10b 1
-!s100 L37h4:]]nhD][7GC<m^nS3
-IUi4ZhP2<U`E^gW3kgczQV3
-R2
-R0
-R3
-R4
-R5
-L0 1
 R6
+!i10b 1
+!s100 2oF]N52;Lh9bdfkaNn[^h2
+IPH>7Y9=k:BE;DK<Ej]=hK2
+R1
+R0
+R7
+R2
+R3
+L0 6
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 n@interface
 vnextPosition
-R10
-!i10b 1
-!s100 5XUPn9inM8?GbBIgE=8:Z3
-I;SX74==e[@`hi>N>>ifBe1
-R2
-R0
-R3
-R4
-R5
-L0 214
 R6
+!i10b 1
+!s100 Zd<j=Jz_4AB=W;QnT7bIE1
+IbPZR^Hf04ED`1@hF4B[2j0
+R1
+R0
+R7
+R2
+R3
+L0 271
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 nnext@position
 voneMinClock
-R1
-!i10b 1
-!s100 TE<Q0ki263MT]dn7@ThGj2
-Ich`<V]>3@m]Y9OJR[=c;@1
-R2
-R0
-R3
-R4
-R5
-L0 263
 R6
+!i10b 1
+!s100 S;n0DOToHJIof_X4FTW0Y2
+I98RTC7oKc3^ocU^?N]=S20
+R1
+R0
+R7
+R2
+R3
+L0 398
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 none@min@clock
 voneSecClock
-R1
-!i10b 1
-!s100 h<5V164hP605VlX8zfdR32
-IFf;Tf74n]kHo`1]6JnUMi1
-R2
-R0
-R3
-R4
-R5
-L0 328
 R6
+!i10b 1
+!s100 o6RL]n1n2<OQE1bnOgnl<2
+IkaoF?KS:?MagliHD@]kOj3
+R1
+R0
+R7
+R2
+R3
+L0 463
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 none@sec@clock
 vposition
-R1
-!i10b 1
-!s100 kl;[ZlPm@ihL`K0MG4YcB3
-IiBQDa]W:CAONON48^eO>93
-R2
-R0
-R3
-R4
-R5
-L0 247
 R6
+!i10b 1
+!s100 BfD@m5X:U:SWVRfF?05e^0
+I4Io<00o0ROzcYZPXC1;i32
+R1
+R0
+R7
+R2
+R3
+L0 382
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
-vrobotCounter
-R1
-!i10b 1
-!s100 @CVK49J4coz_UKbFn>[ZR2
-IPN0@lC4_l52X`MP>2d`>53
-R2
-R0
-R3
-R4
-R5
-L0 345
+vRegisterX
 R6
+!i10b 1
+!s100 Pllebf0F49JE5k530i@2T0
+IhGP0AKDfa<[<Z8=@f;m>V0
+R1
+R0
+R7
+R2
+R3
+L0 515
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
+!i113 1
+n@register@x
+vRegisterY
+R6
+!i10b 1
+!s100 aJ1YkIlVlhE;kDEe3OzNV1
+If_ThA>ni0PfWLWzf10`F@0
+R1
+R0
+R7
+R2
+R3
+L0 528
+R4
+r1
+!s85 0
+31
+R8
+R9
+R5
+!i113 1
+n@register@y
+vrobotCounter
+R6
+!i10b 1
+!s100 m<_[HB<TPF5MSUeY7>af50
+I?HQ=H:9ldl`X8QWmhHf=`1
+R1
+R0
+R7
+R2
+R3
+L0 480
+R4
+r1
+!s85 0
+31
+R8
+R9
+R5
 !i113 1
 nrobot@counter
 vscoreCounter
-R1
-!i10b 1
-!s100 cEUD>Q3WGk4AYUdQDeG]13
-IeA53Z;<kUPc6^Yh`cT4?n2
-R2
-R0
-R3
-R4
-R5
-L0 297
 R6
+!i10b 1
+!s100 IZB:JeUczUZ3aHdgMo>SK3
+I<bO_>Lhb2QL1_6RE6>WX<3
+R1
+R0
+R7
+R2
+R3
+L0 432
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 nscore@counter
 vsixtyHzClock
-R1
-!i10b 1
-!s100 In;c>O:T5izg9KFfma5]O2
-I=LV7oA0Sc31fdLd?[61AG3
-R2
-R0
-R3
-R4
-R5
-L0 309
 R6
+!i10b 1
+!s100 kA6LzE5HzzT1O0f<fNeLX1
+IT8<ogH1MIG@mGVlko_MVL2
+R1
+R0
+R7
+R2
+R3
+L0 444
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 nsixty@hz@clock
 vtwoSecClock
-R1
-!i10b 1
-!s100 7<KSG^=h39E3TdOEPHNhZ0
-IAN1BN7j5BEiEcoN:50hFo1
-R2
-R0
-R3
-R4
-R5
-L0 280
 R6
+!i10b 1
+!s100 Qj;LKhf`9BdAT=cJX?c=H1
+IcilF947EC?6bgW`8QBnBL3
+R1
+R0
+R7
+R2
+R3
+L0 415
+R4
 r1
 !s85 0
 31
-R7
 R8
 R9
+R5
 !i113 1
 ntwo@sec@clock
+vvga_adapter
+R6
+!i10b 1
+!s100 2=;e8A[I4Xdoc6^8CL5PZ2
+I:hRC>8a`_X1zimfPE_bQA1
+R1
+R0
+R7
+Fvga_adapter/vga_adapter.v
+R2
+R3
+L0 78
+R4
+r1
+!s85 0
+31
+R8
+R9
+R5
+!i113 1
+vvga_address_translator
+R6
+!i10b 1
+!s100 Z`O4OYla;7H?DcIdfCeSj2
+IBbEKU8S5L@AlI1PBn^dDU1
+R1
+R0
+R7
+Fvga_adapter/vga_address_translator.v
+R2
+R3
+L0 4
+R4
+r1
+!s85 0
+31
+R8
+R9
+R5
+!i113 1
+vvga_controller
+R6
+!i10b 1
+!s100 nb2Bg<]ghL<OJnljOcKVU2
+IkL<=L[58h]TOci8Q4efcf2
+R1
+R0
+R7
+Fvga_adapter/vga_controller.v
+R2
+R3
+L0 9
+R4
+r1
+!s85 0
+31
+R8
+R9
+R5
+!i113 1
+vvga_pll
+R6
+!i10b 1
+!s100 4XSTjD`VEiamX^n1@5J`b3
+I[bId_k`nTX_e0n1c_EM6D3
+R1
+R0
+R7
+Fvga_adapter/vga_pll.v
+R2
+R3
+L0 36
+R4
+r1
+!s85 0
+31
+R8
+R9
+R5
+!i113 1

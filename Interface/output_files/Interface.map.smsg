@@ -1,4 +1,4 @@
-Warning (10268): Verilog HDL information at Interface.v(268): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(285): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(312): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(329): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(404): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(421): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(450): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(469): always construct contains both blocking and non-blocking assignments
