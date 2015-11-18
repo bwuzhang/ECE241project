@@ -1875,10 +1875,10 @@ load => out[0]$latch.LATCH_ENABLE
 
 
 |Interface|controlPath:CP
-clock => clock.IN5
-plotVGA <= currentState.resetState_123.DB_MAX_OUTPUT_PORT_TYPE
+clock => clock.IN6
+plotVGA <= currentState.resetState_124.DB_MAX_OUTPUT_PORT_TYPE
 resetKey => resetKey.IN4
-RBG <= currentState.BGstate_105.DB_MAX_OUTPUT_PORT_TYPE
+RBG <= currentState.BGstate_106.DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[0] <= BGcounterOut[0].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[1] <= BGcounterOut[1].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[2] <= BGcounterOut[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -1896,16 +1896,16 @@ BGcounterOut[13] <= BGcounterOut[13].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[14] <= BGcounterOut[14].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[15] <= BGcounterOut[15].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[16] <= BGcounterOut[16].DB_MAX_OUTPUT_PORT_TYPE
-robotCounterOut[0] <= robotCounter:RC.port1
-robotCounterOut[1] <= robotCounter:RC.port1
-robotCounterOut[2] <= robotCounter:RC.port1
-robotCounterOut[3] <= robotCounter:RC.port1
-robotCounterOut[4] <= robotCounter:RC.port1
-robotCounterOut[5] <= robotCounter:RC.port1
-robotCounterOut[6] <= robotCounter:RC.port1
-robotCounterOut[7] <= robotCounter:RC.port1
-robotCounterOut[8] <= robotCounter:RC.port1
-robotCounterOut[9] <= robotCounter:RC.port1
+robotCounterOut[0] <= robotCounterOut[0].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[1] <= robotCounterOut[1].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[2] <= robotCounterOut[2].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[3] <= robotCounterOut[3].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[4] <= robotCounterOut[4].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[5] <= robotCounterOut[5].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[6] <= robotCounterOut[6].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[7] <= robotCounterOut[7].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[8] <= robotCounterOut[8].DB_MAX_OUTPUT_PORT_TYPE
+robotCounterOut[9] <= robotCounterOut[9].DB_MAX_OUTPUT_PORT_TYPE
 coor[0] <= nextPosition:NP.port2
 coor[1] <= nextPosition:NP.port2
 coor[2] <= nextPosition:NP.port2
@@ -1923,17 +1923,62 @@ coor[13] <= nextPosition:NP.port2
 coor[14] <= nextPosition:NP.port2
 coor[15] <= nextPosition:NP.port2
 coor[16] <= nextPosition:NP.port2
-LD_X <= currentState.displayState_114.DB_MAX_OUTPUT_PORT_TYPE
-LD_Y <= currentState.displayState_114.DB_MAX_OUTPUT_PORT_TYPE
+LD_X <= currentState.displayState_115.DB_MAX_OUTPUT_PORT_TYPE
+LD_Y <= currentState.displayState_115.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[0] <= color_from_CP[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[1] <= color_from_CP[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[2] <= color_from_CP[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
-color[0] => Selector4.IN0
-color[1] => Selector1.IN0
-color[2] => Selector0.IN0
+color[0] => ~NO_FANOUT~
+color[1] => ~NO_FANOUT~
+color[2] => ~NO_FANOUT~
 
 
-|Interface|controlPath:CP|vga_address_translator:comb_3
+|Interface|controlPath:CP|vga_address_translator:BGtranslator
+x[0] => mem_address[0].DATAIN
+x[1] => mem_address[1].DATAIN
+x[2] => mem_address[2].DATAIN
+x[3] => mem_address[3].DATAIN
+x[4] => mem_address[4].DATAIN
+x[5] => mem_address[5].DATAIN
+x[6] => Add1.IN20
+x[7] => Add1.IN19
+x[8] => Add1.IN18
+y[0] => Add0.IN16
+y[0] => Add1.IN22
+y[1] => Add0.IN15
+y[1] => Add1.IN21
+y[2] => Add0.IN13
+y[2] => Add0.IN14
+y[3] => Add0.IN11
+y[3] => Add0.IN12
+y[4] => Add0.IN9
+y[4] => Add0.IN10
+y[5] => Add0.IN7
+y[5] => Add0.IN8
+y[6] => Add0.IN5
+y[6] => Add0.IN6
+y[7] => Add0.IN3
+y[7] => Add0.IN4
+mem_address[0] <= x[0].DB_MAX_OUTPUT_PORT_TYPE
+mem_address[1] <= x[1].DB_MAX_OUTPUT_PORT_TYPE
+mem_address[2] <= x[2].DB_MAX_OUTPUT_PORT_TYPE
+mem_address[3] <= x[3].DB_MAX_OUTPUT_PORT_TYPE
+mem_address[4] <= x[4].DB_MAX_OUTPUT_PORT_TYPE
+mem_address[5] <= x[5].DB_MAX_OUTPUT_PORT_TYPE
+mem_address[6] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[7] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[8] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[9] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[10] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[11] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[12] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[13] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[14] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[15] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+mem_address[16] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Interface|controlPath:CP|vga_address_translator:RobotTranslator
 x[0] => mem_address[0].DATAIN
 x[1] => mem_address[1].DATAIN
 x[2] => mem_address[2].DATAIN
@@ -2783,6 +2828,113 @@ sel[3] => l4_w1_n0_mux_dataout.IN0
 sel[3] => _.IN0
 sel[3] => l4_w2_n0_mux_dataout.IN0
 sel[3] => _.IN0
+
+
+|Interface|controlPath:CP|Robot24x30:robot_reg
+address[0] => address[0].IN1
+address[1] => address[1].IN1
+address[2] => address[2].IN1
+address[3] => address[3].IN1
+address[4] => address[4].IN1
+address[5] => address[5].IN1
+address[6] => address[6].IN1
+address[7] => address[7].IN1
+address[8] => address[8].IN1
+address[9] => address[9].IN1
+clock => clock.IN1
+data[0] => data[0].IN1
+data[1] => data[1].IN1
+data[2] => data[2].IN1
+wren => wren.IN1
+q[0] <= altsyncram:altsyncram_component.q_a
+q[1] <= altsyncram:altsyncram_component.q_a
+q[2] <= altsyncram:altsyncram_component.q_a
+
+
+|Interface|controlPath:CP|Robot24x30:robot_reg|altsyncram:altsyncram_component
+wren_a => altsyncram_slo1:auto_generated.wren_a
+rden_a => ~NO_FANOUT~
+wren_b => ~NO_FANOUT~
+rden_b => ~NO_FANOUT~
+data_a[0] => altsyncram_slo1:auto_generated.data_a[0]
+data_a[1] => altsyncram_slo1:auto_generated.data_a[1]
+data_a[2] => altsyncram_slo1:auto_generated.data_a[2]
+data_b[0] => ~NO_FANOUT~
+address_a[0] => altsyncram_slo1:auto_generated.address_a[0]
+address_a[1] => altsyncram_slo1:auto_generated.address_a[1]
+address_a[2] => altsyncram_slo1:auto_generated.address_a[2]
+address_a[3] => altsyncram_slo1:auto_generated.address_a[3]
+address_a[4] => altsyncram_slo1:auto_generated.address_a[4]
+address_a[5] => altsyncram_slo1:auto_generated.address_a[5]
+address_a[6] => altsyncram_slo1:auto_generated.address_a[6]
+address_a[7] => altsyncram_slo1:auto_generated.address_a[7]
+address_a[8] => altsyncram_slo1:auto_generated.address_a[8]
+address_a[9] => altsyncram_slo1:auto_generated.address_a[9]
+address_b[0] => ~NO_FANOUT~
+addressstall_a => ~NO_FANOUT~
+addressstall_b => ~NO_FANOUT~
+clock0 => altsyncram_slo1:auto_generated.clock0
+clock1 => ~NO_FANOUT~
+clocken0 => ~NO_FANOUT~
+clocken1 => ~NO_FANOUT~
+clocken2 => ~NO_FANOUT~
+clocken3 => ~NO_FANOUT~
+aclr0 => ~NO_FANOUT~
+aclr1 => ~NO_FANOUT~
+byteena_a[0] => ~NO_FANOUT~
+byteena_b[0] => ~NO_FANOUT~
+q_a[0] <= altsyncram_slo1:auto_generated.q_a[0]
+q_a[1] <= altsyncram_slo1:auto_generated.q_a[1]
+q_a[2] <= altsyncram_slo1:auto_generated.q_a[2]
+q_b[0] <= <GND>
+eccstatus[0] <= <GND>
+eccstatus[1] <= <GND>
+eccstatus[2] <= <GND>
+
+
+|Interface|controlPath:CP|Robot24x30:robot_reg|altsyncram:altsyncram_component|altsyncram_slo1:auto_generated
+address_a[0] => ram_block1a0.PORTAADDR
+address_a[0] => ram_block1a1.PORTAADDR
+address_a[0] => ram_block1a2.PORTAADDR
+address_a[1] => ram_block1a0.PORTAADDR1
+address_a[1] => ram_block1a1.PORTAADDR1
+address_a[1] => ram_block1a2.PORTAADDR1
+address_a[2] => ram_block1a0.PORTAADDR2
+address_a[2] => ram_block1a1.PORTAADDR2
+address_a[2] => ram_block1a2.PORTAADDR2
+address_a[3] => ram_block1a0.PORTAADDR3
+address_a[3] => ram_block1a1.PORTAADDR3
+address_a[3] => ram_block1a2.PORTAADDR3
+address_a[4] => ram_block1a0.PORTAADDR4
+address_a[4] => ram_block1a1.PORTAADDR4
+address_a[4] => ram_block1a2.PORTAADDR4
+address_a[5] => ram_block1a0.PORTAADDR5
+address_a[5] => ram_block1a1.PORTAADDR5
+address_a[5] => ram_block1a2.PORTAADDR5
+address_a[6] => ram_block1a0.PORTAADDR6
+address_a[6] => ram_block1a1.PORTAADDR6
+address_a[6] => ram_block1a2.PORTAADDR6
+address_a[7] => ram_block1a0.PORTAADDR7
+address_a[7] => ram_block1a1.PORTAADDR7
+address_a[7] => ram_block1a2.PORTAADDR7
+address_a[8] => ram_block1a0.PORTAADDR8
+address_a[8] => ram_block1a1.PORTAADDR8
+address_a[8] => ram_block1a2.PORTAADDR8
+address_a[9] => ram_block1a0.PORTAADDR9
+address_a[9] => ram_block1a1.PORTAADDR9
+address_a[9] => ram_block1a2.PORTAADDR9
+clock0 => ram_block1a0.CLK0
+clock0 => ram_block1a1.CLK0
+clock0 => ram_block1a2.CLK0
+data_a[0] => ram_block1a0.PORTADATAIN
+data_a[1] => ram_block1a1.PORTADATAIN
+data_a[2] => ram_block1a2.PORTADATAIN
+q_a[0] <= ram_block1a0.PORTADATAOUT
+q_a[1] <= ram_block1a1.PORTADATAOUT
+q_a[2] <= ram_block1a2.PORTADATAOUT
+wren_a => ram_block1a0.PORTAWE
+wren_a => ram_block1a1.PORTAWE
+wren_a => ram_block1a2.PORTAWE
 
 
 |Interface|controlPath:CP|BGcounter:BGC

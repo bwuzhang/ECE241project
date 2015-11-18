@@ -117,7 +117,7 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coo
 		x_out=regisXout+{4'b0,coor_gap[9:5]};
 		begin
 		if(regisYout<8'b11010010)
-			y_out=regisYout+{4'b0,coor_gap[4:0]};
+			y_out=regisYout+{3'b0,coor_gap[4:0]};
 		end
 		color_out=color_from_CP;
 	end
@@ -138,10 +138,16 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 	output [9:0]robotCounterOut;
 	reg cenable,RCenable,NPenable;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out;
-	wire [16:0]transferedAddress;
-	vga_address_translator(BGcounterOut[16:8],BGcounterOut[7:0],transferedAddress);
-	BG bg_reg(transferedAddress,clock,3'b000,0,bg_reg_out);
+	wire [2:0]bg_reg_out,rebot_reg_out;
+	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
+	
+	vga_address_translator BGtranslator(BGcounterOut[16:8],BGcounterOut[7:0],BGtransferedAddress);
+	vga_address_translator RobotTranslator({4'b0000,robotCounterOut[9:5]},{3'b000,robotCounterOut[4:0]},robotTramsferedAddress);
+	
+	BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
+	//Robot24x30 robot_reg(robotTramsferedAddress[9:0],clock,3'b000,0,rebot_reg_out);
+	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}*10'b0000011000+{5'b00000,robotCounterOut[4:0]},clock,3'b000,0,rebot_reg_out);
+
 	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
 	robotCounter RC(clock,robotCounterOut,resetKey,RCenable);
 	nextPosition NP(clock,clock60,coor,resetKey,NPenable);
@@ -166,11 +172,11 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 		case(currentState)
 			resetState:
 				nextState=displayState;
-			displayState:if(robotCounterOut==10'b1001011000)
+			displayState:if(robotCounterOut==10'b1100011110)
 						nextState=BGstate;
 					else
 						nextState=displayState;
-			BGstate:if(BGcounterOut==17'b10010110000000000)
+			BGstate:if(BGcounterOut==17'b10100000000000000)
 						nextState=displayState;
 					else
 						nextState=BGstate;
@@ -196,7 +202,7 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 	NPenable=1;
 	LD_X=1;
 	LD_Y=1;
-	color_from_CP=color;
+	color_from_CP=rebot_reg_out;
 	end
 	BGstate:begin
 	plotVGA=1;
@@ -484,10 +490,13 @@ module robotCounter(clock,out,reset,enable);
 	always@(posedge clock)
 	if(!reset)
 		out=10'b0;
-	else if(enable&&(out!=10'b1001011000))
-		out=out+10'b0000000001;
-	else if(enable&&(out==10'b1001011000))
-		out=10'b1001011000;
+	else if(enable&&(out!=10'b1100011110))begin
+			if(out[4:0]==5'b11110)
+				out=out-10'b0000011110+10'b0000100000;
+			else out=out+10'b0000000001;
+		end
+	else if(enable&&(out==10'b1100011110))
+		out=10'b1100011110;
 	else
 		out=10'b0;
 
@@ -500,14 +509,13 @@ module BGcounter(clock,out,reset,enable);
 	always@(posedge clock)
 	if(!reset)
 		out=17'b0;
-	else if(enable&&(out!=17'b10010110000000000))begin
+	else if(enable&&(out!=17'b10100000011110000))begin
 			if(out[7:0]==8'b11110000)
 				out=out-17'b00000000011110000+17'b00000000100000000;
-			else
-				out=out+17'b00000000000000001;
-			end
-	else if(enable&&(out==17'b10010110000000000))
-				out=17'b10010110000000000;
+			else out=out+17'b00000000000000001;
+		end
+	else if(enable&&(out==17'b10100000011110000))
+		 out=17'b10100000011110000;
 	else
 		out=17'b0;
 	

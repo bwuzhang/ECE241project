@@ -1,16 +1,16 @@
-Fitter Status : Successful - Mon Nov 16 20:06:14 2015
+Fitter Status : Successful - Tue Nov 17 20:58:10 2015
 Quartus II 64-Bit Version : 15.0.0 Build 145 04/22/2015 SJ Full Version
 Revision Name : Interface
 Top-level Entity Name : Interface
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 264 / 32,070 ( < 1 % )
+Logic utilization (in ALMs) : 262 / 32,070 ( < 1 % )
 Total registers : 114
 Total pins : 50 / 457 ( 11 % )
 Total virtual pins : 0
-Total block memory bits : 460,800 / 4,065,280 ( 11 % )
-Total RAM Blocks : 58 / 397 ( 15 % )
+Total block memory bits : 462,960 / 4,065,280 ( 11 % )
+Total RAM Blocks : 59 / 397 ( 15 % )
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
