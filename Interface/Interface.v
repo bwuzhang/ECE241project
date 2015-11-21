@@ -146,8 +146,9 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 	
 	BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
 	//Robot24x30 robot_reg(robotTramsferedAddress[9:0],clock,3'b000,0,rebot_reg_out);
-	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}*10'b0000011000+{5'b00000,robotCounterOut[4:0]},clock,3'b000,0,rebot_reg_out);
-
+	//Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}*10'b0000011000+{5'b00000,robotCounterOut[4:0]},clock,3'b000,0,rebot_reg_out);
+	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,0,rebot_reg_out);
+	
 	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
 	robotCounter RC(clock,robotCounterOut,resetKey,RCenable);
 	nextPosition NP(clock,clock60,coor,resetKey,NPenable);
