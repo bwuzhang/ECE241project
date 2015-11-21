@@ -43,8 +43,8 @@ module Interface
 	wire [2:0] colour;
 	wire [8:0] x;
 	wire [7:0] y;
-	wire writeEn,LD_X,LD_Y,RBG;
-	wire [16:0]BG_Coor;
+	wire writeEn,LD_X,LD_Y,RBG,displayOnVGA,DBF;
+	wire [16:0]BG_Coor,bufferCounterOut;
 	wire[9:0]coor_gap;
 	wire [16:0]coor;
 	wire [2:0]color_from_CP;
@@ -76,15 +76,15 @@ module Interface
 	// for the VGA controller, in addition to any other functionality your design may require.
     
     // Instanciate datapath
-	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],RBG,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP);
-	controlPath CP(CLOCK_50,writeEn,KEY[0],RBG,BG_Coor,coor_gap,coor,LD_X,LD_Y,color_from_CP,SW[9:7]);
+	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],RBG,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,DBF,bufferCounterOut);
+	controlPath CP(CLOCK_50,writeEn,KEY[0],RBG,DBF,BG_Coor,coor_gap,coor,LD_X,LD_Y,color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut);
 
     // Instanciate FSM control
 endmodule
 
-module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP);
-	input resetKey,clock,LD_X,LD_Y,RBG;
-	input [16:0]BG_Coor;
+module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,DBF,bufferCounterOut);
+	input resetKey,clock,LD_X,LD_Y,RBG,displayOnVGA,DBF;
+	input [16:0]BG_Coor,bufferCounterOut;
 	input [9:0]coor_gap;
 	input [16:0]coordinate;
 	input[2:0]color;
@@ -99,6 +99,12 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coo
 	reg[8:0]coor_x;
 	reg[7:0]coor_y;
 	
+	wire [2:0]bgBufferColor;
+	wire writeBGbuffer;
+	wire [2:0]BgbutterOut;
+		
+	BGbuffer bgb({8'b0,x_out}+{9'b0,y_out}*17'b00000000101000000,clock,color_out,~displayOnVGA,BgbutterOut);
+				
 	always@(*)
 	if(!resetKey)begin
 		coor_x=9'b0;
@@ -113,7 +119,7 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coo
 		color_out=color_from_CP;
 		//color_out=3'b000;
 	end
-	else begin
+	else if(DBF)  begin
 		x_out=regisXout+{4'b0,coor_gap[9:5]};
 		begin
 		if(regisYout<8'b11010010)
@@ -121,37 +127,44 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coo
 		end
 		color_out=color_from_CP;
 	end
-	
+	else if(displayOnVGA) begin
+					x_out=bufferCounterOut[16:8];
+					y_out=bufferCounterOut[7:0];
+					color_out=BgbutterOut;
+				end
+				
 	RegisterX X(coordinate[16:8],clock,resetKey,regisXout,LD_X);
 	RegisterY Y(coordinate[7:0],clock,resetKey,regisYout,LD_Y);
 endmodule
 
-module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,LD_X,LD_Y,color_from_CP,color);
+module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,coor,LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut);
 	input resetKey,clock;
-	output reg plotVGA,RBG,LD_X,LD_Y;
+	output reg plotVGA,RBG,LD_X,LD_Y,displayOnVGA,DBF;
 	output [16:0]coor;
 	output reg[2:0]color_from_CP;
 	input [2:0]color;
-	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,displayState=4'b0011,waitState=4'b0100,BGstate=4'b0101;
+	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,waitState=4'b0100,writeBG2Buffer=4'b0101,displayState=4'b0110;
 	reg  [3:0]currentState,nextState;
-	output [16:0]BGcounterOut;
+	output [16:0]BGcounterOut,bufferCounterOut;
 	output [9:0]robotCounterOut;
-	reg cenable,RCenable,NPenable;
+	reg cenable,RCenable,NPenable,bufferEnable;
 	wire clock60,clock1s;
 	wire [2:0]bg_reg_out,rebot_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
+	wire mimic60HzClock;
 	
 	vga_address_translator BGtranslator(BGcounterOut[16:8],BGcounterOut[7:0],BGtransferedAddress);
-	vga_address_translator RobotTranslator({4'b0000,robotCounterOut[9:5]},{3'b000,robotCounterOut[4:0]},robotTramsferedAddress);
-	
-	BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
-	//Robot24x30 robot_reg(robotTramsferedAddress[9:0],clock,3'b000,0,rebot_reg_out);
-	//Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}*10'b0000011000+{5'b00000,robotCounterOut[4:0]},clock,3'b000,0,rebot_reg_out);
-	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,0,rebot_reg_out);
-	
+
+	//BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
+	BG bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
+	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
+
 	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
-	robotCounter RC(clock,robotCounterOut,resetKey,RCenable);
-	nextPosition NP(clock,clock60,coor,resetKey,NPenable);
+	robotCounter RC(clock,robotCounterOut,resetKey,RCenable,mimic60HzClock);
+	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
+	
+	nextPosition NP(clock,mimic60HzClock,coor,resetKey,NPenable);
+	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
 	//oneSecClock CLK1S(clock,resetKey,clock1s);
 	//always@(posedge clock)
@@ -162,25 +175,32 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 			currentState=resetState;
 		else	if (currentState==resetState)
 				currentState=nextState;
-		else if (currentState==displayState)begin
+		else if (currentState==writeObj2Buffer)
+					currentState=nextState;
+		else if(currentState==displayState)
+			begin
 				if(clock60)
 					currentState=nextState;
-				end
-		else if(currentState==BGstate)
+			end
+		else if(currentState==writeBG2Buffer)
 			currentState=nextState;
 			
 	always@(*)
 		case(currentState)
 			resetState:
-				nextState=displayState;
-			displayState:if(robotCounterOut==10'b1100011110)
-						nextState=BGstate;
-					else
-						nextState=displayState;
-			BGstate:if(BGcounterOut==17'b10100000000000000)
+				nextState=writeBG2Buffer;
+			writeObj2Buffer:if(robotCounterOut==10'b1100011110)
 						nextState=displayState;
 					else
-						nextState=BGstate;
+						nextState=writeObj2Buffer;
+			writeBG2Buffer:if(BGcounterOut==17'b10100000011110000)
+						nextState=writeObj2Buffer;
+					else
+						nextState=writeBG2Buffer;
+			displayState:if(bufferCounterOut==17'b10100000011110000)
+						nextState=writeBG2Buffer;
+					else
+						nextState=displayState;
 		endcase
 	
 	always@(*)
@@ -193,10 +213,12 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 	RBG=0;
 	LD_X=0;
 	LD_Y=0;
-	
+	bufferEnable=0;
+	displayOnVGA=0;
+	DBF=0;
 	end
-	displayState:begin
-	plotVGA=1;
+	writeObj2Buffer:begin
+	plotVGA=0;
 	cenable=0;
 	RCenable=1;
 	RBG=0;
@@ -204,9 +226,12 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 	LD_X=1;
 	LD_Y=1;
 	color_from_CP=rebot_reg_out;
+	bufferEnable=0;
+	displayOnVGA=0;
+	DBF=1;
 	end
-	BGstate:begin
-	plotVGA=1;
+	writeBG2Buffer:begin
+	plotVGA=0;
 	cenable=1;
 	RBG=1;
 	RCenable=0;
@@ -214,6 +239,22 @@ module controlPath(clock,plotVGA,resetKey,RBG,BGcounterOut,robotCounterOut,coor,
 	LD_X=0;
 	LD_Y=0;
 	color_from_CP=bg_reg_out;
+	bufferEnable=0;
+	displayOnVGA=0;
+	DBF=0;
+	end
+	displayState:begin
+	plotVGA=1;
+	cenable=0;
+	RBG=0;
+	RCenable=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=bg_reg_out; //this line doesn't matter
+	bufferEnable=1;
+	displayOnVGA=1;
+	DBF=0;
 	end
 	endcase
 	
@@ -284,13 +325,21 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 	wire [8:0]first9;
 	assign first9=out[16:8];
 	wire [7:0]last8=out[7:0];
-	always@(posedge clock60hz)
+	//always@(posedge clock60hz)
+	/*always@(posedge CLOCK_50)
 	if(!reset)
 		begin
 		out=17'b01000000011110000;
 		POSIN=1'b1;
 		end
-	else if(enable)
+	*/	
+	always@(posedge CLOCK_50) begin
+	if(~reset)
+		begin
+		out=17'b01000000011110000;
+		POSIN=1'b1;
+		end
+	else if(enable&&clock60hz)
 	begin
 		case(POSOUT)
 		1'b0:begin
@@ -342,7 +391,7 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 				begin    
 					POSIN=1'b0;
 				end
-				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+				else if(out[7:0]<=8'b11110000&&(out[7:0]>=8'b10110100))
 							begin
 								out[7:0]=out[7:0]-8'b00000101;
 								out[16:8]=out[16:8]+9'b000000001;
@@ -383,6 +432,7 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 					
 				end
 			endcase
+		end
 	end
 
 endmodule 
@@ -485,16 +535,24 @@ module oneSecClock(clock,reset,out);
 		
 endmodule
 
-module robotCounter(clock,out,reset,enable);
+module robotCounter(clock,out,reset,enable,mimic60HzClock);
 	input clock,reset,enable;
+	output reg mimic60HzClock;
 	output reg[9:0]out;
 	always@(posedge clock)
-	if(!reset)
+	if(!reset)begin
 		out=10'b0;
+		mimic60HzClock=0;
+		end
 	else if(enable&&(out!=10'b1100011110))begin
 			if(out[4:0]==5'b11110)
 				out=out-10'b0000011110+10'b0000100000;
-			else out=out+10'b0000000001;
+			else begin out=out+10'b0000000001;
+			if(out==10'b0000000001)
+				mimic60HzClock=1;
+			else
+				mimic60HzClock=0;
+			end
 		end
 	else if(enable&&(out==10'b1100011110))
 		out=10'b1100011110;
@@ -547,3 +605,4 @@ else if(load)
 	out=coordinate;
 
 endmodule
+
