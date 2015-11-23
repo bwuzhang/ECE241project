@@ -43,10 +43,10 @@ module Interface
 	wire [2:0] colour;
 	wire [8:0] x;
 	wire [7:0] y;
-	wire writeEn,LD_X,LD_Y,RBG,displayOnVGA,DBF;
+	wire writeEn,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
 	wire [16:0]BG_Coor,bufferCounterOut;
-	wire[9:0]coor_gap;
-	wire [16:0]coor;
+	wire[9:0]coor_gap,coor_gap_LS;
+	wire [16:0]coor,coor_LS;
 	wire [2:0]color_from_CP;
 	// Create an Instance of a VGA controller - there can be only one!
 	// Define the number of colours as well as the initial background
@@ -70,30 +70,30 @@ module Interface
 		defparam VGA.RESOLUTION = "320x240";
 		defparam VGA.MONOCHROME = "FALSE";
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
-		defparam VGA.BACKGROUND_IMAGE = "BG.mif";
+		defparam VGA.BACKGROUND_IMAGE = "BG_New.mif";
 			
 	// Put your code here. Your code should produce signals x,y,colour and writeEn
 	// for the VGA controller, in addition to any other functionality your design may require.
     
     // Instanciate datapath
-	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],RBG,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,DBF,bufferCounterOut);
-	controlPath CP(CLOCK_50,writeEn,KEY[0],RBG,DBF,BG_Coor,coor_gap,coor,LD_X,LD_Y,color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut);
+	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS);
+	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS,SW[3:0]);
 
     // Instanciate FSM control
 endmodule
 
-module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,DBF,bufferCounterOut);
-	input resetKey,clock,LD_X,LD_Y,RBG,displayOnVGA,DBF;
+module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS);
+	input resetKey,clock,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
 	input [16:0]BG_Coor,bufferCounterOut;
-	input [9:0]coor_gap;
-	input [16:0]coordinate;
+	input [9:0]coor_gap,coor_gap_LS;
+	input [16:0]coordinate,coor_LS;
 	input[2:0]color;
 	input [2:0]color_from_CP;
 	output reg[8:0]x_out;
 	output reg[7:0]y_out;
 	output reg[2:0]color_out;
-	wire [8:0]regisXout;
-	wire [7:0]regisYout;
+	wire [8:0]regisXout,regisXout_LS;
+	wire [7:0]regisYout,regisYout_LS;
 	wire [2:0]bg_reg_out;
 	//BG bg_reg(BG_Coor,clock,3'b000,0,bg_reg_out);
 	reg[8:0]coor_x;
@@ -113,17 +113,25 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coo
 		y_out=8'b0;
 		color_out=color_from_CP;
 	end
-	else if(RBG)begin
+	else if(Dbackground)begin
 		x_out=BG_Coor[16:8];
 		y_out=BG_Coor[7:0];
 		color_out=color_from_CP;
 		//color_out=3'b000;
 	end
-	else if(DBF)  begin
+	else if(Dobject)  begin
 		x_out=regisXout+{4'b0,coor_gap[9:5]};
 		begin
 		if(regisYout<8'b11010010)
 			y_out=regisYout+{3'b0,coor_gap[4:0]};
+		end
+		color_out=color_from_CP;
+	end
+	else if(Dlightsaber)  begin
+		x_out=regisXout_LS+{4'b0,coor_gap_LS[9:5]};
+		begin
+		if(regisYout_LS<8'b11010010)
+			y_out=regisYout_LS+{3'b0,coor_gap_LS[4:0]};
 		end
 		color_out=color_from_CP;
 	end
@@ -135,35 +143,43 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,RBG,BG_Coo
 				
 	RegisterX X(coordinate[16:8],clock,resetKey,regisXout,LD_X);
 	RegisterY Y(coordinate[7:0],clock,resetKey,regisYout,LD_Y);
+	
+	RegisterX X_LS(coor_LS[16:8],clock,resetKey,regisXout_LS,LD_X_LS);
+	RegisterY Y_LS(coor_LS[7:0],clock,resetKey,regisYout_LS,LD_Y_LS);
+	
 endmodule
 
-module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,coor,LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut);
+module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robotCounterOut,coor,LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,lsCountOut,SW);
 	input resetKey,clock;
-	output reg plotVGA,RBG,LD_X,LD_Y,displayOnVGA,DBF;
-	output [16:0]coor;
+	input [3:0]SW;
+	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
+	output [16:0]coor,coor_LS;
 	output reg[2:0]color_from_CP;
 	input [2:0]color;
-	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,waitState=4'b0100,writeBG2Buffer=4'b0101,displayState=4'b0110;
+	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111;
 	reg  [3:0]currentState,nextState;
 	output [16:0]BGcounterOut,bufferCounterOut;
-	output [9:0]robotCounterOut;
-	reg cenable,RCenable,NPenable,bufferEnable;
+	output [9:0]robotCounterOut,lsCountOut;
+	reg cenable,RCenable,NPenable,bufferEnable,LSCenable;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out,rebot_reg_out;
+	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
-	wire mimic60HzClock;
+	wire mimic60HzClock4Robot,mimic60HzClock4LS;
 	
 	vga_address_translator BGtranslator(BGcounterOut[16:8],BGcounterOut[7:0],BGtransferedAddress);
 
 	//BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
-	BG bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
+	BG_New bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
 	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
-
-	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
-	robotCounter RC(clock,robotCounterOut,resetKey,RCenable,mimic60HzClock);
-	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
+	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
 	
-	nextPosition NP(clock,mimic60HzClock,coor,resetKey,NPenable);
+	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
+	robotCounter RC(clock,robotCounterOut,resetKey,RCenable,mimic60HzClock4Robot);
+	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
+	lightSaberCounter LScounter(clock,lsCountOut,resetKey,LSCenable,mimic60HzClock4LS);
+	
+	nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable);
+	LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
 	//oneSecClock CLK1S(clock,resetKey,clock1s);
@@ -177,6 +193,8 @@ module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,c
 				currentState=nextState;
 		else if (currentState==writeObj2Buffer)
 					currentState=nextState;
+		else if(currentState==writeLS2buffer)
+					currentState=nextState;
 		else if(currentState==displayState)
 			begin
 				if(clock60)
@@ -189,8 +207,12 @@ module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,c
 		case(currentState)
 			resetState:
 				nextState=writeBG2Buffer;
-			writeObj2Buffer:if(robotCounterOut==10'b1100011110)
+			writeLS2buffer:if(lsCountOut==10'b1111011110)
 						nextState=displayState;
+					else
+						nextState=writeLS2buffer;
+			writeObj2Buffer:if(robotCounterOut==10'b1100011110)
+						nextState=writeLS2buffer;
 					else
 						nextState=writeObj2Buffer;
 			writeBG2Buffer:if(BGcounterOut==17'b10100000011110000)
@@ -210,30 +232,55 @@ module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,c
 	cenable=0;
 	RCenable=0;
 	NPenable=0;
-	RBG=0;
+	Dbackground=0;
 	LD_X=0;
 	LD_Y=0;
 	bufferEnable=0;
 	displayOnVGA=0;
-	DBF=0;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
 	end
 	writeObj2Buffer:begin
 	plotVGA=0;
 	cenable=0;
 	RCenable=1;
-	RBG=0;
+	Dbackground=0;
 	NPenable=1;
 	LD_X=1;
 	LD_Y=1;
 	color_from_CP=rebot_reg_out;
 	bufferEnable=0;
 	displayOnVGA=0;
-	DBF=1;
+	Dobject=1;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
+	end
+	writeLS2buffer:begin
+	plotVGA=0;
+	cenable=0;
+	RCenable=0;
+	Dbackground=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=ls_reg_out;
+	bufferEnable=0;
+	displayOnVGA=0;
+	Dobject=0;
+	LSCenable=1;
+	LD_X_LS=1;
+	LD_Y_LS=1;
+	Dlightsaber=1;
 	end
 	writeBG2Buffer:begin
 	plotVGA=0;
 	cenable=1;
-	RBG=1;
+	Dbackground=1;
 	RCenable=0;
 	NPenable=0;
 	LD_X=0;
@@ -241,12 +288,16 @@ module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,c
 	color_from_CP=bg_reg_out;
 	bufferEnable=0;
 	displayOnVGA=0;
-	DBF=0;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
 	end
 	displayState:begin
 	plotVGA=1;
 	cenable=0;
-	RBG=0;
+	Dbackground=0;
 	RCenable=0;
 	NPenable=0;
 	LD_X=0;
@@ -254,10 +305,35 @@ module controlPath(clock,plotVGA,resetKey,RBG,DBF,BGcounterOut,robotCounterOut,c
 	color_from_CP=bg_reg_out; //this line doesn't matter
 	bufferEnable=1;
 	displayOnVGA=1;
-	DBF=0;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
 	end
 	endcase
 	
+endmodule
+
+module LSmove(CLOCK_50,clock60hz,resetKey,SW,out);
+	input clock60hz,resetKey,CLOCK_50;
+	input [3:0]SW;
+	output reg [16:0]out;
+	always@(posedge CLOCK_50) begin
+	if(~resetKey)
+		out=17'b00000010000001000;
+	else if(clock60hz)begin
+		if(SW[0]==1&&out[7:0]<8'b11010010)//going down
+			out[7:0]=out[7:0]+8'b00000001;
+		else if(SW[1]==1&&out[7:0]>8'b0)//going up
+				out[7:0]=out[7:0]-8'b00000001;
+		if(SW[2]==1&&out[16:8]<9'b100100010)//going right
+			out[16:8]=out[16:8]+9'b000000001;
+		else if(SW[3]==1&&out[16:8]>9'b0)//going left
+				out[16:8]=out[16:8]-9'b000000001;
+	end
+		
+	end
 endmodule
 
 /*module OLDcontrolPath(k1,clock,resetKey);
@@ -556,6 +632,33 @@ module robotCounter(clock,out,reset,enable,mimic60HzClock);
 		end
 	else if(enable&&(out==10'b1100011110))
 		out=10'b1100011110;
+	else
+		out=10'b0;
+
+endmodule 
+
+
+module lightSaberCounter(clock,out,reset,enable,mimic60HzClock4LS);
+	input clock,reset,enable;
+	output reg[9:0]out;
+	output reg mimic60HzClock4LS;
+	always@(posedge clock)
+	if(!reset)begin
+		out=10'b0;
+	   mimic60HzClock4LS=0;
+		end
+	else if(enable&&(out!=10'b1111011110))begin
+			if(out[4:0]==5'b11110)
+				out=out-10'b0000011110+10'b0000100000;
+			else begin out=out+10'b0000000001;
+			if(out==10'b0000000001)
+				mimic60HzClock4LS=1;
+			else
+				mimic60HzClock4LS=0;
+			end
+		end
+	else if(enable&&(out==10'b1111011110))
+		out=10'b1111011110;
 	else
 		out=10'b0;
 

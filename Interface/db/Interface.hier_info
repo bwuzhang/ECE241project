@@ -4,51 +4,51 @@ KEY[0] => KEY[0].IN3
 KEY[1] => ~NO_FANOUT~
 KEY[2] => ~NO_FANOUT~
 KEY[3] => ~NO_FANOUT~
-SW[0] => ~NO_FANOUT~
-SW[1] => ~NO_FANOUT~
-SW[2] => ~NO_FANOUT~
-SW[3] => ~NO_FANOUT~
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+SW[3] => SW[3].IN1
 SW[4] => ~NO_FANOUT~
 SW[5] => ~NO_FANOUT~
 SW[6] => ~NO_FANOUT~
 SW[7] => SW[7].IN2
 SW[8] => SW[8].IN2
 SW[9] => SW[9].IN2
-VGA_CLK << vga_adapter:VGA.VGA_CLK
-VGA_HS << vga_adapter:VGA.VGA_HS
-VGA_VS << vga_adapter:VGA.VGA_VS
-VGA_BLANK << vga_adapter:VGA.VGA_BLANK
-VGA_SYNC << vga_adapter:VGA.VGA_SYNC
-VGA_R[0] << vga_adapter:VGA.VGA_R
-VGA_R[1] << vga_adapter:VGA.VGA_R
-VGA_R[2] << vga_adapter:VGA.VGA_R
-VGA_R[3] << vga_adapter:VGA.VGA_R
-VGA_R[4] << vga_adapter:VGA.VGA_R
-VGA_R[5] << vga_adapter:VGA.VGA_R
-VGA_R[6] << vga_adapter:VGA.VGA_R
-VGA_R[7] << vga_adapter:VGA.VGA_R
-VGA_R[8] << vga_adapter:VGA.VGA_R
-VGA_R[9] << vga_adapter:VGA.VGA_R
-VGA_G[0] << vga_adapter:VGA.VGA_G
-VGA_G[1] << vga_adapter:VGA.VGA_G
-VGA_G[2] << vga_adapter:VGA.VGA_G
-VGA_G[3] << vga_adapter:VGA.VGA_G
-VGA_G[4] << vga_adapter:VGA.VGA_G
-VGA_G[5] << vga_adapter:VGA.VGA_G
-VGA_G[6] << vga_adapter:VGA.VGA_G
-VGA_G[7] << vga_adapter:VGA.VGA_G
-VGA_G[8] << vga_adapter:VGA.VGA_G
-VGA_G[9] << vga_adapter:VGA.VGA_G
-VGA_B[0] << vga_adapter:VGA.VGA_B
-VGA_B[1] << vga_adapter:VGA.VGA_B
-VGA_B[2] << vga_adapter:VGA.VGA_B
-VGA_B[3] << vga_adapter:VGA.VGA_B
-VGA_B[4] << vga_adapter:VGA.VGA_B
-VGA_B[5] << vga_adapter:VGA.VGA_B
-VGA_B[6] << vga_adapter:VGA.VGA_B
-VGA_B[7] << vga_adapter:VGA.VGA_B
-VGA_B[8] << vga_adapter:VGA.VGA_B
-VGA_B[9] << vga_adapter:VGA.VGA_B
+VGA_CLK <= vga_adapter:VGA.VGA_CLK
+VGA_HS <= vga_adapter:VGA.VGA_HS
+VGA_VS <= vga_adapter:VGA.VGA_VS
+VGA_BLANK <= vga_adapter:VGA.VGA_BLANK
+VGA_SYNC <= vga_adapter:VGA.VGA_SYNC
+VGA_R[0] <= vga_adapter:VGA.VGA_R
+VGA_R[1] <= vga_adapter:VGA.VGA_R
+VGA_R[2] <= vga_adapter:VGA.VGA_R
+VGA_R[3] <= vga_adapter:VGA.VGA_R
+VGA_R[4] <= vga_adapter:VGA.VGA_R
+VGA_R[5] <= vga_adapter:VGA.VGA_R
+VGA_R[6] <= vga_adapter:VGA.VGA_R
+VGA_R[7] <= vga_adapter:VGA.VGA_R
+VGA_R[8] <= vga_adapter:VGA.VGA_R
+VGA_R[9] <= vga_adapter:VGA.VGA_R
+VGA_G[0] <= vga_adapter:VGA.VGA_G
+VGA_G[1] <= vga_adapter:VGA.VGA_G
+VGA_G[2] <= vga_adapter:VGA.VGA_G
+VGA_G[3] <= vga_adapter:VGA.VGA_G
+VGA_G[4] <= vga_adapter:VGA.VGA_G
+VGA_G[5] <= vga_adapter:VGA.VGA_G
+VGA_G[6] <= vga_adapter:VGA.VGA_G
+VGA_G[7] <= vga_adapter:VGA.VGA_G
+VGA_G[8] <= vga_adapter:VGA.VGA_G
+VGA_G[9] <= vga_adapter:VGA.VGA_G
+VGA_B[0] <= vga_adapter:VGA.VGA_B
+VGA_B[1] <= vga_adapter:VGA.VGA_B
+VGA_B[2] <= vga_adapter:VGA.VGA_B
+VGA_B[3] <= vga_adapter:VGA.VGA_B
+VGA_B[4] <= vga_adapter:VGA.VGA_B
+VGA_B[5] <= vga_adapter:VGA.VGA_B
+VGA_B[6] <= vga_adapter:VGA.VGA_B
+VGA_B[7] <= vga_adapter:VGA.VGA_B
+VGA_B[8] <= vga_adapter:VGA.VGA_B
+VGA_B[9] <= vga_adapter:VGA.VGA_B
 
 
 |Interface|vga_adapter:VGA
@@ -158,54 +158,54 @@ mem_address[16] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Interface|vga_adapter:VGA|altsyncram:VideoMemory
-wren_a => altsyncram_otl1:auto_generated.wren_a
+wren_a => altsyncram_1bm1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
 rden_b => ~NO_FANOUT~
-data_a[0] => altsyncram_otl1:auto_generated.data_a[0]
-data_a[1] => altsyncram_otl1:auto_generated.data_a[1]
-data_a[2] => altsyncram_otl1:auto_generated.data_a[2]
+data_a[0] => altsyncram_1bm1:auto_generated.data_a[0]
+data_a[1] => altsyncram_1bm1:auto_generated.data_a[1]
+data_a[2] => altsyncram_1bm1:auto_generated.data_a[2]
 data_b[0] => ~NO_FANOUT~
 data_b[1] => ~NO_FANOUT~
 data_b[2] => ~NO_FANOUT~
-address_a[0] => altsyncram_otl1:auto_generated.address_a[0]
-address_a[1] => altsyncram_otl1:auto_generated.address_a[1]
-address_a[2] => altsyncram_otl1:auto_generated.address_a[2]
-address_a[3] => altsyncram_otl1:auto_generated.address_a[3]
-address_a[4] => altsyncram_otl1:auto_generated.address_a[4]
-address_a[5] => altsyncram_otl1:auto_generated.address_a[5]
-address_a[6] => altsyncram_otl1:auto_generated.address_a[6]
-address_a[7] => altsyncram_otl1:auto_generated.address_a[7]
-address_a[8] => altsyncram_otl1:auto_generated.address_a[8]
-address_a[9] => altsyncram_otl1:auto_generated.address_a[9]
-address_a[10] => altsyncram_otl1:auto_generated.address_a[10]
-address_a[11] => altsyncram_otl1:auto_generated.address_a[11]
-address_a[12] => altsyncram_otl1:auto_generated.address_a[12]
-address_a[13] => altsyncram_otl1:auto_generated.address_a[13]
-address_a[14] => altsyncram_otl1:auto_generated.address_a[14]
-address_a[15] => altsyncram_otl1:auto_generated.address_a[15]
-address_a[16] => altsyncram_otl1:auto_generated.address_a[16]
-address_b[0] => altsyncram_otl1:auto_generated.address_b[0]
-address_b[1] => altsyncram_otl1:auto_generated.address_b[1]
-address_b[2] => altsyncram_otl1:auto_generated.address_b[2]
-address_b[3] => altsyncram_otl1:auto_generated.address_b[3]
-address_b[4] => altsyncram_otl1:auto_generated.address_b[4]
-address_b[5] => altsyncram_otl1:auto_generated.address_b[5]
-address_b[6] => altsyncram_otl1:auto_generated.address_b[6]
-address_b[7] => altsyncram_otl1:auto_generated.address_b[7]
-address_b[8] => altsyncram_otl1:auto_generated.address_b[8]
-address_b[9] => altsyncram_otl1:auto_generated.address_b[9]
-address_b[10] => altsyncram_otl1:auto_generated.address_b[10]
-address_b[11] => altsyncram_otl1:auto_generated.address_b[11]
-address_b[12] => altsyncram_otl1:auto_generated.address_b[12]
-address_b[13] => altsyncram_otl1:auto_generated.address_b[13]
-address_b[14] => altsyncram_otl1:auto_generated.address_b[14]
-address_b[15] => altsyncram_otl1:auto_generated.address_b[15]
-address_b[16] => altsyncram_otl1:auto_generated.address_b[16]
+address_a[0] => altsyncram_1bm1:auto_generated.address_a[0]
+address_a[1] => altsyncram_1bm1:auto_generated.address_a[1]
+address_a[2] => altsyncram_1bm1:auto_generated.address_a[2]
+address_a[3] => altsyncram_1bm1:auto_generated.address_a[3]
+address_a[4] => altsyncram_1bm1:auto_generated.address_a[4]
+address_a[5] => altsyncram_1bm1:auto_generated.address_a[5]
+address_a[6] => altsyncram_1bm1:auto_generated.address_a[6]
+address_a[7] => altsyncram_1bm1:auto_generated.address_a[7]
+address_a[8] => altsyncram_1bm1:auto_generated.address_a[8]
+address_a[9] => altsyncram_1bm1:auto_generated.address_a[9]
+address_a[10] => altsyncram_1bm1:auto_generated.address_a[10]
+address_a[11] => altsyncram_1bm1:auto_generated.address_a[11]
+address_a[12] => altsyncram_1bm1:auto_generated.address_a[12]
+address_a[13] => altsyncram_1bm1:auto_generated.address_a[13]
+address_a[14] => altsyncram_1bm1:auto_generated.address_a[14]
+address_a[15] => altsyncram_1bm1:auto_generated.address_a[15]
+address_a[16] => altsyncram_1bm1:auto_generated.address_a[16]
+address_b[0] => altsyncram_1bm1:auto_generated.address_b[0]
+address_b[1] => altsyncram_1bm1:auto_generated.address_b[1]
+address_b[2] => altsyncram_1bm1:auto_generated.address_b[2]
+address_b[3] => altsyncram_1bm1:auto_generated.address_b[3]
+address_b[4] => altsyncram_1bm1:auto_generated.address_b[4]
+address_b[5] => altsyncram_1bm1:auto_generated.address_b[5]
+address_b[6] => altsyncram_1bm1:auto_generated.address_b[6]
+address_b[7] => altsyncram_1bm1:auto_generated.address_b[7]
+address_b[8] => altsyncram_1bm1:auto_generated.address_b[8]
+address_b[9] => altsyncram_1bm1:auto_generated.address_b[9]
+address_b[10] => altsyncram_1bm1:auto_generated.address_b[10]
+address_b[11] => altsyncram_1bm1:auto_generated.address_b[11]
+address_b[12] => altsyncram_1bm1:auto_generated.address_b[12]
+address_b[13] => altsyncram_1bm1:auto_generated.address_b[13]
+address_b[14] => altsyncram_1bm1:auto_generated.address_b[14]
+address_b[15] => altsyncram_1bm1:auto_generated.address_b[15]
+address_b[16] => altsyncram_1bm1:auto_generated.address_b[16]
 addressstall_a => ~NO_FANOUT~
 addressstall_b => ~NO_FANOUT~
-clock0 => altsyncram_otl1:auto_generated.clock0
-clock1 => altsyncram_otl1:auto_generated.clock1
+clock0 => altsyncram_1bm1:auto_generated.clock0
+clock1 => altsyncram_1bm1:auto_generated.clock1
 clocken0 => ~NO_FANOUT~
 clocken1 => ~NO_FANOUT~
 clocken2 => ~NO_FANOUT~
@@ -217,15 +217,15 @@ byteena_b[0] => ~NO_FANOUT~
 q_a[0] <= <GND>
 q_a[1] <= <GND>
 q_a[2] <= <GND>
-q_b[0] <= altsyncram_otl1:auto_generated.q_b[0]
-q_b[1] <= altsyncram_otl1:auto_generated.q_b[1]
-q_b[2] <= altsyncram_otl1:auto_generated.q_b[2]
+q_b[0] <= altsyncram_1bm1:auto_generated.q_b[0]
+q_b[1] <= altsyncram_1bm1:auto_generated.q_b[1]
+q_b[2] <= altsyncram_1bm1:auto_generated.q_b[2]
 eccstatus[0] <= <GND>
 eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_otl1:auto_generated
+|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -1121,7 +1121,7 @@ wren_a => decode_nma:decode2.enable
 wren_a => decode_nma:wren_decode_a.enable
 
 
-|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_otl1:auto_generated|decode_nma:decode2
+|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|decode_nma:decode2
 data[0] => w_anode569w[1].IN0
 data[0] => w_anode586w[1].IN1
 data[0] => w_anode596w[1].IN0
@@ -1186,7 +1186,7 @@ eq[8] <= w_anode665w[3].DB_MAX_OUTPUT_PORT_TYPE
 eq[9] <= w_anode676w[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_otl1:auto_generated|decode_g2a:rden_decode_b
+|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|decode_g2a:rden_decode_b
 data[0] => w_anode751w[1].IN0
 data[0] => w_anode768w[1].IN1
 data[0] => w_anode778w[1].IN0
@@ -1256,7 +1256,7 @@ eq[8] <= w_anode838w[3].DB_MAX_OUTPUT_PORT_TYPE
 eq[9] <= w_anode849w[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_otl1:auto_generated|decode_nma:wren_decode_a
+|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|decode_nma:wren_decode_a
 data[0] => w_anode569w[1].IN0
 data[0] => w_anode586w[1].IN1
 data[0] => w_anode596w[1].IN0
@@ -1321,7 +1321,7 @@ eq[8] <= w_anode665w[3].DB_MAX_OUTPUT_PORT_TYPE
 eq[9] <= w_anode676w[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_otl1:auto_generated|mux_2hb:mux3
+|Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|mux_2hb:mux3
 data[0] => l1_w0_n0_mux_dataout.IN1
 data[1] => l1_w1_n0_mux_dataout.IN1
 data[2] => l1_w2_n0_mux_dataout.IN1
@@ -1744,30 +1744,30 @@ y_out[7] <= y_out[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_out[0] <= color_out[0].DB_MAX_OUTPUT_PORT_TYPE
 color_out[1] <= color_out[1].DB_MAX_OUTPUT_PORT_TYPE
 color_out[2] <= color_out[2].DB_MAX_OUTPUT_PORT_TYPE
-clock => clock.IN3
-resetKey => resetKey.IN2
-RBG => color_out[0].OUTPUTSELECT
-RBG => color_out[1].OUTPUTSELECT
-RBG => color_out[2].OUTPUTSELECT
-RBG => y_out[0].OUTPUTSELECT
-RBG => y_out[1].OUTPUTSELECT
-RBG => y_out[2].OUTPUTSELECT
-RBG => y_out[3].OUTPUTSELECT
-RBG => y_out[4].OUTPUTSELECT
-RBG => y_out[5].OUTPUTSELECT
-RBG => y_out[6].OUTPUTSELECT
-RBG => y_out[7].OUTPUTSELECT
-RBG => y_out[7].IN1
-RBG => x_out[0].OUTPUTSELECT
-RBG => x_out[1].OUTPUTSELECT
-RBG => x_out[2].OUTPUTSELECT
-RBG => x_out[3].OUTPUTSELECT
-RBG => x_out[4].OUTPUTSELECT
-RBG => x_out[5].OUTPUTSELECT
-RBG => x_out[6].OUTPUTSELECT
-RBG => x_out[7].OUTPUTSELECT
-RBG => x_out[8].OUTPUTSELECT
-RBG => x_out[8].IN1
+clock => clock.IN5
+resetKey => resetKey.IN4
+Dbackground => color_out[0].OUTPUTSELECT
+Dbackground => color_out[1].OUTPUTSELECT
+Dbackground => color_out[2].OUTPUTSELECT
+Dbackground => y_out[0].OUTPUTSELECT
+Dbackground => y_out[1].OUTPUTSELECT
+Dbackground => y_out[2].OUTPUTSELECT
+Dbackground => y_out[3].OUTPUTSELECT
+Dbackground => y_out[4].OUTPUTSELECT
+Dbackground => y_out[5].OUTPUTSELECT
+Dbackground => y_out[6].OUTPUTSELECT
+Dbackground => y_out[7].OUTPUTSELECT
+Dbackground => y_out[7].IN1
+Dbackground => x_out[0].OUTPUTSELECT
+Dbackground => x_out[1].OUTPUTSELECT
+Dbackground => x_out[2].OUTPUTSELECT
+Dbackground => x_out[3].OUTPUTSELECT
+Dbackground => x_out[4].OUTPUTSELECT
+Dbackground => x_out[5].OUTPUTSELECT
+Dbackground => x_out[6].OUTPUTSELECT
+Dbackground => x_out[7].OUTPUTSELECT
+Dbackground => x_out[8].OUTPUTSELECT
+Dbackground => x_out[8].IN1
 BG_Coor[0] => y_out[0].DATAB
 BG_Coor[1] => y_out[1].DATAB
 BG_Coor[2] => y_out[2].DATAB
@@ -1800,37 +1800,40 @@ LD_Y => LD_Y.IN1
 color_from_CP[0] => color_out[0].DATAB
 color_from_CP[0] => color_out[0].DATAB
 color_from_CP[0] => color_out[0].DATAB
+color_from_CP[0] => color_out[0].DATAB
 color_from_CP[1] => color_out[1].DATAB
 color_from_CP[1] => color_out[1].DATAB
 color_from_CP[1] => color_out[1].DATAB
+color_from_CP[1] => color_out[1].DATAB
+color_from_CP[2] => color_out[2].DATAB
 color_from_CP[2] => color_out[2].DATAB
 color_from_CP[2] => color_out[2].DATAB
 color_from_CP[2] => color_out[2].DATAB
 displayOnVGA => y_out[7].DATAA
 displayOnVGA => x_out[8].IN0
 displayOnVGA => _.IN1
-DBF => color_out[0].OUTPUTSELECT
-DBF => color_out[1].OUTPUTSELECT
-DBF => color_out[2].OUTPUTSELECT
-DBF => y_out[0].OUTPUTSELECT
-DBF => y_out[1].OUTPUTSELECT
-DBF => y_out[2].OUTPUTSELECT
-DBF => y_out[3].OUTPUTSELECT
-DBF => y_out[4].OUTPUTSELECT
-DBF => y_out[5].OUTPUTSELECT
-DBF => y_out[6].OUTPUTSELECT
-DBF => y_out[7].OUTPUTSELECT
-DBF => y_out[7].OUTPUTSELECT
-DBF => x_out[0].OUTPUTSELECT
-DBF => x_out[1].OUTPUTSELECT
-DBF => x_out[2].OUTPUTSELECT
-DBF => x_out[3].OUTPUTSELECT
-DBF => x_out[4].OUTPUTSELECT
-DBF => x_out[5].OUTPUTSELECT
-DBF => x_out[6].OUTPUTSELECT
-DBF => x_out[7].OUTPUTSELECT
-DBF => x_out[8].OUTPUTSELECT
-DBF => x_out[8].IN1
+Dobject => color_out[0].OUTPUTSELECT
+Dobject => color_out[1].OUTPUTSELECT
+Dobject => color_out[2].OUTPUTSELECT
+Dobject => y_out[0].OUTPUTSELECT
+Dobject => y_out[1].OUTPUTSELECT
+Dobject => y_out[2].OUTPUTSELECT
+Dobject => y_out[3].OUTPUTSELECT
+Dobject => y_out[4].OUTPUTSELECT
+Dobject => y_out[5].OUTPUTSELECT
+Dobject => y_out[6].OUTPUTSELECT
+Dobject => y_out[7].OUTPUTSELECT
+Dobject => y_out[7].OUTPUTSELECT
+Dobject => x_out[0].OUTPUTSELECT
+Dobject => x_out[1].OUTPUTSELECT
+Dobject => x_out[2].OUTPUTSELECT
+Dobject => x_out[3].OUTPUTSELECT
+Dobject => x_out[4].OUTPUTSELECT
+Dobject => x_out[5].OUTPUTSELECT
+Dobject => x_out[6].OUTPUTSELECT
+Dobject => x_out[7].OUTPUTSELECT
+Dobject => x_out[8].OUTPUTSELECT
+Dobject => x_out[8].IN1
 bufferCounterOut[0] => y_out[0].DATAA
 bufferCounterOut[1] => y_out[1].DATAA
 bufferCounterOut[2] => y_out[2].DATAA
@@ -1848,6 +1851,57 @@ bufferCounterOut[13] => x_out[5].DATAA
 bufferCounterOut[14] => x_out[6].DATAA
 bufferCounterOut[15] => x_out[7].DATAA
 bufferCounterOut[16] => x_out[8].DATAA
+Dlightsaber => color_out[0].OUTPUTSELECT
+Dlightsaber => color_out[1].OUTPUTSELECT
+Dlightsaber => color_out[2].OUTPUTSELECT
+Dlightsaber => y_out[0].OUTPUTSELECT
+Dlightsaber => y_out[1].OUTPUTSELECT
+Dlightsaber => y_out[2].OUTPUTSELECT
+Dlightsaber => y_out[3].OUTPUTSELECT
+Dlightsaber => y_out[4].OUTPUTSELECT
+Dlightsaber => y_out[5].OUTPUTSELECT
+Dlightsaber => y_out[6].OUTPUTSELECT
+Dlightsaber => y_out[7].OUTPUTSELECT
+Dlightsaber => y_out[7].OUTPUTSELECT
+Dlightsaber => x_out[0].OUTPUTSELECT
+Dlightsaber => x_out[1].OUTPUTSELECT
+Dlightsaber => x_out[2].OUTPUTSELECT
+Dlightsaber => x_out[3].OUTPUTSELECT
+Dlightsaber => x_out[4].OUTPUTSELECT
+Dlightsaber => x_out[5].OUTPUTSELECT
+Dlightsaber => x_out[6].OUTPUTSELECT
+Dlightsaber => x_out[7].OUTPUTSELECT
+Dlightsaber => x_out[8].OUTPUTSELECT
+Dlightsaber => x_out[8].IN1
+coor_LS[0] => coor_LS[0].IN1
+coor_LS[1] => coor_LS[1].IN1
+coor_LS[2] => coor_LS[2].IN1
+coor_LS[3] => coor_LS[3].IN1
+coor_LS[4] => coor_LS[4].IN1
+coor_LS[5] => coor_LS[5].IN1
+coor_LS[6] => coor_LS[6].IN1
+coor_LS[7] => coor_LS[7].IN1
+coor_LS[8] => coor_LS[8].IN1
+coor_LS[9] => coor_LS[9].IN1
+coor_LS[10] => coor_LS[10].IN1
+coor_LS[11] => coor_LS[11].IN1
+coor_LS[12] => coor_LS[12].IN1
+coor_LS[13] => coor_LS[13].IN1
+coor_LS[14] => coor_LS[14].IN1
+coor_LS[15] => coor_LS[15].IN1
+coor_LS[16] => coor_LS[16].IN1
+LD_X_LS => LD_X_LS.IN1
+LD_Y_LS => LD_Y_LS.IN1
+coor_gap_LS[0] => Add5.IN8
+coor_gap_LS[1] => Add5.IN7
+coor_gap_LS[2] => Add5.IN6
+coor_gap_LS[3] => Add5.IN5
+coor_gap_LS[4] => Add5.IN4
+coor_gap_LS[5] => Add4.IN9
+coor_gap_LS[6] => Add4.IN8
+coor_gap_LS[7] => Add4.IN7
+coor_gap_LS[8] => Add4.IN6
+coor_gap_LS[9] => Add4.IN5
 
 
 |Interface|dataPath:DP|BGbuffer:bgb
@@ -2733,12 +2787,88 @@ load => out[1]$latch.LATCH_ENABLE
 load => out[0]$latch.LATCH_ENABLE
 
 
+|Interface|dataPath:DP|RegisterX:X_LS
+coordinate[0] => out[0]$latch.DATAIN
+coordinate[1] => out[1]$latch.DATAIN
+coordinate[2] => out[2]$latch.DATAIN
+coordinate[3] => out[3]$latch.DATAIN
+coordinate[4] => out[4]$latch.DATAIN
+coordinate[5] => out[5]$latch.DATAIN
+coordinate[6] => out[6]$latch.DATAIN
+coordinate[7] => out[7]$latch.DATAIN
+coordinate[8] => out[8]$latch.DATAIN
+clock => ~NO_FANOUT~
+resetKey => out[8]$latch.ACLR
+resetKey => out[7]$latch.ACLR
+resetKey => out[6]$latch.ACLR
+resetKey => out[5]$latch.ACLR
+resetKey => out[4]$latch.ACLR
+resetKey => out[3]$latch.ACLR
+resetKey => out[2]$latch.ACLR
+resetKey => out[1]$latch.ACLR
+resetKey => out[0]$latch.ACLR
+out[0] <= out[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[8] <= out[8]$latch.DB_MAX_OUTPUT_PORT_TYPE
+load => out[8]$latch.LATCH_ENABLE
+load => out[7]$latch.LATCH_ENABLE
+load => out[6]$latch.LATCH_ENABLE
+load => out[5]$latch.LATCH_ENABLE
+load => out[4]$latch.LATCH_ENABLE
+load => out[3]$latch.LATCH_ENABLE
+load => out[2]$latch.LATCH_ENABLE
+load => out[1]$latch.LATCH_ENABLE
+load => out[0]$latch.LATCH_ENABLE
+
+
+|Interface|dataPath:DP|RegisterY:Y_LS
+coordinate[0] => out[0]$latch.DATAIN
+coordinate[1] => out[1]$latch.DATAIN
+coordinate[2] => out[2]$latch.DATAIN
+coordinate[3] => out[3]$latch.DATAIN
+coordinate[4] => out[4]$latch.DATAIN
+coordinate[5] => out[5]$latch.DATAIN
+coordinate[6] => out[6]$latch.DATAIN
+coordinate[7] => out[7]$latch.DATAIN
+clock => ~NO_FANOUT~
+resetKey => out[7]$latch.ACLR
+resetKey => out[6]$latch.ACLR
+resetKey => out[5]$latch.ACLR
+resetKey => out[4]$latch.ACLR
+resetKey => out[3]$latch.ACLR
+resetKey => out[2]$latch.ACLR
+resetKey => out[1]$latch.ACLR
+resetKey => out[0]$latch.ACLR
+out[0] <= out[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
+load => out[7]$latch.LATCH_ENABLE
+load => out[6]$latch.LATCH_ENABLE
+load => out[5]$latch.LATCH_ENABLE
+load => out[4]$latch.LATCH_ENABLE
+load => out[3]$latch.LATCH_ENABLE
+load => out[2]$latch.LATCH_ENABLE
+load => out[1]$latch.LATCH_ENABLE
+load => out[0]$latch.LATCH_ENABLE
+
+
 |Interface|controlPath:CP
-clock => clock.IN7
-plotVGA <= currentState.displayState_155.DB_MAX_OUTPUT_PORT_TYPE
-resetKey => resetKey.IN5
-RBG <= currentState.writeBG2Buffer_166.DB_MAX_OUTPUT_PORT_TYPE
-DBF <= currentState.writeObj2Buffer_177.DB_MAX_OUTPUT_PORT_TYPE
+clock => clock.IN10
+plotVGA <= currentState.displayState_211.DB_MAX_OUTPUT_PORT_TYPE
+resetKey => resetKey.IN7
+Dbackground <= currentState.writeBG2Buffer_237.DB_MAX_OUTPUT_PORT_TYPE
+Dobject <= currentState.writeObj2Buffer_250.DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[0] <= BGcounterOut[0].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[1] <= BGcounterOut[1].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[2] <= BGcounterOut[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -2783,15 +2913,15 @@ coor[13] <= nextPosition:NP.port2
 coor[14] <= nextPosition:NP.port2
 coor[15] <= nextPosition:NP.port2
 coor[16] <= nextPosition:NP.port2
-LD_X <= currentState.writeObj2Buffer_177.DB_MAX_OUTPUT_PORT_TYPE
-LD_Y <= currentState.writeObj2Buffer_177.DB_MAX_OUTPUT_PORT_TYPE
+LD_X <= currentState.writeObj2Buffer_250.DB_MAX_OUTPUT_PORT_TYPE
+LD_Y <= currentState.writeObj2Buffer_250.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[0] <= color_from_CP[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[1] <= color_from_CP[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[2] <= color_from_CP[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color[0] => ~NO_FANOUT~
 color[1] => ~NO_FANOUT~
 color[2] => ~NO_FANOUT~
-displayOnVGA <= currentState.displayState_155.DB_MAX_OUTPUT_PORT_TYPE
+displayOnVGA <= currentState.displayState_211.DB_MAX_OUTPUT_PORT_TYPE
 bufferCounterOut[0] <= BGcounter:BufferCounter.port1
 bufferCounterOut[1] <= BGcounter:BufferCounter.port1
 bufferCounterOut[2] <= BGcounter:BufferCounter.port1
@@ -2809,6 +2939,40 @@ bufferCounterOut[13] <= BGcounter:BufferCounter.port1
 bufferCounterOut[14] <= BGcounter:BufferCounter.port1
 bufferCounterOut[15] <= BGcounter:BufferCounter.port1
 bufferCounterOut[16] <= BGcounter:BufferCounter.port1
+Dlightsaber <= currentState.writeLS2buffer_224.DB_MAX_OUTPUT_PORT_TYPE
+coor_LS[0] <= LSmove:ls_move.port4
+coor_LS[1] <= LSmove:ls_move.port4
+coor_LS[2] <= LSmove:ls_move.port4
+coor_LS[3] <= LSmove:ls_move.port4
+coor_LS[4] <= LSmove:ls_move.port4
+coor_LS[5] <= LSmove:ls_move.port4
+coor_LS[6] <= LSmove:ls_move.port4
+coor_LS[7] <= LSmove:ls_move.port4
+coor_LS[8] <= LSmove:ls_move.port4
+coor_LS[9] <= LSmove:ls_move.port4
+coor_LS[10] <= LSmove:ls_move.port4
+coor_LS[11] <= LSmove:ls_move.port4
+coor_LS[12] <= LSmove:ls_move.port4
+coor_LS[13] <= LSmove:ls_move.port4
+coor_LS[14] <= LSmove:ls_move.port4
+coor_LS[15] <= LSmove:ls_move.port4
+coor_LS[16] <= LSmove:ls_move.port4
+LD_X_LS <= currentState.writeLS2buffer_224.DB_MAX_OUTPUT_PORT_TYPE
+LD_Y_LS <= currentState.writeLS2buffer_224.DB_MAX_OUTPUT_PORT_TYPE
+lsCountOut[0] <= lightSaberCounter:LScounter.port1
+lsCountOut[1] <= lightSaberCounter:LScounter.port1
+lsCountOut[2] <= lightSaberCounter:LScounter.port1
+lsCountOut[3] <= lightSaberCounter:LScounter.port1
+lsCountOut[4] <= lightSaberCounter:LScounter.port1
+lsCountOut[5] <= lsCountOut[5].DB_MAX_OUTPUT_PORT_TYPE
+lsCountOut[6] <= lightSaberCounter:LScounter.port1
+lsCountOut[7] <= lightSaberCounter:LScounter.port1
+lsCountOut[8] <= lightSaberCounter:LScounter.port1
+lsCountOut[9] <= lightSaberCounter:LScounter.port1
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+SW[3] => SW[3].IN1
 
 
 |Interface|controlPath:CP|vga_address_translator:BGtranslator
@@ -2856,7 +3020,7 @@ mem_address[15] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
 mem_address[16] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|controlPath:CP|BG:bg_reg
+|Interface|controlPath:CP|BG_New:bg_reg
 address[0] => address[0].IN1
 address[1] => address[1].IN1
 address[2] => address[2].IN1
@@ -2884,36 +3048,36 @@ q[1] <= altsyncram:altsyncram_component.q_a
 q[2] <= altsyncram:altsyncram_component.q_a
 
 
-|Interface|controlPath:CP|BG:bg_reg|altsyncram:altsyncram_component
-wren_a => altsyncram_s8o1:auto_generated.wren_a
+|Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component
+wren_a => altsyncram_5mo1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
 rden_b => ~NO_FANOUT~
-data_a[0] => altsyncram_s8o1:auto_generated.data_a[0]
-data_a[1] => altsyncram_s8o1:auto_generated.data_a[1]
-data_a[2] => altsyncram_s8o1:auto_generated.data_a[2]
+data_a[0] => altsyncram_5mo1:auto_generated.data_a[0]
+data_a[1] => altsyncram_5mo1:auto_generated.data_a[1]
+data_a[2] => altsyncram_5mo1:auto_generated.data_a[2]
 data_b[0] => ~NO_FANOUT~
-address_a[0] => altsyncram_s8o1:auto_generated.address_a[0]
-address_a[1] => altsyncram_s8o1:auto_generated.address_a[1]
-address_a[2] => altsyncram_s8o1:auto_generated.address_a[2]
-address_a[3] => altsyncram_s8o1:auto_generated.address_a[3]
-address_a[4] => altsyncram_s8o1:auto_generated.address_a[4]
-address_a[5] => altsyncram_s8o1:auto_generated.address_a[5]
-address_a[6] => altsyncram_s8o1:auto_generated.address_a[6]
-address_a[7] => altsyncram_s8o1:auto_generated.address_a[7]
-address_a[8] => altsyncram_s8o1:auto_generated.address_a[8]
-address_a[9] => altsyncram_s8o1:auto_generated.address_a[9]
-address_a[10] => altsyncram_s8o1:auto_generated.address_a[10]
-address_a[11] => altsyncram_s8o1:auto_generated.address_a[11]
-address_a[12] => altsyncram_s8o1:auto_generated.address_a[12]
-address_a[13] => altsyncram_s8o1:auto_generated.address_a[13]
-address_a[14] => altsyncram_s8o1:auto_generated.address_a[14]
-address_a[15] => altsyncram_s8o1:auto_generated.address_a[15]
-address_a[16] => altsyncram_s8o1:auto_generated.address_a[16]
+address_a[0] => altsyncram_5mo1:auto_generated.address_a[0]
+address_a[1] => altsyncram_5mo1:auto_generated.address_a[1]
+address_a[2] => altsyncram_5mo1:auto_generated.address_a[2]
+address_a[3] => altsyncram_5mo1:auto_generated.address_a[3]
+address_a[4] => altsyncram_5mo1:auto_generated.address_a[4]
+address_a[5] => altsyncram_5mo1:auto_generated.address_a[5]
+address_a[6] => altsyncram_5mo1:auto_generated.address_a[6]
+address_a[7] => altsyncram_5mo1:auto_generated.address_a[7]
+address_a[8] => altsyncram_5mo1:auto_generated.address_a[8]
+address_a[9] => altsyncram_5mo1:auto_generated.address_a[9]
+address_a[10] => altsyncram_5mo1:auto_generated.address_a[10]
+address_a[11] => altsyncram_5mo1:auto_generated.address_a[11]
+address_a[12] => altsyncram_5mo1:auto_generated.address_a[12]
+address_a[13] => altsyncram_5mo1:auto_generated.address_a[13]
+address_a[14] => altsyncram_5mo1:auto_generated.address_a[14]
+address_a[15] => altsyncram_5mo1:auto_generated.address_a[15]
+address_a[16] => altsyncram_5mo1:auto_generated.address_a[16]
 address_b[0] => ~NO_FANOUT~
 addressstall_a => ~NO_FANOUT~
 addressstall_b => ~NO_FANOUT~
-clock0 => altsyncram_s8o1:auto_generated.clock0
+clock0 => altsyncram_5mo1:auto_generated.clock0
 clock1 => ~NO_FANOUT~
 clocken0 => ~NO_FANOUT~
 clocken1 => ~NO_FANOUT~
@@ -2923,16 +3087,16 @@ aclr0 => ~NO_FANOUT~
 aclr1 => ~NO_FANOUT~
 byteena_a[0] => ~NO_FANOUT~
 byteena_b[0] => ~NO_FANOUT~
-q_a[0] <= altsyncram_s8o1:auto_generated.q_a[0]
-q_a[1] <= altsyncram_s8o1:auto_generated.q_a[1]
-q_a[2] <= altsyncram_s8o1:auto_generated.q_a[2]
+q_a[0] <= altsyncram_5mo1:auto_generated.q_a[0]
+q_a[1] <= altsyncram_5mo1:auto_generated.q_a[1]
+q_a[2] <= altsyncram_5mo1:auto_generated.q_a[2]
 q_b[0] <= <GND>
 eccstatus[0] <= <GND>
 eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|Interface|controlPath:CP|BG:bg_reg|altsyncram:altsyncram_component|altsyncram_s8o1:auto_generated
+|Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -3402,7 +3566,7 @@ q_a[2] <= mux_2hb:mux2.result[2]
 wren_a => decode_nma:decode3.enable
 
 
-|Interface|controlPath:CP|BG:bg_reg|altsyncram:altsyncram_component|altsyncram_s8o1:auto_generated|decode_nma:decode3
+|Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|decode_nma:decode3
 data[0] => w_anode569w[1].IN0
 data[0] => w_anode586w[1].IN1
 data[0] => w_anode596w[1].IN0
@@ -3467,7 +3631,7 @@ eq[8] <= w_anode665w[3].DB_MAX_OUTPUT_PORT_TYPE
 eq[9] <= w_anode676w[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|controlPath:CP|BG:bg_reg|altsyncram:altsyncram_component|altsyncram_s8o1:auto_generated|decode_g2a:rden_decode
+|Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|decode_g2a:rden_decode
 data[0] => w_anode751w[1].IN0
 data[0] => w_anode768w[1].IN1
 data[0] => w_anode778w[1].IN0
@@ -3537,7 +3701,7 @@ eq[8] <= w_anode838w[3].DB_MAX_OUTPUT_PORT_TYPE
 eq[9] <= w_anode849w[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|controlPath:CP|BG:bg_reg|altsyncram:altsyncram_component|altsyncram_s8o1:auto_generated|mux_2hb:mux2
+|Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|mux_2hb:mux2
 data[0] => l1_w0_n0_mux_dataout.IN1
 data[1] => l1_w1_n0_mux_dataout.IN1
 data[2] => l1_w2_n0_mux_dataout.IN1
@@ -3770,6 +3934,113 @@ wren_a => ram_block1a1.PORTAWE
 wren_a => ram_block1a2.PORTAWE
 
 
+|Interface|controlPath:CP|lightSaber:ls_reg
+address[0] => address[0].IN1
+address[1] => address[1].IN1
+address[2] => address[2].IN1
+address[3] => address[3].IN1
+address[4] => address[4].IN1
+address[5] => address[5].IN1
+address[6] => address[6].IN1
+address[7] => address[7].IN1
+address[8] => address[8].IN1
+address[9] => address[9].IN1
+clock => clock.IN1
+data[0] => data[0].IN1
+data[1] => data[1].IN1
+data[2] => data[2].IN1
+wren => wren.IN1
+q[0] <= altsyncram:altsyncram_component.q_a
+q[1] <= altsyncram:altsyncram_component.q_a
+q[2] <= altsyncram:altsyncram_component.q_a
+
+
+|Interface|controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component
+wren_a => altsyncram_50p1:auto_generated.wren_a
+rden_a => ~NO_FANOUT~
+wren_b => ~NO_FANOUT~
+rden_b => ~NO_FANOUT~
+data_a[0] => altsyncram_50p1:auto_generated.data_a[0]
+data_a[1] => altsyncram_50p1:auto_generated.data_a[1]
+data_a[2] => altsyncram_50p1:auto_generated.data_a[2]
+data_b[0] => ~NO_FANOUT~
+address_a[0] => altsyncram_50p1:auto_generated.address_a[0]
+address_a[1] => altsyncram_50p1:auto_generated.address_a[1]
+address_a[2] => altsyncram_50p1:auto_generated.address_a[2]
+address_a[3] => altsyncram_50p1:auto_generated.address_a[3]
+address_a[4] => altsyncram_50p1:auto_generated.address_a[4]
+address_a[5] => altsyncram_50p1:auto_generated.address_a[5]
+address_a[6] => altsyncram_50p1:auto_generated.address_a[6]
+address_a[7] => altsyncram_50p1:auto_generated.address_a[7]
+address_a[8] => altsyncram_50p1:auto_generated.address_a[8]
+address_a[9] => altsyncram_50p1:auto_generated.address_a[9]
+address_b[0] => ~NO_FANOUT~
+addressstall_a => ~NO_FANOUT~
+addressstall_b => ~NO_FANOUT~
+clock0 => altsyncram_50p1:auto_generated.clock0
+clock1 => ~NO_FANOUT~
+clocken0 => ~NO_FANOUT~
+clocken1 => ~NO_FANOUT~
+clocken2 => ~NO_FANOUT~
+clocken3 => ~NO_FANOUT~
+aclr0 => ~NO_FANOUT~
+aclr1 => ~NO_FANOUT~
+byteena_a[0] => ~NO_FANOUT~
+byteena_b[0] => ~NO_FANOUT~
+q_a[0] <= altsyncram_50p1:auto_generated.q_a[0]
+q_a[1] <= altsyncram_50p1:auto_generated.q_a[1]
+q_a[2] <= altsyncram_50p1:auto_generated.q_a[2]
+q_b[0] <= <GND>
+eccstatus[0] <= <GND>
+eccstatus[1] <= <GND>
+eccstatus[2] <= <GND>
+
+
+|Interface|controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component|altsyncram_50p1:auto_generated
+address_a[0] => ram_block1a0.PORTAADDR
+address_a[0] => ram_block1a1.PORTAADDR
+address_a[0] => ram_block1a2.PORTAADDR
+address_a[1] => ram_block1a0.PORTAADDR1
+address_a[1] => ram_block1a1.PORTAADDR1
+address_a[1] => ram_block1a2.PORTAADDR1
+address_a[2] => ram_block1a0.PORTAADDR2
+address_a[2] => ram_block1a1.PORTAADDR2
+address_a[2] => ram_block1a2.PORTAADDR2
+address_a[3] => ram_block1a0.PORTAADDR3
+address_a[3] => ram_block1a1.PORTAADDR3
+address_a[3] => ram_block1a2.PORTAADDR3
+address_a[4] => ram_block1a0.PORTAADDR4
+address_a[4] => ram_block1a1.PORTAADDR4
+address_a[4] => ram_block1a2.PORTAADDR4
+address_a[5] => ram_block1a0.PORTAADDR5
+address_a[5] => ram_block1a1.PORTAADDR5
+address_a[5] => ram_block1a2.PORTAADDR5
+address_a[6] => ram_block1a0.PORTAADDR6
+address_a[6] => ram_block1a1.PORTAADDR6
+address_a[6] => ram_block1a2.PORTAADDR6
+address_a[7] => ram_block1a0.PORTAADDR7
+address_a[7] => ram_block1a1.PORTAADDR7
+address_a[7] => ram_block1a2.PORTAADDR7
+address_a[8] => ram_block1a0.PORTAADDR8
+address_a[8] => ram_block1a1.PORTAADDR8
+address_a[8] => ram_block1a2.PORTAADDR8
+address_a[9] => ram_block1a0.PORTAADDR9
+address_a[9] => ram_block1a1.PORTAADDR9
+address_a[9] => ram_block1a2.PORTAADDR9
+clock0 => ram_block1a0.CLK0
+clock0 => ram_block1a1.CLK0
+clock0 => ram_block1a2.CLK0
+data_a[0] => ram_block1a0.PORTADATAIN
+data_a[1] => ram_block1a1.PORTADATAIN
+data_a[2] => ram_block1a2.PORTADATAIN
+q_a[0] <= ram_block1a0.PORTADATAOUT
+q_a[1] <= ram_block1a1.PORTADATAOUT
+q_a[2] <= ram_block1a2.PORTADATAOUT
+wren_a => ram_block1a0.PORTAWE
+wren_a => ram_block1a1.PORTAWE
+wren_a => ram_block1a2.PORTAWE
+
+
 |Interface|controlPath:CP|BGcounter:BGC
 clock => out[0]~reg0.CLK
 clock => out[1]~reg0.CLK
@@ -3920,6 +4191,44 @@ enable => always0.IN1
 enable => always0.IN1
 
 
+|Interface|controlPath:CP|lightSaberCounter:LScounter
+clock => mimic60HzClock4LS~reg0.CLK
+clock => out[0]~reg0.CLK
+clock => out[1]~reg0.CLK
+clock => out[2]~reg0.CLK
+clock => out[3]~reg0.CLK
+clock => out[4]~reg0.CLK
+clock => out[5]~reg0.CLK
+clock => out[6]~reg0.CLK
+clock => out[7]~reg0.CLK
+clock => out[8]~reg0.CLK
+clock => out[9]~reg0.CLK
+out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[8] <= out[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[9] <= out[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => out.OUTPUTSELECT
+reset => mimic60HzClock4LS.OUTPUTSELECT
+enable => always0.IN1
+enable => always0.IN1
+mimic60HzClock4LS <= mimic60HzClock4LS~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
 |Interface|controlPath:CP|nextPosition:NP
 CLOCK_50 => CLOCK_50.IN1
 clock60hz => always0.IN0
@@ -3949,6 +4258,81 @@ clock => out~reg0.CLK
 out <= out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 reset => out.OUTPUTSELECT
 in => Decoder0.IN0
+
+
+|Interface|controlPath:CP|LSmove:ls_move
+CLOCK_50 => out[0]~reg0.CLK
+CLOCK_50 => out[1]~reg0.CLK
+CLOCK_50 => out[2]~reg0.CLK
+CLOCK_50 => out[3]~reg0.CLK
+CLOCK_50 => out[4]~reg0.CLK
+CLOCK_50 => out[5]~reg0.CLK
+CLOCK_50 => out[6]~reg0.CLK
+CLOCK_50 => out[7]~reg0.CLK
+CLOCK_50 => out[8]~reg0.CLK
+CLOCK_50 => out[9]~reg0.CLK
+CLOCK_50 => out[10]~reg0.CLK
+CLOCK_50 => out[11]~reg0.CLK
+CLOCK_50 => out[12]~reg0.CLK
+CLOCK_50 => out[13]~reg0.CLK
+CLOCK_50 => out[14]~reg0.CLK
+CLOCK_50 => out[15]~reg0.CLK
+CLOCK_50 => out[16]~reg0.CLK
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+clock60hz => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+resetKey => out.OUTPUTSELECT
+SW[0] => always0.IN1
+SW[1] => always0.IN1
+SW[2] => always0.IN1
+SW[3] => always0.IN1
+out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[8] <= out[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[9] <= out[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[10] <= out[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[11] <= out[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[12] <= out[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[13] <= out[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[14] <= out[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[15] <= out[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[16] <= out[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Interface|controlPath:CP|sixtyHzClock:CLK60
