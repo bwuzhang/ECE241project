@@ -88,7 +88,7 @@ module Interface
 					
 	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,
 						color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,
-						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[1:0]);
+						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[3:0]);
 
     // Instanciate FSM control
 endmodule
@@ -168,15 +168,16 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	input [2:0]color;	
 	
 	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
-	output [16:0]coor;
+	output reg[16:0]coor;
 	output reg [16:0]coor_LS;
 	output reg[2:0]color_from_CP;
 	output [16:0]BGcounterOut,bufferCounterOut;
 	output [9:0]objCounterOut,lsCountOut;
-	output [1:0]led;
+	output [3:0]led;
 	
 	assign led[0]=colorIsNotObj;
 	assign led[1]=clock;
+	assign led[3:2]=randomNumber%3;
 	
 	
 	inout PS2_DAT;
@@ -186,13 +187,15 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 						waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111;
 	reg  [3:0]currentState,nextState;
 
-	reg cenable,RCenable,NPenable,bufferEnable,LSCenable;
+	reg cenable,RCenable,NPenable,NPenable1,NPenable2,NPenable3,bufferEnable,LSCenable,colorIsNotObj;
 	wire clock60,clock1s;
 	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
-	wire click,colorIsNotObj,collision;
+	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision;
 	wire [16:0]coor_LLSS;
+	wire [7:0]randomNumber;
+	wire [16:0]coor1,coor2,coor3;
 	
 
 
@@ -216,11 +219,35 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
 	lightSaberCounter LScounter(clock,lsCountOut,resetKey,LSCenable,mimic60HzClock4LS);
 	
-	//nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable);
+	always@(clock)
+	if(randomNumber%3==0)
+	begin
+		NPenable1=NPenable;
+		NPenable2=0;
+		NPenable3=0;
+		coor=coor1;
+		colorIsNotObj=colorIsNotObj1;
+	end
+	else if(randomNumber%3==1)
+	begin
+		NPenable2=NPenable;
+		NPenable1=0;
+		NPenable3=0;
+		coor=coor2;
+		colorIsNotObj=colorIsNotObj2;
+	end
+	else if(randomNumber%3==2)
+	begin
+		NPenable3=NPenable;
+		NPenable2=0;
+		NPenable1=0;
+		coor=coor3;
+		colorIsNotObj=colorIsNotObj3;
+	end
 	
-	//NextPosition1 NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
-	NextPosition2 NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
-	//NextPosition3 NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
+	NextPosition1 NP1(clock,mimic60HzClock4Robot,coor1,resetKey,NPenable1,colorIsNotObj1,collision);
+	NextPosition2 NP2(clock,mimic60HzClock4Robot,coor2,resetKey,NPenable2,colorIsNotObj2,collision);
+	NextPosition3 NP3(clock,mimic60HzClock4Robot,coor3,resetKey,NPenable3,colorIsNotObj3,collision);
 	
 	//LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
 	Mouse MouseCoor(clock, resetKey, PS2_CLK, PS2_DAT, coor_LLSS[16:8], coor_LLSS[7:0], click);
@@ -230,7 +257,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000111100001111,5'b01111,5'b1111,
 											click,collision,resetKey);
 	
-	
+	randomNumberGenerator rng(clock, resetKey,randomNumber);
 	
 	
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
@@ -1282,3 +1309,94 @@ module NextPosition3x2(CLOCK_50,clock60hz,out,reset,enable,fall);//654321123456 
 
 endmodule 
 
+module randomNumberGenerator(CLOCK, reset, out);
+input  CLOCK, reset;
+output reg [7:0] out;
+wire clk;
+ClockDivider1Hz CLK(CLOCK,reset,clk);
+always@(posedge CLOCK)
+if(!reset)
+out<=8'b00101010;
+else if(clk)
+begin
+out[0]<=out[1];
+out[1]<=out[2]^out[0];
+out[2]<=out[3]^out[0];
+out[3]<=out[4]^out[0];
+out[4]<=out[5];
+out[5]<=out[6];
+out[6]<=out[7];
+out[7]<=out[0];
+end
+endmodule
+
+module Galois8bitRandomGenerator(seed, load, CLOCK, reset, out);
+input load, CLOCK, reset;
+input [7:0] seed;
+output reg [7:0] out;
+wire clk;
+ClockDivider1Hz CLK(CLOCK,reset,clk);
+always@(posedge CLOCK)
+if(!reset)
+out<=8'b00000000;
+else if(!load)
+out<=seed;
+else if(clk)
+begin
+out[0]<=out[1];
+out[1]<=out[2]^out[0];
+out[2]<=out[3]^out[0];
+out[3]<=out[4]^out[0];
+out[4]<=out[5];
+out[5]<=out[6];
+out[6]<=out[7];
+out[7]<=out[0];
+end
+endmodule
+
+module Fibonacci8bitRandomGenerator(seed, load, CLOCK, reset, out);
+input load, CLOCK, reset;
+input [7:0] seed;
+output reg [7:0] out;
+wire clk;
+ClockDivider1Hz CLK(CLOCK,reset,clk);
+always@(posedge CLOCK)
+if(!reset)
+out<=8'b00000000;
+else if(!load)
+out<=seed;
+else if(clk)
+begin 
+out[7]<=out[6];
+out[6]<=out[5];
+out[5]<=out[4];
+out[4]<=out[3];
+out[3]<=out[2];
+out[2]<=out[1];
+out[1]<=out[0];
+out[0]<=out[3]^out[4]^out[5]^out[7];
+end
+endmodule
+module ClockDivider1Hz(CLOCK,reset,CLKout);
+	input CLOCK;
+	input  reset;
+	output reg CLKout;
+	reg [26:0] x;
+	parameter init=27'd100000000;//0.5 hz right now
+	always@(posedge CLOCK)
+		if(~reset)
+		begin
+			x<=init;
+			CLKout=0;
+		end
+		else if(x==0)
+		begin
+			CLKout=1;
+			x<=init;
+		end
+		else
+		begin
+			CLKout=0;
+			x<=x-1'b1;
+		end
+endmodule

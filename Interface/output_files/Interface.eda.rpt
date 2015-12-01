@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Interface
-Tue Dec 01 16:32:50 2015
+Tue Dec 01 17:06:00 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Dec 01 16:32:50 2015 ;
+; EDA Netlist Writer Status ; Successful - Tue Dec 01 17:06:00 2015 ;
 ; Revision Name             ; Interface                             ;
 ; Top-level Entity Name     ; Interface                             ;
 ; Family                    ; Cyclone V                             ;
@@ -82,7 +82,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Tue Dec 01 16:32:47 2015
+    Info: Processing started: Tue Dec 01 17:05:57 2015
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Interface -c Interface
 Warning (125092): Tcl Script File BG1.qip not found
     Info (125063): set_global_assignment -name QIP_FILE BG1.qip
@@ -93,8 +93,8 @@ Warning (125092): Tcl Script File BG.qip not found
 Warning (10905): Generated the EDA functional simulation files although EDA timing simulation option is chosen.
 Info (204019): Generated file Interface.vho in folder "W:/ECE241project/Interface/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 796 megabytes
-    Info: Processing ended: Tue Dec 01 16:32:51 2015
+    Info: Peak virtual memory: 803 megabytes
+    Info: Processing ended: Tue Dec 01 17:06:01 2015
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
