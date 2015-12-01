@@ -160,7 +160,7 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackgroun
 	
 endmodule
 
-module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robotCounterOut,coor,
+module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCounterOut,coor,
 						LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,
 						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led);
 	input resetKey,clock;
@@ -172,7 +172,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 	output reg [16:0]coor_LS;
 	output reg[2:0]color_from_CP;
 	output [16:0]BGcounterOut,bufferCounterOut;
-	output [9:0]robotCounterOut,lsCountOut;
+	output [9:0]objCounterOut,lsCountOut;
 	output [1:0]led;
 	
 	assign led[0]=colorIsNotObj;
@@ -188,7 +188,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 
 	reg cenable,RCenable,NPenable,bufferEnable,LSCenable;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash;
+	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
 	wire click,colorIsNotObj,collision;
@@ -203,21 +203,24 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 
 	//BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
 	BG_New bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
-	BG_New bg_reg_AfterSlash(({8'b0,coor[16:8]}+{12'b00000,robotCounterOut[9:5]})+17'b00000000101000000*({9'b0,coor[7:0]}+{17'b00000,robotCounterOut[4:0]})
+	BG_New bg_reg_AfterSlash(({8'b0,coor[16:8]}+{12'b00000,objCounterOut[9:5]})+17'b00000000101000000*({9'b0,coor[7:0]}+{17'b00000,objCounterOut[4:0]})
 									,clock,3'b000,1'b0,bg_reg_out_AfterSlash);
 	
-	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
+	//Robot24x30 robot_reg({5'b00000,objCounterOut[9:5]}+10'b0000011000*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
+	jet jet_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,jet_reg_out);
 	
 	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
 	
 	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
-	robotCounter RC(clock,robotCounterOut,resetKey,RCenable,mimic60HzClock4Robot);
+	objCounter RC(clock,objCounterOut,resetKey,RCenable,mimic60HzClock4Robot);
 	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
 	lightSaberCounter LScounter(clock,lsCountOut,resetKey,LSCenable,mimic60HzClock4LS);
 	
 	//nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable);
-	new_nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
 	
+	//NextPosition1 NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
+	NextPosition2 NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
+	//NextPosition3 NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
 	
 	//LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
 	Mouse MouseCoor(clock, resetKey, PS2_CLK, PS2_DAT, coor_LLSS[16:8], coor_LLSS[7:0], click);
@@ -261,7 +264,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 						nextState=displayState;
 					else
 						nextState=writeLS2buffer;
-			writeObj2Buffer:if(robotCounterOut==10'b1100011110)
+			writeObj2Buffer:if(objCounterOut==10'b1111011110)
 						nextState=writeLS2buffer;
 					else
 						nextState=writeObj2Buffer;
@@ -305,7 +308,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 	if(colorIsNotObj)
 		color_from_CP=bg_reg_out_AfterSlash;
 	else
-		color_from_CP=rebot_reg_out;
+		color_from_CP=jet_reg_out;
 	end
 	bufferEnable=0;
 	displayOnVGA=0;
@@ -421,7 +424,7 @@ module LSmove(CLOCK_50,clock60hz,resetKey,SW,out);
 	end
 endmodule
 
-module new_nextPosition(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);
+module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);
 	wire POSOUT;
 	reg POSIN;
 	input clock60hz,reset,enable,CLOCK_50,click;
@@ -430,18 +433,8 @@ module new_nextPosition(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click)
 	reg already_cut;
 	
 	position p(CLOCK_50,POSOUT,reset,POSIN);
-	wire [8:0]first9;
-	assign first9=out[16:8];
-	wire [7:0]last8=out[7:0];
 	
-	
-	//Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
-	//BG_New bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
-	
-	
-	
-	
-	
+
 	always@(posedge CLOCK_50)begin
 		if(already_cut)
 			colorIsNotObj=1;
@@ -779,7 +772,7 @@ module oneSecClock(clock,reset,out);
 		
 endmodule
 
-module robotCounter(clock,out,reset,enable,mimic60HzClock);
+module objCounter(clock,out,reset,enable,mimic60HzClock);
 	input clock,reset,enable;
 	output reg mimic60HzClock;
 	output reg[9:0]out;
@@ -788,7 +781,7 @@ module robotCounter(clock,out,reset,enable,mimic60HzClock);
 		out=10'b0;
 		mimic60HzClock=0;
 		end
-	else if(enable&&(out!=10'b1100011110))begin
+	else if(enable&&(out!=10'b1111011110))begin
 			if(out[4:0]==5'b11110)
 				out=out-10'b0000011110+10'b0000100000;
 			else begin out=out+10'b0000000001;
@@ -798,8 +791,8 @@ module robotCounter(clock,out,reset,enable,mimic60HzClock);
 				mimic60HzClock=0;
 			end
 		end
-	else if(enable&&(out==10'b1100011110))
-		out=10'b1100011110;
+	else if(enable&&(out==10'b1111011110))
+		out=10'b1111011110;
 	else
 		out=10'b0;
 
@@ -876,4 +869,416 @@ else if(load)
 	out=coordinate;
 
 endmodule
+
+
+
+module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//43211234
+	wire POSOUT;
+	reg POSIN;
+	input clock60hz,reset,enable,CLOCK_50,click;
+	output reg[16:0]out;
+	output reg colorIsNotObj;
+	reg already_cut;
+	position p(CLOCK_50,POSOUT,reset,POSIN);
+	always@(posedge CLOCK_50)begin
+		if(already_cut)
+			colorIsNotObj=1;
+		else
+			colorIsNotObj=0;
+			
+	end
+	
+	always@(posedge CLOCK_50) begin
+	if(~reset)
+		begin
+		//out=17'b01000000010010110;
+		out=17'b01000000011101111;
+		POSIN=1'b1;
+		already_cut=0;
+		end
+	else if(enable&&clock60hz)
+	begin
+		case(POSOUT)
+		1'b0:begin
+				if(out[7:0]>=8'b11110000)begin
+					out[16:8]=9'b010000000;
+					POSIN=1'b1;	
+					already_cut=0;
+					
+				end
+				else if ((out[7:0]<8'b11110000)&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]+8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;								
+							end
+			   else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000111))
+							begin
+								out[7:0]=out[7:0]+8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b10000111)&&(out[7:0]>=8'b01101001))
+							begin
+								out[7:0]=out[7:0]+8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+							already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b01101001)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]+8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+							already_cut=already_cut|click;
+							end
+				else	
+				begin
+					out[7:0]=out[7:0]+8'b00000011;
+					out[16:8]=out[16:8]+9'b000000001;
+					POSIN=1'b0;
+				already_cut=already_cut|click;
+				end
+			end
+
+		1'b1:begin
+				if(out[7:0]<=8'b01011010)//Going up
+				begin    
+					POSIN=1'b0;
+		
+				end
+				else if ((out[7:0]<8'b11110000)&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]-8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+						already_cut=already_cut|click;
+							end
+			   else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000111))
+							begin
+								out[7:0]=out[7:0]-8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+			already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b10000111)&&(out[7:0]>=8'b01101001))
+							begin
+								out[7:0]=out[7:0]-8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+				already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b01101001)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]-8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+			already_cut=already_cut|click;
+							end
+				
+				//end
+				else 	
+					begin
+						out[7:0]=out[7:0]-8'b00000011;
+						out[16:8]=out[16:8]+9'b000000001;
+						POSIN=1'b1;
+						already_cut=already_cut|click;
+					end
+					
+				end
+			endcase
+		end
+	end
+
+endmodule 
+
+module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//654321123456
+	wire POSOUT;
+	reg POSIN;
+	input clock60hz,reset,enable,CLOCK_50,click;
+	output reg[16:0]out;
+	output reg colorIsNotObj;
+	reg already_cut;
+	position p(CLOCK_50,POSOUT,reset,POSIN);
+	
+	always@(posedge CLOCK_50)begin
+		if(already_cut)
+			colorIsNotObj=1;
+		else
+			colorIsNotObj=0;
+			
+	end
+	
+	always@(posedge CLOCK_50) begin
+	if(~reset)
+		begin
+		//out=17'b01000000010010110;
+		out=17'b01000000011101111;
+		POSIN=1'b1;
+		already_cut=0;
+		end
+	else if(enable&&clock60hz)
+	begin
+		case(POSOUT)
+		1'b0:begin
+				if(out[7:0]>=8'b11101111)
+				begin
+					out[16:8]=9'b010000000;
+					POSIN=1'b1;	
+					already_cut=1'b0;
+				end
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]+8'b00000110;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if(out[7:0]<8'b10110100&&(out[7:0]>=8'b10000010))
+							begin
+								out[7:0]=out[7:0]+8'b00000101;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]+8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]+8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
+							begin
+								out[7:0]=out[7:0]+8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
+							begin
+								out[7:0]=out[7:0]+8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else	
+				begin
+					out[7:0]=out[7:0]+8'b00000011;
+					out[16:8]=out[16:8]+9'b000000001;
+					POSIN=1'b0;
+					already_cut=already_cut|click;
+				end
+			end
+
+		1'b1:begin
+				if(out[7:0]<=8'b00011110)//Going up
+				begin    
+					POSIN=1'b0;
+				end
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]-8'b00000110;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if(out[7:0]<=8'b10110100&&(out[7:0]>=8'b10000010))
+							begin
+								out[7:0]=out[7:0]-8'b00000101;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]-8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]-8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
+							begin
+								out[7:0]=out[7:0]-8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
+							begin
+								out[7:0]=out[7:0]-8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				
+				//end
+				else 	
+					begin
+						out[7:0]=out[7:0]-8'b00000011;
+						out[16:8]=out[16:8]+9'b000000001;
+						POSIN=1'b1;
+						already_cut=already_cut|click;
+					end
+					
+				end
+			endcase
+		end
+	end
+
+endmodule 
+
+module NextPosition3x2(CLOCK_50,clock60hz,out,reset,enable,fall);//654321123456 x2
+	wire POSOUT;
+	reg POSIN;
+	input clock60hz,reset,enable,CLOCK_50;
+	output reg[16:0]out;
+	output reg fall;
+	position p(CLOCK_50,POSOUT,reset,POSIN);
+
+	always@(posedge CLOCK_50) begin
+	if(~reset)
+		begin
+		//out=17'b01000000010010110;
+		out=17'b00000010011101111;
+		POSIN=1'b1;
+		fall = 0;
+		end
+	else if(enable&&clock60hz)
+	begin
+		case(POSOUT)
+		1'b0:begin
+				if(out[7:0]>=8'b11101111)
+					fall = 1;
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]+8'b00000110;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b0;
+								fall = 0;
+							end
+				else if(out[7:0]<8'b10110100&&(out[7:0]>=8'b10000010))
+							begin
+								out[7:0]=out[7:0]+8'b00000101;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b0;
+								fall = 0;
+							end
+				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]+8'b00000100;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b0;
+								fall = 0;
+							end
+			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]+8'b00000011;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b0;
+								fall = 0;
+							end
+				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
+							begin
+								out[7:0]=out[7:0]+8'b00000010;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b0;
+								fall = 0;
+							end
+				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
+							begin
+								out[7:0]=out[7:0]+8'b00000001;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b0;
+								fall = 0;
+							end
+				else	
+				begin
+					out[7:0]=out[7:0]+8'b00000011;
+					out[16:8]=out[16:8]+9'b000000001;
+					POSIN=1'b0;
+					fall = 0;
+				end
+			end
+
+		1'b1:begin
+				if(out[7:0]<=8'b00011110)//Going up
+				begin    
+					POSIN=1'b0;
+					fall = 0;
+				end
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]-8'b00000110;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b1;
+								fall = 0;
+							end
+				else if(out[7:0]<=8'b10110100&&(out[7:0]>=8'b10000010))
+							begin
+								out[7:0]=out[7:0]-8'b00000101;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b1;
+								fall = 0;
+							end
+				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]-8'b00000100;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b1;
+								fall = 0;
+							end
+			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]-8'b00000011;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b1;
+								fall = 0;
+							end
+				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
+							begin
+								out[7:0]=out[7:0]-8'b00000010;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b1;
+								fall = 0;
+							end
+				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
+							begin
+								out[7:0]=out[7:0]-8'b00000001;
+								out[16:8]=out[16:8]+9'b000000010;
+								POSIN=1'b1;
+								fall = 0;
+							end
+				
+				//end
+				else 	
+					begin
+						out[7:0]=out[7:0]-8'b00000011;
+						out[16:8]=out[16:8]+9'b000000010;
+						POSIN=1'b1;
+						fall = 0;
+					end
+					
+				end
+			endcase
+		end
+	end
+
+endmodule 
 

@@ -1,5 +1,5 @@
 Flow report for Interface
-Tue Dec 01 15:55:28 2015
+Tue Dec 01 16:32:50 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -41,18 +41,18 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Dec 01 15:55:28 2015       ;
+; Flow Status                     ; Successful - Tue Dec 01 16:32:50 2015       ;
 ; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                   ; Interface                                   ;
 ; Top-level Entity Name           ; Interface                                   ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 636 / 32,070 ( 2 % )                        ;
-; Total registers                 ; 385                                         ;
+; Logic utilization (in ALMs)     ; 624 / 32,070 ( 2 % )                        ;
+; Total registers                 ; 383                                         ;
 ; Total pins                      ; 62 / 457 ( 14 % )                           ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 926,460 / 4,065,280 ( 23 % )                ;
+; Total block memory bits         ; 927,000 / 4,065,280 ( 23 % )                ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/01/2015 15:53:11 ;
+; Start date & time ; 12/01/2015 16:30:34 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Interface           ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 102228232085612.144900319003416       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 102228232085612.144900543404280       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --             ;
@@ -88,6 +88,7 @@ agreement for further details.
 ; MISC_FILE                           ; BGbuffer_bb.v                         ; --            ; --          ; --             ;
 ; MISC_FILE                           ; BG_New_bb.v                           ; --            ; --          ; --             ;
 ; MISC_FILE                           ; lightSaber_bb.v                       ; --            ; --          ; --             ;
+; MISC_FILE                           ; jet_bb.v                              ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top            ;
@@ -102,12 +103,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:16     ; 1.0                     ; 776 MB              ; 00:00:26                           ;
-; Fitter                    ; 00:01:19     ; 2.3                     ; 2569 MB             ; 00:02:05                           ;
+; Analysis & Synthesis      ; 00:00:17     ; 1.0                     ; 786 MB              ; 00:00:29                           ;
+; Fitter                    ; 00:01:17     ; 2.4                     ; 2559 MB             ; 00:02:04                           ;
 ; Assembler                 ; 00:00:13     ; 1.0                     ; 783 MB              ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:14     ; 1.5                     ; 1146 MB             ; 00:00:18                           ;
-; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 795 MB              ; 00:00:02                           ;
-; Total                     ; 00:02:05     ; --                      ; --                  ; 00:03:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:14     ; 1.5                     ; 1143 MB             ; 00:00:18                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 796 MB              ; 00:00:02                           ;
+; Total                     ; 00:02:04     ; --                      ; --                  ; 00:03:05                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

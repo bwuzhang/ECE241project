@@ -2877,10 +2877,10 @@ load => out[0]$latch.LATCH_ENABLE
 
 |Interface|controlPath:CP
 clock => clock.IN12
-plotVGA <= currentState.displayState_257.DB_MAX_OUTPUT_PORT_TYPE
+plotVGA <= currentState.displayState_265.DB_MAX_OUTPUT_PORT_TYPE
 resetKey => resetKey.IN8
-Dbackground <= currentState.writeBG2Buffer_283.DB_MAX_OUTPUT_PORT_TYPE
-Dobject <= currentState.writeObj2Buffer_296.DB_MAX_OUTPUT_PORT_TYPE
+Dbackground <= currentState.writeBG2Buffer_291.DB_MAX_OUTPUT_PORT_TYPE
+Dobject <= currentState.writeObj2Buffer_304.DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[0] <= BGcounterOut[0].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[1] <= BGcounterOut[1].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[2] <= BGcounterOut[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -2898,42 +2898,42 @@ BGcounterOut[13] <= BGcounterOut[13].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[14] <= BGcounterOut[14].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[15] <= BGcounterOut[15].DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[16] <= BGcounterOut[16].DB_MAX_OUTPUT_PORT_TYPE
-robotCounterOut[0] <= robotCounter:RC.port1
-robotCounterOut[1] <= robotCounter:RC.port1
-robotCounterOut[2] <= robotCounter:RC.port1
-robotCounterOut[3] <= robotCounter:RC.port1
-robotCounterOut[4] <= robotCounter:RC.port1
-robotCounterOut[5] <= robotCounterOut[5].DB_MAX_OUTPUT_PORT_TYPE
-robotCounterOut[6] <= robotCounterOut[6].DB_MAX_OUTPUT_PORT_TYPE
-robotCounterOut[7] <= robotCounterOut[7].DB_MAX_OUTPUT_PORT_TYPE
-robotCounterOut[8] <= robotCounter:RC.port1
-robotCounterOut[9] <= robotCounter:RC.port1
-coor[0] <= new_nextPosition:NP.port2
-coor[1] <= new_nextPosition:NP.port2
-coor[2] <= new_nextPosition:NP.port2
-coor[3] <= new_nextPosition:NP.port2
-coor[4] <= new_nextPosition:NP.port2
-coor[5] <= new_nextPosition:NP.port2
-coor[6] <= new_nextPosition:NP.port2
-coor[7] <= new_nextPosition:NP.port2
-coor[8] <= new_nextPosition:NP.port2
-coor[9] <= new_nextPosition:NP.port2
-coor[10] <= new_nextPosition:NP.port2
-coor[11] <= new_nextPosition:NP.port2
-coor[12] <= new_nextPosition:NP.port2
-coor[13] <= new_nextPosition:NP.port2
-coor[14] <= new_nextPosition:NP.port2
-coor[15] <= new_nextPosition:NP.port2
-coor[16] <= new_nextPosition:NP.port2
-LD_X <= currentState.writeObj2Buffer_296.DB_MAX_OUTPUT_PORT_TYPE
-LD_Y <= currentState.writeObj2Buffer_296.DB_MAX_OUTPUT_PORT_TYPE
+objCounterOut[0] <= objCounter:RC.port1
+objCounterOut[1] <= objCounter:RC.port1
+objCounterOut[2] <= objCounter:RC.port1
+objCounterOut[3] <= objCounter:RC.port1
+objCounterOut[4] <= objCounter:RC.port1
+objCounterOut[5] <= objCounterOut[5].DB_MAX_OUTPUT_PORT_TYPE
+objCounterOut[6] <= objCounter:RC.port1
+objCounterOut[7] <= objCounter:RC.port1
+objCounterOut[8] <= objCounter:RC.port1
+objCounterOut[9] <= objCounter:RC.port1
+coor[0] <= NextPosition2:NP.port2
+coor[1] <= NextPosition2:NP.port2
+coor[2] <= NextPosition2:NP.port2
+coor[3] <= NextPosition2:NP.port2
+coor[4] <= NextPosition2:NP.port2
+coor[5] <= NextPosition2:NP.port2
+coor[6] <= NextPosition2:NP.port2
+coor[7] <= NextPosition2:NP.port2
+coor[8] <= NextPosition2:NP.port2
+coor[9] <= NextPosition2:NP.port2
+coor[10] <= NextPosition2:NP.port2
+coor[11] <= NextPosition2:NP.port2
+coor[12] <= NextPosition2:NP.port2
+coor[13] <= NextPosition2:NP.port2
+coor[14] <= NextPosition2:NP.port2
+coor[15] <= NextPosition2:NP.port2
+coor[16] <= NextPosition2:NP.port2
+LD_X <= currentState.writeObj2Buffer_304.DB_MAX_OUTPUT_PORT_TYPE
+LD_Y <= currentState.writeObj2Buffer_304.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[0] <= color_from_CP[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[1] <= color_from_CP[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color_from_CP[2] <= color_from_CP[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
 color[0] => ~NO_FANOUT~
 color[1] => ~NO_FANOUT~
 color[2] => ~NO_FANOUT~
-displayOnVGA <= currentState.displayState_257.DB_MAX_OUTPUT_PORT_TYPE
+displayOnVGA <= currentState.displayState_265.DB_MAX_OUTPUT_PORT_TYPE
 bufferCounterOut[0] <= BGcounter:BufferCounter.port1
 bufferCounterOut[1] <= BGcounter:BufferCounter.port1
 bufferCounterOut[2] <= BGcounter:BufferCounter.port1
@@ -2951,7 +2951,7 @@ bufferCounterOut[13] <= BGcounter:BufferCounter.port1
 bufferCounterOut[14] <= BGcounter:BufferCounter.port1
 bufferCounterOut[15] <= BGcounter:BufferCounter.port1
 bufferCounterOut[16] <= BGcounter:BufferCounter.port1
-Dlightsaber <= currentState.writeLS2buffer_270.DB_MAX_OUTPUT_PORT_TYPE
+Dlightsaber <= currentState.writeLS2buffer_278.DB_MAX_OUTPUT_PORT_TYPE
 coor_LS[0] <= coor_LS[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 coor_LS[1] <= coor_LS[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 coor_LS[2] <= coor_LS[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -2969,8 +2969,8 @@ coor_LS[13] <= coor_LS[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 coor_LS[14] <= coor_LS[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 coor_LS[15] <= coor_LS[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 coor_LS[16] <= coor_LS[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-LD_X_LS <= currentState.writeLS2buffer_270.DB_MAX_OUTPUT_PORT_TYPE
-LD_Y_LS <= currentState.writeLS2buffer_270.DB_MAX_OUTPUT_PORT_TYPE
+LD_X_LS <= currentState.writeLS2buffer_278.DB_MAX_OUTPUT_PORT_TYPE
+LD_Y_LS <= currentState.writeLS2buffer_278.DB_MAX_OUTPUT_PORT_TYPE
 lsCountOut[0] <= lightSaberCounter:LScounter.port1
 lsCountOut[1] <= lightSaberCounter:LScounter.port1
 lsCountOut[2] <= lightSaberCounter:LScounter.port1
@@ -2987,7 +2987,7 @@ SW[2] => ~NO_FANOUT~
 SW[3] => ~NO_FANOUT~
 PS2_DAT <> Mouse:MouseCoor.port3
 PS2_CLK <> Mouse:MouseCoor.port2
-led[0] <= new_nextPosition:NP.port5
+led[0] <= NextPosition2:NP.port5
 led[1] <= clock.DB_MAX_OUTPUT_PORT_TYPE
 
 
@@ -4650,7 +4650,7 @@ sel[3] => l4_w2_n0_mux_dataout.IN0
 sel[3] => _.IN0
 
 
-|Interface|controlPath:CP|Robot24x30:robot_reg
+|Interface|controlPath:CP|jet:jet_reg
 address[0] => address[0].IN1
 address[1] => address[1].IN1
 address[2] => address[2].IN1
@@ -4671,29 +4671,29 @@ q[1] <= altsyncram:altsyncram_component.q_a
 q[2] <= altsyncram:altsyncram_component.q_a
 
 
-|Interface|controlPath:CP|Robot24x30:robot_reg|altsyncram:altsyncram_component
-wren_a => altsyncram_slo1:auto_generated.wren_a
+|Interface|controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component
+wren_a => altsyncram_o4o1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
 rden_b => ~NO_FANOUT~
-data_a[0] => altsyncram_slo1:auto_generated.data_a[0]
-data_a[1] => altsyncram_slo1:auto_generated.data_a[1]
-data_a[2] => altsyncram_slo1:auto_generated.data_a[2]
+data_a[0] => altsyncram_o4o1:auto_generated.data_a[0]
+data_a[1] => altsyncram_o4o1:auto_generated.data_a[1]
+data_a[2] => altsyncram_o4o1:auto_generated.data_a[2]
 data_b[0] => ~NO_FANOUT~
-address_a[0] => altsyncram_slo1:auto_generated.address_a[0]
-address_a[1] => altsyncram_slo1:auto_generated.address_a[1]
-address_a[2] => altsyncram_slo1:auto_generated.address_a[2]
-address_a[3] => altsyncram_slo1:auto_generated.address_a[3]
-address_a[4] => altsyncram_slo1:auto_generated.address_a[4]
-address_a[5] => altsyncram_slo1:auto_generated.address_a[5]
-address_a[6] => altsyncram_slo1:auto_generated.address_a[6]
-address_a[7] => altsyncram_slo1:auto_generated.address_a[7]
-address_a[8] => altsyncram_slo1:auto_generated.address_a[8]
-address_a[9] => altsyncram_slo1:auto_generated.address_a[9]
+address_a[0] => altsyncram_o4o1:auto_generated.address_a[0]
+address_a[1] => altsyncram_o4o1:auto_generated.address_a[1]
+address_a[2] => altsyncram_o4o1:auto_generated.address_a[2]
+address_a[3] => altsyncram_o4o1:auto_generated.address_a[3]
+address_a[4] => altsyncram_o4o1:auto_generated.address_a[4]
+address_a[5] => altsyncram_o4o1:auto_generated.address_a[5]
+address_a[6] => altsyncram_o4o1:auto_generated.address_a[6]
+address_a[7] => altsyncram_o4o1:auto_generated.address_a[7]
+address_a[8] => altsyncram_o4o1:auto_generated.address_a[8]
+address_a[9] => altsyncram_o4o1:auto_generated.address_a[9]
 address_b[0] => ~NO_FANOUT~
 addressstall_a => ~NO_FANOUT~
 addressstall_b => ~NO_FANOUT~
-clock0 => altsyncram_slo1:auto_generated.clock0
+clock0 => altsyncram_o4o1:auto_generated.clock0
 clock1 => ~NO_FANOUT~
 clocken0 => ~NO_FANOUT~
 clocken1 => ~NO_FANOUT~
@@ -4703,16 +4703,16 @@ aclr0 => ~NO_FANOUT~
 aclr1 => ~NO_FANOUT~
 byteena_a[0] => ~NO_FANOUT~
 byteena_b[0] => ~NO_FANOUT~
-q_a[0] <= altsyncram_slo1:auto_generated.q_a[0]
-q_a[1] <= altsyncram_slo1:auto_generated.q_a[1]
-q_a[2] <= altsyncram_slo1:auto_generated.q_a[2]
+q_a[0] <= altsyncram_o4o1:auto_generated.q_a[0]
+q_a[1] <= altsyncram_o4o1:auto_generated.q_a[1]
+q_a[2] <= altsyncram_o4o1:auto_generated.q_a[2]
 q_b[0] <= <GND>
 eccstatus[0] <= <GND>
 eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|Interface|controlPath:CP|Robot24x30:robot_reg|altsyncram:altsyncram_component|altsyncram_slo1:auto_generated
+|Interface|controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component|altsyncram_o4o1:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -4920,7 +4920,7 @@ enable => always0.IN1
 enable => always0.IN1
 
 
-|Interface|controlPath:CP|robotCounter:RC
+|Interface|controlPath:CP|objCounter:RC
 clock => mimic60HzClock~reg0.CLK
 clock => out[0]~reg0.CLK
 clock => out[1]~reg0.CLK
@@ -5052,7 +5052,7 @@ enable => always0.IN1
 mimic60HzClock4LS <= mimic60HzClock4LS~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Interface|controlPath:CP|new_nextPosition:NP
+|Interface|controlPath:CP|NextPosition2:NP
 CLOCK_50 => CLOCK_50.IN1
 clock60hz => always1.IN0
 out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -5078,7 +5078,7 @@ colorIsNotObj <= colorIsNotObj~reg0.DB_MAX_OUTPUT_PORT_TYPE
 click => already_cut.IN1
 
 
-|Interface|controlPath:CP|new_nextPosition:NP|position:p
+|Interface|controlPath:CP|NextPosition2:NP|position:p
 clock => out~reg0.CLK
 out <= out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 reset => out.OUTPUTSELECT
