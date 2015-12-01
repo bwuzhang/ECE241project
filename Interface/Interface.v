@@ -189,12 +189,12 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 
 	reg cenable,RCenable,NPenable,NPenable1,NPenable2,NPenable3,bufferEnable,LSCenable,colorIsNotObj;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out;
+	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out,lord_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
 	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision;
 	wire [16:0]coor_LLSS;
-	wire [7:0]randomNumber1,randomNumber2;
+	wire [7:0]randomNumber1,randomNumber2,randomNumber3;
 	wire [16:0]coor1,coor2,coor3;
 	
 
@@ -211,6 +211,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	
 	//Robot24x30 robot_reg({5'b00000,objCounterOut[9:5]}+10'b0000011000*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
 	jet jet_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,jet_reg_out);
+	lord lord_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,lord_reg_out);
+	
 	
 	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
 	
@@ -259,6 +261,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	
 	randomNumberGenerator rng1(clock, resetKey,randomNumber1,8'b10101010);
 	randomNumberGenerator rng2(clock, resetKey,randomNumber2,8'b00111001);
+	randomNumberGenerator rng3(clock, resetKey,randomNumber3,8'b11101001);
 	
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
@@ -334,8 +337,10 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	begin
 	if(colorIsNotObj)
 		color_from_CP=bg_reg_out_AfterSlash;
-	else
+	else if(randomNumber3%2==0)
 		color_from_CP=jet_reg_out;
+	else if(randomNumber3%2==1)
+		color_from_CP=lord_reg_out;
 	end
 	bufferEnable=0;
 	displayOnVGA=0;

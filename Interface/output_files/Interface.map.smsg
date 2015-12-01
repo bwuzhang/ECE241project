@@ -1,8 +1,8 @@
-Warning (10268): Verilog HDL information at Interface.v(727): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(744): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(773): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(792): always construct contains both blocking and non-blocking assignments
-Info (10281): Verilog HDL Declaration information at Interface.v(1322): object "clk" differs only in case from object "CLK" in the same scope
-Info (10281): Verilog HDL Declaration information at Interface.v(1344): object "clk" differs only in case from object "CLK" in the same scope
-Info (10281): Verilog HDL Declaration information at Interface.v(1368): object "clk" differs only in case from object "CLK" in the same scope
-Warning (10268): Verilog HDL information at Interface.v(1393): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(732): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(749): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(778): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(797): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at Interface.v(1327): object "clk" differs only in case from object "CLK" in the same scope
+Info (10281): Verilog HDL Declaration information at Interface.v(1349): object "clk" differs only in case from object "CLK" in the same scope
+Info (10281): Verilog HDL Declaration information at Interface.v(1373): object "clk" differs only in case from object "CLK" in the same scope
+Warning (10268): Verilog HDL information at Interface.v(1398): always construct contains both blocking and non-blocking assignments
