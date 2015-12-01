@@ -2876,9 +2876,9 @@ load => out[0]$latch.LATCH_ENABLE
 
 
 |Interface|controlPath:CP
-clock => clock.IN15
+clock => clock.IN16
 plotVGA <= currentState.displayState_400.DB_MAX_OUTPUT_PORT_TYPE
-resetKey => resetKey.IN11
+resetKey => resetKey.IN12
 Dbackground <= currentState.writeBG2Buffer_426.DB_MAX_OUTPUT_PORT_TYPE
 Dobject <= currentState.writeObj2Buffer_439.DB_MAX_OUTPUT_PORT_TYPE
 BGcounterOut[0] <= BGcounterOut[0].DB_MAX_OUTPUT_PORT_TYPE
@@ -5078,6 +5078,21 @@ reset => reset.IN1
 enable => always1.IN1
 colorIsNotObj <= colorIsNotObj~reg0.DB_MAX_OUTPUT_PORT_TYPE
 click => already_cut.IN1
+randomNumber2[0] => ~NO_FANOUT~
+randomNumber2[1] => out.DATAB
+randomNumber2[1] => out.DATAB
+randomNumber2[2] => out.DATAB
+randomNumber2[2] => out.DATAB
+randomNumber2[3] => out.DATAB
+randomNumber2[3] => out.DATAB
+randomNumber2[4] => out.DATAB
+randomNumber2[4] => out.DATAB
+randomNumber2[5] => out.DATAB
+randomNumber2[5] => out.DATAB
+randomNumber2[6] => out.DATAB
+randomNumber2[6] => out.DATAB
+randomNumber2[7] => out.DATAB
+randomNumber2[7] => out.DATAB
 
 
 |Interface|controlPath:CP|NextPosition1:NP1|position:p
@@ -5111,6 +5126,15 @@ reset => reset.IN1
 enable => always1.IN1
 colorIsNotObj <= colorIsNotObj~reg0.DB_MAX_OUTPUT_PORT_TYPE
 click => already_cut.IN1
+randomNumber2[0] => ~NO_FANOUT~
+randomNumber2[1] => out.DATAB
+randomNumber2[1] => out.DATAB
+randomNumber2[2] => ~NO_FANOUT~
+randomNumber2[3] => ~NO_FANOUT~
+randomNumber2[4] => ~NO_FANOUT~
+randomNumber2[5] => ~NO_FANOUT~
+randomNumber2[6] => ~NO_FANOUT~
+randomNumber2[7] => ~NO_FANOUT~
 
 
 |Interface|controlPath:CP|NextPosition2:NP2|position:p
@@ -5144,6 +5168,15 @@ reset => reset.IN1
 enable => always1.IN1
 colorIsNotObj <= colorIsNotObj~reg0.DB_MAX_OUTPUT_PORT_TYPE
 click => already_cut.IN1
+randomNumber2[0] => ~NO_FANOUT~
+randomNumber2[1] => out.DATAB
+randomNumber2[1] => out.DATAB
+randomNumber2[2] => ~NO_FANOUT~
+randomNumber2[3] => ~NO_FANOUT~
+randomNumber2[4] => ~NO_FANOUT~
+randomNumber2[5] => ~NO_FANOUT~
+randomNumber2[6] => ~NO_FANOUT~
+randomNumber2[7] => ~NO_FANOUT~
 
 
 |Interface|controlPath:CP|NextPosition3:NP3|position:p
@@ -6046,7 +6079,7 @@ out <= out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 resetKey => out.OUTPUTSELECT
 
 
-|Interface|controlPath:CP|randomNumberGenerator:rng
+|Interface|controlPath:CP|randomNumberGenerator:rng1
 CLOCK => CLOCK.IN1
 reset => reset.IN1
 out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
@@ -6057,9 +6090,98 @@ out[4] <= out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[6] <= out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[7] <= out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seed[0] => out.DATAB
+seed[1] => out.DATAB
+seed[2] => out.DATAB
+seed[3] => out.DATAB
+seed[4] => out.DATAB
+seed[5] => out.DATAB
+seed[6] => out.DATAB
+seed[7] => out.DATAB
 
 
-|Interface|controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK
+|Interface|controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK
+CLOCK => CLKout~reg0.CLK
+CLOCK => x[0].CLK
+CLOCK => x[1].CLK
+CLOCK => x[2].CLK
+CLOCK => x[3].CLK
+CLOCK => x[4].CLK
+CLOCK => x[5].CLK
+CLOCK => x[6].CLK
+CLOCK => x[7].CLK
+CLOCK => x[8].CLK
+CLOCK => x[9].CLK
+CLOCK => x[10].CLK
+CLOCK => x[11].CLK
+CLOCK => x[12].CLK
+CLOCK => x[13].CLK
+CLOCK => x[14].CLK
+CLOCK => x[15].CLK
+CLOCK => x[16].CLK
+CLOCK => x[17].CLK
+CLOCK => x[18].CLK
+CLOCK => x[19].CLK
+CLOCK => x[20].CLK
+CLOCK => x[21].CLK
+CLOCK => x[22].CLK
+CLOCK => x[23].CLK
+CLOCK => x[24].CLK
+CLOCK => x[25].CLK
+CLOCK => x[26].CLK
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => x.OUTPUTSELECT
+reset => CLKout.OUTPUTSELECT
+CLKout <= CLKout~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Interface|controlPath:CP|randomNumberGenerator:rng2
+CLOCK => CLOCK.IN1
+reset => reset.IN1
+out[0] <= out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[2] <= out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seed[0] => out.DATAB
+seed[1] => out.DATAB
+seed[2] => out.DATAB
+seed[3] => out.DATAB
+seed[4] => out.DATAB
+seed[5] => out.DATAB
+seed[6] => out.DATAB
+seed[7] => out.DATAB
+
+
+|Interface|controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK
 CLOCK => CLKout~reg0.CLK
 CLOCK => x[0].CLK
 CLOCK => x[1].CLK

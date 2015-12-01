@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Interface
-Tue Dec 01 17:02:04 2015
+Tue Dec 01 17:38:50 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -55,24 +55,27 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
  47. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D3
  48. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4
  49. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5
- 50. Parameter Settings for User Entity Instance: controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK
- 51. Parameter Settings for Inferred Entity Instance: controlPath:CP|lpm_divide:Mod0
- 52. altsyncram Parameter Settings by Entity Instance
- 53. altpll Parameter Settings by Entity Instance
- 54. Port Connectivity Checks: "controlPath:CP|collisionDetector:collisionD"
- 55. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5"
- 56. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4"
- 57. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse"
- 58. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor"
- 59. Port Connectivity Checks: "controlPath:CP|lightSaber:ls_reg"
- 60. Port Connectivity Checks: "controlPath:CP|jet:jet_reg"
- 61. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg_AfterSlash"
- 62. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg"
- 63. Port Connectivity Checks: "controlPath:CP|vga_address_translator:BGtranslator"
- 64. Post-Synthesis Netlist Statistics for Top Partition
- 65. Elapsed Time Per Partition
- 66. Analysis & Synthesis Messages
- 67. Analysis & Synthesis Suppressed Messages
+ 50. Parameter Settings for User Entity Instance: controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK
+ 51. Parameter Settings for User Entity Instance: controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK
+ 52. Parameter Settings for Inferred Entity Instance: controlPath:CP|lpm_divide:Mod0
+ 53. altsyncram Parameter Settings by Entity Instance
+ 54. altpll Parameter Settings by Entity Instance
+ 55. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator:rng2"
+ 56. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator:rng1"
+ 57. Port Connectivity Checks: "controlPath:CP|collisionDetector:collisionD"
+ 58. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5"
+ 59. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4"
+ 60. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse"
+ 61. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor"
+ 62. Port Connectivity Checks: "controlPath:CP|lightSaber:ls_reg"
+ 63. Port Connectivity Checks: "controlPath:CP|jet:jet_reg"
+ 64. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg_AfterSlash"
+ 65. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg"
+ 66. Port Connectivity Checks: "controlPath:CP|vga_address_translator:BGtranslator"
+ 67. Post-Synthesis Netlist Statistics for Top Partition
+ 68. Elapsed Time Per Partition
+ 69. Analysis & Synthesis Messages
+ 70. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -99,13 +102,13 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Dec 01 17:02:04 2015       ;
+; Analysis & Synthesis Status     ; Successful - Tue Dec 01 17:38:50 2015       ;
 ; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                   ; Interface                                   ;
 ; Top-level Entity Name           ; Interface                                   ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 440                                         ;
+; Total registers                 ; 448                                         ;
 ; Total pins                      ; 62                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 927,000                                     ;
@@ -283,16 +286,16 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 907            ;
+; Estimate of Logic utilization (ALMs needed) ; 889            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1565           ;
-;     -- 7 input functions                    ; 8              ;
-;     -- 6 input functions                    ; 234            ;
-;     -- 5 input functions                    ; 259            ;
-;     -- 4 input functions                    ; 200            ;
-;     -- <=3 input functions                  ; 864            ;
+; Combinational ALUT usage for logic          ; 1540           ;
+;     -- 7 input functions                    ; 9              ;
+;     -- 6 input functions                    ; 222            ;
+;     -- 5 input functions                    ; 240            ;
+;     -- 4 input functions                    ; 185            ;
+;     -- <=3 input functions                  ; 884            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 440            ;
+; Dedicated logic registers                   ; 448            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 62             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -304,9 +307,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 517            ;
-; Total fan-out                               ; 9326           ;
-; Average fan-out                             ; 4.13           ;
+; Maximum fan-out                             ; 525            ;
+; Total fan-out                               ; 9211           ;
+; Average fan-out                             ; 4.11           ;
 +---------------------------------------------+----------------+
 
 
@@ -315,8 +318,8 @@ agreement for further details.
 +---------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                              ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                      ; Library Name ;
 +---------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Interface                                              ; 1565 (1)          ; 440 (0)      ; 927000            ; 0          ; 62   ; 0            ; |Interface                                                                                                                               ; work         ;
-;    |controlPath:CP|                                     ; 1332 (216)        ; 402 (17)     ; 466200            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP                                                                                                                ; work         ;
+; |Interface                                              ; 1540 (1)          ; 448 (0)      ; 927000            ; 0          ; 62   ; 0            ; |Interface                                                                                                                               ; work         ;
+;    |controlPath:CP|                                     ; 1307 (216)        ; 410 (17)     ; 466200            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP                                                                                                                ; work         ;
 ;       |BG_New:bg_reg_AfterSlash|                        ; 13 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash                                                                                       ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 13 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component                                                       ; work         ;
 ;             |altsyncram_5mo1:auto_generated|            ; 13 (0)            ; 4 (4)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated                        ; work         ;
@@ -328,20 +331,20 @@ agreement for further details.
 ;                |decode_g2a:rden_decode|                 ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|decode_g2a:rden_decode            ; work         ;
 ;       |BGcounter:BGC|                                   ; 46 (46)           ; 17 (17)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BGcounter:BGC                                                                                                  ; work         ;
 ;       |BGcounter:BufferCounter|                         ; 46 (46)           ; 17 (17)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BGcounter:BufferCounter                                                                                        ; work         ;
-;       |Mouse:MouseCoor|                                 ; 306 (97)          ; 200 (23)     ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor                                                                                                ; work         ;
+;       |Mouse:MouseCoor|                                 ; 305 (97)          ; 200 (23)     ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor                                                                                                ; work         ;
 ;          |DebouncingCircuit:D1|                         ; 26 (26)           ; 25 (25)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1                                                                           ; work         ;
 ;          |DebouncingCircuit:D2|                         ; 9 (9)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D2                                                                           ; work         ;
 ;          |DebouncingCircuit:D3|                         ; 9 (9)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D3                                                                           ; work         ;
 ;          |DebouncingCircuit:D4|                         ; 11 (11)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4                                                                           ; work         ;
 ;          |DebouncingCircuit:D5|                         ; 15 (15)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5                                                                           ; work         ;
-;          |PS2_Controller:Mouse|                         ; 139 (26)          ; 120 (16)     ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse                                                                           ; work         ;
+;          |PS2_Controller:Mouse|                         ; 138 (25)          ; 120 (16)     ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse                                                                           ; work         ;
 ;             |Altera_UP_PS2_Command_Out:PS2_Command_Out| ; 90 (90)           ; 65 (65)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out                                 ; work         ;
 ;             |Altera_UP_PS2_Data_In:PS2_Data_In|         ; 23 (23)           ; 39 (39)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In                                         ; work         ;
-;       |NextPosition1:NP1|                               ; 138 (138)         ; 21 (20)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition1:NP1                                                                                              ; work         ;
+;       |NextPosition1:NP1|                               ; 136 (136)         ; 21 (20)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition1:NP1                                                                                              ; work         ;
 ;          |position:p|                                   ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition1:NP1|position:p                                                                                   ; work         ;
-;       |NextPosition2:NP2|                               ; 126 (126)         ; 21 (20)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition2:NP2                                                                                              ; work         ;
+;       |NextPosition2:NP2|                               ; 121 (121)         ; 21 (20)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition2:NP2                                                                                              ; work         ;
 ;          |position:p|                                   ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition2:NP2|position:p                                                                                   ; work         ;
-;       |NextPosition3:NP3|                               ; 180 (180)         ; 21 (20)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition3:NP3                                                                                              ; work         ;
+;       |NextPosition3:NP3|                               ; 163 (163)         ; 21 (20)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition3:NP3                                                                                              ; work         ;
 ;          |position:p|                                   ; 0 (0)             ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|NextPosition3:NP3|position:p                                                                                   ; work         ;
 ;       |collisionDetector:collisionD|                    ; 48 (48)           ; 1 (1)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|collisionDetector:collisionD                                                                                   ; work         ;
 ;       |jet:jet_reg|                                     ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|jet:jet_reg                                                                                                    ; work         ;
@@ -356,9 +359,10 @@ agreement for further details.
 ;             |sign_div_unsign_9kh:divider|               ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                                      ; work         ;
 ;                |alt_u_div_ose:divider|                  ; 40 (40)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider                ; work         ;
 ;       |objCounter:RC|                                   ; 33 (33)           ; 11 (11)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|objCounter:RC                                                                                                  ; work         ;
-;       |randomNumberGenerator:rng|                       ; 58 (9)            ; 36 (8)       ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator:rng                                                                                      ; work         ;
-;          |ClockDivider1Hz:CLK|                          ; 49 (49)           ; 28 (28)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK                                                                  ; work         ;
-;       |sixtyHzClock:CLK60|                              ; 39 (39)           ; 21 (21)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|sixtyHzClock:CLK60                                                                                             ; work         ;
+;       |randomNumberGenerator:rng1|                      ; 53 (6)            ; 36 (8)       ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator:rng1                                                                                     ; work         ;
+;          |ClockDivider1Hz:CLK|                          ; 47 (47)           ; 28 (28)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK                                                                 ; work         ;
+;       |randomNumberGenerator:rng2|                      ; 6 (6)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator:rng2                                                                                     ; work         ;
+;       |sixtyHzClock:CLK60|                              ; 38 (38)           ; 21 (21)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|sixtyHzClock:CLK60                                                                                             ; work         ;
 ;    |dataPath:DP|                                        ; 144 (87)          ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP                                                                                                                   ; work         ;
 ;       |BGbuffer:bgb|                                    ; 23 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP|BGbuffer:bgb                                                                                                      ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 23 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component                                                                      ; work         ;
@@ -709,8 +713,36 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D3|count[16]                                                     ; Merged with controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1|count[16]                                                ;
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4|count[16]                                                     ; Merged with controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1|count[16]                                                ;
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5|count[16]                                                     ; Merged with controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1|count[16]                                                ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|CLKout                                              ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|CLKout                                         ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[1,3,8]  ; Merged with controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0] ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[4..7]   ; Merged with controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2] ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[26]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[26]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[25]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[25]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[24]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[24]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[23]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[23]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[22]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[22]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[21]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[21]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[20]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[20]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[19]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[19]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[18]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[18]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[17]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[17]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[16]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[16]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[15]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[15]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[14]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[14]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[13]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[13]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[12]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[12]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[11]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[11]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[10]                                               ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[10]                                          ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[9]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[9]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[8]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[8]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[7]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[7]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[6]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[6]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[5]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[5]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[4]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[4]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[3]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[3]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[2]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[2]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[1]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[1]                                           ;
+; controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK|x[0]                                                ; Merged with controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[0]                                           ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0]      ; Stuck at GND due to stuck port data_in                                                                                   ;
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5|curr_state~2                                                  ; Lost fanout                                                                                                              ;
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5|curr_state~3                                                  ; Lost fanout                                                                                                              ;
@@ -734,7 +766,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~4 ; Lost fanout                                                                                                              ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~2            ; Lost fanout                                                                                                              ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~3            ; Lost fanout                                                                                                              ;
-; Total Number of Removed Registers = 98                                                                            ;                                                                                                                          ;
+; Total Number of Removed Registers = 126                                                                           ;                                                                                                                          ;
 +-------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -743,12 +775,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 440   ;
-; Number of registers using Synchronous Clear  ; 254   ;
-; Number of registers using Synchronous Load   ; 17    ;
+; Total registers                              ; 448   ;
+; Number of registers using Synchronous Clear  ; 257   ;
+; Number of registers using Synchronous Load   ; 24    ;
 ; Number of registers using Asynchronous Clear ; 38    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 177   ;
+; Number of registers using Clock Enable       ; 187   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -768,50 +800,53 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-------------------------------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|received_data[5]                    ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|data_received[16]                                                                          ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng|out[2]                                                                           ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng|out[1]                                                                           ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[19]                  ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK|x[4]                                                         ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK|x[20]                                                        ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Interface|vga_adapter:VGA|vga_controller:controller|yCounter[5]                                                                     ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[3]                                                                             ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[13]                                                                            ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[4]                                                                             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|lightSaberCounter:LScounter|out[2]                                                                         ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|objCounter:RC|out[2]                                                                                       ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[0]                                                                                       ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[12]                                                                                      ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[16]                                                                                      ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|idle_counter[5]                                                       ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[1] ;
-; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[20]         ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[1]                  ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[3]                       ;
-; 4:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[1]         ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[6]                                                                                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[1]                                                                                 ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[14]                                                                                  ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[8]                                                                                   ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[12]                                                                                  ;
-; 14:1               ; 5 bits    ; 45 LEs        ; 30 LEs               ; 15 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[6]                                                                                   ;
-; 16:1               ; 2 bits    ; 20 LEs        ; 14 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[2]                                                                                   ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 28 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[6]                                                                                   ;
-; 18:1               ; 5 bits    ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[6]                                                                                   ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[5]                                                                                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[5]                                                                                 ;
-; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|coor[0]                                                                                                    ;
-; 4:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; No         ; |Interface|dataPath:DP|x_out[3]                                                                                                      ;
-; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|mux_2hb:mux3|l4_w2_n0_mux_dataout                   ;
-; 13:1               ; 3 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; No         ; |Interface|dataPath:DP|color_out[2]                                                                                                  ;
-; 20:1               ; 3 bits    ; 39 LEs        ; 39 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|Selector1                                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|received_data[0]                     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|data_received[8]                                                                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng1|out[0]                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng1|out[1]                                                                           ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[16]                   ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[4]                                                         ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK|x[20]                                                        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Interface|vga_adapter:VGA|vga_controller:controller|yCounter[3]                                                                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[1]                                                                              ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[12]                                                                             ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[5]                                                                              ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|lightSaberCounter:LScounter|out[9]                                                                          ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|objCounter:RC|out[4]                                                                                        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[2]                                                                                        ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[13]                                                                                       ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[16]                                                                                       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|idle_counter[4]                                                        ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[13] ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[12]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[1]                   ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[3]                        ;
+; 4:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[3]          ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[1]                                                                                  ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[1]                                                                                  ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[15]                                                                                   ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[14]                                                                                   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[10]                                                                                   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[12]                                                                                   ;
+; 14:1               ; 2 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[3]                                                                                    ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[7]                                                                                    ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 14 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[2]                                                                                    ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 28 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[4]                                                                                    ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[3]                                                                                    ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[7]                                                                                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[5]                                                                                  ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[6]                                                                                  ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|colorIsNotObj                                                                                               ;
+; 4:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; No         ; |Interface|dataPath:DP|y_out[5]                                                                                                       ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|mux_2hb:mux3|l4_w0_n0_mux_dataout                    ;
+; 13:1               ; 3 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; No         ; |Interface|dataPath:DP|color_out[1]                                                                                                   ;
+; 20:1               ; 3 bits    ; 39 LEs        ; 39 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|Selector1                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------+
@@ -1828,13 +1863,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK ;
-+----------------+-----------------------------+------------------------------------------------------------+
-; Parameter Name ; Value                       ; Type                                                       ;
-+----------------+-----------------------------+------------------------------------------------------------+
-; init           ; 101111101011110000100000000 ; Unsigned Binary                                            ;
-+----------------+-----------------------------+------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK ;
++----------------+-----------------------------+-------------------------------------------------------------+
+; Parameter Name ; Value                       ; Type                                                        ;
++----------------+-----------------------------+-------------------------------------------------------------+
+; init           ; 101111101011110000100000000 ; Unsigned Binary                                             ;
++----------------+-----------------------------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlPath:CP|randomNumberGenerator:rng2|ClockDivider1Hz:CLK ;
++----------------+-----------------------------+-------------------------------------------------------------+
+; Parameter Name ; Value                       ; Type                                                        ;
++----------------+-----------------------------+-------------------------------------------------------------+
+; init           ; 101111101011110000100000000 ; Unsigned Binary                                             ;
++----------------+-----------------------------+-------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1953,6 +1998,34 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+-------------------------------------------------------+
 
 
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "controlPath:CP|randomNumberGenerator:rng2" ;
++------------+-------+----------+---------------------------------------+
+; Port       ; Type  ; Severity ; Details                               ;
++------------+-------+----------+---------------------------------------+
+; seed[5..3] ; Input ; Info     ; Stuck at VCC                          ;
+; seed[7..6] ; Input ; Info     ; Stuck at GND                          ;
+; seed[2..1] ; Input ; Info     ; Stuck at GND                          ;
+; seed[0]    ; Input ; Info     ; Stuck at VCC                          ;
++------------+-------+----------+---------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "controlPath:CP|randomNumberGenerator:rng1" ;
++---------+-------+----------+------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                  ;
++---------+-------+----------+------------------------------------------+
+; seed[7] ; Input ; Info     ; Stuck at VCC                             ;
+; seed[6] ; Input ; Info     ; Stuck at GND                             ;
+; seed[5] ; Input ; Info     ; Stuck at VCC                             ;
+; seed[4] ; Input ; Info     ; Stuck at GND                             ;
+; seed[3] ; Input ; Info     ; Stuck at VCC                             ;
+; seed[2] ; Input ; Info     ; Stuck at GND                             ;
+; seed[1] ; Input ; Info     ; Stuck at VCC                             ;
+; seed[0] ; Input ; Info     ; Stuck at GND                             ;
++---------+-------+----------+------------------------------------------+
+
+
 +-------------------------------------------------------------------------+
 ; Port Connectivity Checks: "controlPath:CP|collisionDetector:collisionD" ;
 +-----------------------+-------+----------+------------------------------+
@@ -2064,19 +2137,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 440                         ;
+; arriav_ff             ; 448                         ;
 ;     CLR               ; 5                           ;
 ;     CLR SCLR          ; 10                          ;
-;     ENA               ; 30                          ;
+;     ENA               ; 29                          ;
 ;     ENA CLR           ; 11                          ;
 ;     ENA CLR SCLR      ; 12                          ;
-;     ENA SCLR          ; 113                         ;
-;     ENA SLD           ; 11                          ;
-;     SCLR              ; 119                         ;
-;     SLD               ; 6                           ;
-;     plain             ; 123                         ;
+;     ENA SCLR          ; 115                         ;
+;     ENA SLD           ; 20                          ;
+;     SCLR              ; 120                         ;
+;     SLD               ; 4                           ;
+;     plain             ; 122                         ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 1566                        ;
+; arriav_lcell_comb     ; 1541                        ;
 ;     arith             ; 623                         ;
 ;         0 data inputs ; 10                          ;
 ;         1 data inputs ; 550                         ;
@@ -2084,16 +2157,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 16                          ;
 ;         4 data inputs ; 11                          ;
 ;         5 data inputs ; 8                           ;
-;     extend            ; 8                           ;
-;         7 data inputs ; 8                           ;
-;     normal            ; 866                         ;
+;     extend            ; 9                           ;
+;         7 data inputs ; 9                           ;
+;     normal            ; 840                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 101                         ;
-;         3 data inputs ; 83                          ;
-;         4 data inputs ; 189                         ;
-;         5 data inputs ; 251                         ;
-;         6 data inputs ; 234                         ;
+;         2 data inputs ; 103                         ;
+;         3 data inputs ; 101                         ;
+;         4 data inputs ; 174                         ;
+;         5 data inputs ; 232                         ;
+;         6 data inputs ; 222                         ;
 ;     shared            ; 69                          ;
 ;         0 data inputs ; 4                           ;
 ;         1 data inputs ; 24                          ;
@@ -2104,7 +2177,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 126                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 11.40                       ;
-; Average LUT depth     ; 3.64                        ;
+; Average LUT depth     ; 3.62                        ;
 +-----------------------+-----------------------------+
 
 
@@ -2123,7 +2196,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Tue Dec 01 17:01:45 2015
+    Info: Processing started: Tue Dec 01 17:38:31 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Interface -c Interface
 Warning (125092): Tcl Script File BG1.qip not found
     Info (125063): set_global_assignment -name QIP_FILE BG1.qip
@@ -2180,6 +2253,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file lightsa
     Info (12023): Found entity 1: lightSaber
 Info (12021): Found 1 design units, including 1 entities, in source file jet.v
     Info (12023): Found entity 1: jet
+Warning (10236): Verilog HDL Implicit Net warning at Interface.v(913): created implicit net for "randowX"
+Warning (10236): Verilog HDL Implicit Net warning at Interface.v(1036): created implicit net for "randowX"
 Info (12127): Elaborating entity "Interface" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at Interface.v(45): object "resetn" assigned a value but never read
 Warning (10034): Output port "LEDR[9..4]" at Interface.v(29) has no driver
@@ -2282,37 +2357,37 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_agm1
 Info (12128): Elaborating entity "altsyncram_agm1" for hierarchy "dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component|altsyncram_agm1:auto_generated"
 Info (12128): Elaborating entity "RegisterX" for hierarchy "dataPath:DP|RegisterX:X"
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(880): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "out[0]" at Interface.v(882)
-Info (10041): Inferred latch for "out[1]" at Interface.v(882)
-Info (10041): Inferred latch for "out[2]" at Interface.v(882)
-Info (10041): Inferred latch for "out[3]" at Interface.v(882)
-Info (10041): Inferred latch for "out[4]" at Interface.v(882)
-Info (10041): Inferred latch for "out[5]" at Interface.v(882)
-Info (10041): Inferred latch for "out[6]" at Interface.v(882)
-Info (10041): Inferred latch for "out[7]" at Interface.v(882)
-Info (10041): Inferred latch for "out[8]" at Interface.v(882)
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(882): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "out[0]" at Interface.v(884)
+Info (10041): Inferred latch for "out[1]" at Interface.v(884)
+Info (10041): Inferred latch for "out[2]" at Interface.v(884)
+Info (10041): Inferred latch for "out[3]" at Interface.v(884)
+Info (10041): Inferred latch for "out[4]" at Interface.v(884)
+Info (10041): Inferred latch for "out[5]" at Interface.v(884)
+Info (10041): Inferred latch for "out[6]" at Interface.v(884)
+Info (10041): Inferred latch for "out[7]" at Interface.v(884)
+Info (10041): Inferred latch for "out[8]" at Interface.v(884)
 Info (12128): Elaborating entity "RegisterY" for hierarchy "dataPath:DP|RegisterY:Y"
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(893): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "out[0]" at Interface.v(895)
-Info (10041): Inferred latch for "out[1]" at Interface.v(895)
-Info (10041): Inferred latch for "out[2]" at Interface.v(895)
-Info (10041): Inferred latch for "out[3]" at Interface.v(895)
-Info (10041): Inferred latch for "out[4]" at Interface.v(895)
-Info (10041): Inferred latch for "out[5]" at Interface.v(895)
-Info (10041): Inferred latch for "out[6]" at Interface.v(895)
-Info (10041): Inferred latch for "out[7]" at Interface.v(895)
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(895): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "out[0]" at Interface.v(897)
+Info (10041): Inferred latch for "out[1]" at Interface.v(897)
+Info (10041): Inferred latch for "out[2]" at Interface.v(897)
+Info (10041): Inferred latch for "out[3]" at Interface.v(897)
+Info (10041): Inferred latch for "out[4]" at Interface.v(897)
+Info (10041): Inferred latch for "out[5]" at Interface.v(897)
+Info (10041): Inferred latch for "out[6]" at Interface.v(897)
+Info (10041): Inferred latch for "out[7]" at Interface.v(897)
 Info (12128): Elaborating entity "controlPath" for hierarchy "controlPath:CP"
 Warning (10230): Verilog HDL assignment warning at Interface.v(180): truncated value with size 32 to match size of target (2)
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(223): variable "randomNumber" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(223): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(225): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(228): variable "coor1" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(229): variable "colorIsNotObj1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(231): variable "randomNumber" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(231): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(233): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(236): variable "coor2" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(237): variable "colorIsNotObj2" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(239): variable "randomNumber" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(239): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(241): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(244): variable "coor3" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(245): variable "colorIsNotObj3" is read inside the Always Construct but isn't in the Always Construct's Event Control
@@ -2435,9 +2510,12 @@ Info (12128): Elaborating entity "BGcounter" for hierarchy "controlPath:CP|BGcou
 Info (12128): Elaborating entity "objCounter" for hierarchy "controlPath:CP|objCounter:RC"
 Info (12128): Elaborating entity "lightSaberCounter" for hierarchy "controlPath:CP|lightSaberCounter:LScounter"
 Info (12128): Elaborating entity "NextPosition1" for hierarchy "controlPath:CP|NextPosition1:NP1"
+Warning (10230): Verilog HDL assignment warning at Interface.v(463): truncated value with size 33 to match size of target (9)
 Info (12128): Elaborating entity "position" for hierarchy "controlPath:CP|NextPosition1:NP1|position:p"
 Info (12128): Elaborating entity "NextPosition2" for hierarchy "controlPath:CP|NextPosition2:NP2"
+Warning (10230): Verilog HDL assignment warning at Interface.v(913): truncated value with size 33 to match size of target (1)
 Info (12128): Elaborating entity "NextPosition3" for hierarchy "controlPath:CP|NextPosition3:NP3"
+Warning (10230): Verilog HDL assignment warning at Interface.v(1036): truncated value with size 33 to match size of target (1)
 Info (12128): Elaborating entity "Mouse" for hierarchy "controlPath:CP|Mouse:MouseCoor"
 Info (12128): Elaborating entity "PS2_Controller" for hierarchy "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse"
 Info (12128): Elaborating entity "Altera_UP_PS2_Data_In" for hierarchy "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In"
@@ -2446,8 +2524,8 @@ Warning (12125): Using design file debouncingcircuit.v, which is not specified a
     Info (12023): Found entity 1: DebouncingCircuit
 Info (12128): Elaborating entity "DebouncingCircuit" for hierarchy "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1"
 Info (12128): Elaborating entity "collisionDetector" for hierarchy "controlPath:CP|collisionDetector:collisionD"
-Info (12128): Elaborating entity "randomNumberGenerator" for hierarchy "controlPath:CP|randomNumberGenerator:rng"
-Info (12128): Elaborating entity "ClockDivider1Hz" for hierarchy "controlPath:CP|randomNumberGenerator:rng|ClockDivider1Hz:CLK"
+Info (12128): Elaborating entity "randomNumberGenerator" for hierarchy "controlPath:CP|randomNumberGenerator:rng1"
+Info (12128): Elaborating entity "ClockDivider1Hz" for hierarchy "controlPath:CP|randomNumberGenerator:rng1|ClockDivider1Hz:CLK"
 Info (12128): Elaborating entity "sixtyHzClock" for hierarchy "controlPath:CP|sixtyHzClock:CLK60"
 Info (278001): Inferred 1 megafunctions from design logic
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "controlPath:CP|Mod0"
@@ -2465,7 +2543,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alt_
     Info (12023): Found entity 1: alt_u_div_ose
 Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13012): Latch controlPath:CP|colorIsNotObj has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|bufferEnable has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|bufferEnable
 Warning (13012): Latch dataPath:DP|x_out[8] has unsafe behavior
@@ -2515,46 +2593,46 @@ Warning (13012): Latch dataPath:DP|y_out[2] has unsafe behavior
 Warning (13012): Latch dataPath:DP|y_out[3] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
 Warning (13012): Latch controlPath:CP|NPenable1 has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|NPenable3 has unsafe behavior
     Warning (13013): Ports ENA and CLR on the latch are fed by the same signal controlPath:CP|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider|op_8~synth
 Warning (13012): Latch controlPath:CP|NPenable2 has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
-    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[7] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[6] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[16] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[15] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[14] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[8] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[9] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[10] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[11] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[12] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13012): Latch controlPath:CP|coor[13] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng|out[0]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator:rng1|out[0]
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[4]" is stuck at GND
     Warning (13410): Pin "LEDR[5]" is stuck at GND
@@ -2584,18 +2662,18 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 1823 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1803 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 45 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 1634 logic cells
+    Info (21061): Implemented 1614 logic cells
     Info (21064): Implemented 126 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 160 warnings
-    Info: Peak virtual memory: 785 megabytes
-    Info: Processing ended: Tue Dec 01 17:02:05 2015
-    Info: Elapsed time: 00:00:20
-    Info: Total CPU time (on all processors): 00:00:30
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 165 warnings
+    Info: Peak virtual memory: 789 megabytes
+    Info: Processing ended: Tue Dec 01 17:38:50 2015
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:29
 
 
 +------------------------------------------+

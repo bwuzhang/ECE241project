@@ -177,7 +177,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	
 	assign led[0]=colorIsNotObj;
 	assign led[1]=clock;
-	assign led[3:2]=randomNumber%3;
+	assign led[3:2]=randomNumber1%3;
 	
 	
 	inout PS2_DAT;
@@ -194,7 +194,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
 	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision;
 	wire [16:0]coor_LLSS;
-	wire [7:0]randomNumber;
+	wire [7:0]randomNumber1,randomNumber2;
 	wire [16:0]coor1,coor2,coor3;
 	
 
@@ -220,7 +220,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	lightSaberCounter LScounter(clock,lsCountOut,resetKey,LSCenable,mimic60HzClock4LS);
 	
 	always@(clock)
-	if(randomNumber%3==0)
+	if(randomNumber1%3==0)
 	begin
 		NPenable1=NPenable;
 		NPenable2=0;
@@ -228,7 +228,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 		coor=coor1;
 		colorIsNotObj=colorIsNotObj1;
 	end
-	else if(randomNumber%3==1)
+	else if(randomNumber1%3==1)
 	begin
 		NPenable2=NPenable;
 		NPenable1=0;
@@ -236,7 +236,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 		coor=coor2;
 		colorIsNotObj=colorIsNotObj2;
 	end
-	else if(randomNumber%3==2)
+	else if(randomNumber1%3==2)
 	begin
 		NPenable3=NPenable;
 		NPenable2=0;
@@ -245,9 +245,9 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 		colorIsNotObj=colorIsNotObj3;
 	end
 	
-	NextPosition1 NP1(clock,mimic60HzClock4Robot,coor1,resetKey,NPenable1,colorIsNotObj1,collision);
-	NextPosition2 NP2(clock,mimic60HzClock4Robot,coor2,resetKey,NPenable2,colorIsNotObj2,collision);
-	NextPosition3 NP3(clock,mimic60HzClock4Robot,coor3,resetKey,NPenable3,colorIsNotObj3,collision);
+	NextPosition1 NP1(clock,mimic60HzClock4Robot,coor1,resetKey,NPenable1,colorIsNotObj1,collision,randomNumber2);
+	NextPosition2 NP2(clock,mimic60HzClock4Robot,coor2,resetKey,NPenable2,colorIsNotObj2,collision,randomNumber2);
+	NextPosition3 NP3(clock,mimic60HzClock4Robot,coor3,resetKey,NPenable3,colorIsNotObj3,collision,randomNumber2);
 	
 	//LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
 	Mouse MouseCoor(clock, resetKey, PS2_CLK, PS2_DAT, coor_LLSS[16:8], coor_LLSS[7:0], click);
@@ -257,8 +257,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000111100001111,5'b01111,5'b1111,
 											click,collision,resetKey);
 	
-	randomNumberGenerator rng(clock, resetKey,randomNumber);
-	
+	randomNumberGenerator rng1(clock, resetKey,randomNumber1,8'b10101010);
+	randomNumberGenerator rng2(clock, resetKey,randomNumber2,8'b00111001);
 	
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
@@ -451,14 +451,16 @@ module LSmove(CLOCK_50,clock60hz,resetKey,SW,out);
 	end
 endmodule
 
-module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);
+module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2);
 	wire POSOUT;
 	reg POSIN;
 	input clock60hz,reset,enable,CLOCK_50,click;
+	input [7:0]randomNumber2;
 	output reg[16:0]out;
 	output reg colorIsNotObj;
 	reg already_cut;
-	
+	wire [8:0]randowX;
+	assign randowX={1'b0,randomNumber2/2};
 	position p(CLOCK_50,POSOUT,reset,POSIN);
 	
 
@@ -473,7 +475,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);
 	always@(posedge CLOCK_50) begin
 	if(~reset)
 		begin
-		out=17'b01000000011110000;
+		out={randowX,8'b11110000};
 		POSIN=1'b1;
 		already_cut=0;
 		end
@@ -483,7 +485,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);
 		1'b0:begin
 				if(out[7:0]==8'b11110000)
 				begin	//Going down
-					out[16:8]=9'b010000000;
+					out[16:8]=randowX;
 					POSIN=1'b1;	
 					already_cut=0;
 				end
@@ -899,14 +901,16 @@ endmodule
 
 
 
-module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//43211234
+module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2);//43211234
 	wire POSOUT;
 	reg POSIN;
 	input clock60hz,reset,enable,CLOCK_50,click;
 	output reg[16:0]out;
 	output reg colorIsNotObj;
+	input [7:0]randomNumber2;
 	reg already_cut;
 	position p(CLOCK_50,POSOUT,reset,POSIN);
+	assign randowX={1'b0,randomNumber2/2};
 	always@(posedge CLOCK_50)begin
 		if(already_cut)
 			colorIsNotObj=1;
@@ -919,7 +923,7 @@ module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//
 	if(~reset)
 		begin
 		//out=17'b01000000010010110;
-		out=17'b01000000011101111;
+		out={randowX,8'b11110000};
 		POSIN=1'b1;
 		already_cut=0;
 		end
@@ -928,7 +932,7 @@ module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//
 		case(POSOUT)
 		1'b0:begin
 				if(out[7:0]>=8'b11110000)begin
-					out[16:8]=9'b010000000;
+					out[16:8]=randowX;
 					POSIN=1'b1;	
 					already_cut=0;
 					
@@ -1021,13 +1025,15 @@ module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//
 
 endmodule 
 
-module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//654321123456
+module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2);//654321123456
 	wire POSOUT;
 	reg POSIN;
 	input clock60hz,reset,enable,CLOCK_50,click;
 	output reg[16:0]out;
 	output reg colorIsNotObj;
+	input [7:0]randomNumber2;
 	reg already_cut;
+	assign randowX={1'b0,randomNumber2/2};
 	position p(CLOCK_50,POSOUT,reset,POSIN);
 	
 	always@(posedge CLOCK_50)begin
@@ -1042,7 +1048,7 @@ module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//
 	if(~reset)
 		begin
 		//out=17'b01000000010010110;
-		out=17'b01000000011101111;
+		out={randowX,8'b11110000};
 		POSIN=1'b1;
 		already_cut=0;
 		end
@@ -1052,7 +1058,7 @@ module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);//
 		1'b0:begin
 				if(out[7:0]>=8'b11101111)
 				begin
-					out[16:8]=9'b010000000;
+					out[16:8]=randowX;
 					POSIN=1'b1;	
 					already_cut=1'b0;
 				end
@@ -1309,14 +1315,15 @@ module NextPosition3x2(CLOCK_50,clock60hz,out,reset,enable,fall);//654321123456 
 
 endmodule 
 
-module randomNumberGenerator(CLOCK, reset, out);
+module randomNumberGenerator(CLOCK, reset, out,seed);
 input  CLOCK, reset;
+input [7:0]seed;
 output reg [7:0] out;
 wire clk;
 ClockDivider1Hz CLK(CLOCK,reset,clk);
 always@(posedge CLOCK)
 if(!reset)
-out<=8'b00101010;
+out<=seed;
 else if(clk)
 begin
 out[0]<=out[1];
