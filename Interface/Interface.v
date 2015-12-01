@@ -9,6 +9,9 @@ module Interface
 		// Your inputs and outputs here
         KEY,
         SW,
+		  PS2_CLK,
+			PS2_DAT,
+			LEDR,
 		// The ports below are for the VGA output.  Do not change.
 		VGA_CLK,   						//	VGA Clock
 		VGA_HS,							//	VGA H_SYNC
@@ -23,7 +26,11 @@ module Interface
 	input			CLOCK_50;				//	50 MHz
 	input   [9:0]   SW;
 	input   [3:0]   KEY;
+	output [9:0]LEDR;
 
+	inout PS2_CLK;
+	inout PS2_DAT;
+	
 	// Declare your inputs and outputs here
 	// Do not change the following outputs
 	output			VGA_CLK;   				//	VGA Clock
@@ -76,8 +83,12 @@ module Interface
 	// for the VGA controller, in addition to any other functionality your design may require.
     
     // Instanciate datapath
-	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS);
-	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS,SW[3:0]);
+	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,
+					displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS);
+					
+	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,
+						color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,
+						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[1:0]);
 
     // Instanciate FSM control
 endmodule
@@ -149,28 +160,54 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackgroun
 	
 endmodule
 
-module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robotCounterOut,coor,LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,lsCountOut,SW);
+module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robotCounterOut,coor,
+						LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,
+						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led);
 	input resetKey,clock;
 	input [3:0]SW;
+	input [2:0]color;	
+	
 	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
-	output [16:0]coor,coor_LS;
+	output [16:0]coor;
+	output reg [16:0]coor_LS;
 	output reg[2:0]color_from_CP;
-	input [2:0]color;
-	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111;
-	reg  [3:0]currentState,nextState;
 	output [16:0]BGcounterOut,bufferCounterOut;
 	output [9:0]robotCounterOut,lsCountOut;
+	output [1:0]led;
+	
+	assign led[0]=colorIsNotObj;
+	assign led[1]=clock;
+	
+	
+	inout PS2_DAT;
+	inout PS2_CLK;	
+	
+	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,
+						waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111;
+	reg  [3:0]currentState,nextState;
+
 	reg cenable,RCenable,NPenable,bufferEnable,LSCenable;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out;
+	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
+	wire click,colorIsNotObj,collision;
+	wire [16:0]coor_LLSS;
+	
+
+
+
+	
 	
 	vga_address_translator BGtranslator(BGcounterOut[16:8],BGcounterOut[7:0],BGtransferedAddress);
 
 	//BG bg_reg(BGtransferedAddress,clock,3'b000,0,bg_reg_out);
 	BG_New bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
+	BG_New bg_reg_AfterSlash(({8'b0,coor[16:8]}+{12'b00000,robotCounterOut[9:5]})+17'b00000000101000000*({9'b0,coor[7:0]}+{17'b00000,robotCounterOut[4:0]})
+									,clock,3'b000,1'b0,bg_reg_out_AfterSlash);
+	
 	Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
+	
 	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
 	
 	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
@@ -178,8 +215,21 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
 	lightSaberCounter LScounter(clock,lsCountOut,resetKey,LSCenable,mimic60HzClock4LS);
 	
-	nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable);
-	LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
+	//nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable);
+	new_nextPosition NP(clock,mimic60HzClock4Robot,coor,resetKey,NPenable,colorIsNotObj,collision);
+	
+	
+	//LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
+	Mouse MouseCoor(clock, resetKey, PS2_CLK, PS2_DAT, coor_LLSS[16:8], coor_LLSS[7:0], click);
+	always@(posedge mimic60HzClock4LS)
+		coor_LS=coor_LLSS;
+	
+	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000111100001111,5'b01111,5'b1111,
+											click,collision,resetKey);
+	
+	
+	
+	
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
 	//oneSecClock CLK1S(clock,resetKey,clock1s);
@@ -251,7 +301,12 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 	NPenable=1;
 	LD_X=1;
 	LD_Y=1;
-	color_from_CP=rebot_reg_out;
+	begin
+	if(colorIsNotObj)
+		color_from_CP=bg_reg_out_AfterSlash;
+	else
+		color_from_CP=rebot_reg_out;
+	end
 	bufferEnable=0;
 	displayOnVGA=0;
 	Dobject=1;
@@ -315,6 +370,36 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,robot
 	
 endmodule
 
+module collisionDetector(clock,object_center_coor,ls_center_coor,radius_object_X,radius_object_Y,pressed,out,resetKey);
+	input clock,pressed,resetKey;
+	input [16:0]object_center_coor,ls_center_coor;
+	input [4:0]radius_object_X,radius_object_Y;
+	output reg out;
+	
+	always @(posedge clock)
+		if(~resetKey)
+		begin
+			out=1'b0;
+		end
+		
+		else if(~pressed)
+		begin
+			if((ls_center_coor[16:8]<object_center_coor[16:8]+{4'b0,radius_object_X})&&
+				(ls_center_coor[16:8]>object_center_coor[16:8]-{4'b0,radius_object_X})&&
+				(ls_center_coor[7:0]<object_center_coor[7:0]+{3'b0,radius_object_Y})&&
+				(ls_center_coor[7:0]>object_center_coor[7:0]-{3'b0,radius_object_Y}))
+				begin
+				out=1'b1;
+				end
+			
+			else begin
+				out=1'b0;
+				end
+		end
+		else
+			out=1'b0;
+endmodule
+
 module LSmove(CLOCK_50,clock60hz,resetKey,SW,out);
 	input clock60hz,resetKey,CLOCK_50;
 	input [3:0]SW;
@@ -336,62 +421,151 @@ module LSmove(CLOCK_50,clock60hz,resetKey,SW,out);
 	end
 endmodule
 
-/*module OLDcontrolPath(k1,clock,resetKey);
-	input clock,resetKey,k1;
+module new_nextPosition(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click);
+	wire POSOUT;
+	reg POSIN;
+	input clock60hz,reset,enable,CLOCK_50,click;
+	output reg[16:0]out;
+	output reg colorIsNotObj;
+	reg already_cut;
 	
-	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,displayState=4'b0011,waitState=4'b0100,BGstate=4'b0101;
-	wire clock60;
-	wire [3:0]currentState,nextState;
-	sixtyHzClock CLK60(clock,clock60,resetKey);
+	position p(CLOCK_50,POSOUT,reset,POSIN);
+	wire [8:0]first9;
+	assign first9=out[16:8];
+	wire [7:0]last8=out[7:0];
 	
-	always@(posedge clock)
-	if(~resetKey)
-		currentState=resetState;
-	else if(currentState==resetState)
-		currentState=nextState;
-	else if(currentState==displayState)begin
-			if(clock60)
-				currentState=nextState;
+	
+	//Robot24x30 robot_reg({5'b00000,robotCounterOut[9:5]}+10'b0000011000*{5'b00000,robotCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
+	//BG_New bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
+	
+	
+	
+	
+	
+	always@(posedge CLOCK_50)begin
+		if(already_cut)
+			colorIsNotObj=1;
+		else
+			colorIsNotObj=0;
+			
+	end
+	
+	always@(posedge CLOCK_50) begin
+	if(~reset)
+		begin
+		out=17'b01000000011110000;
+		POSIN=1'b1;
+		already_cut=0;
+		end
+	else if(enable&&clock60hz)
+	begin
+		case(POSOUT)
+		1'b0:begin
+				if(out[7:0]==8'b11110000)
+				begin	//Going down
+					out[16:8]=9'b010000000;
+					POSIN=1'b1;	
+					already_cut=0;
+				end
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]+8'b00000101;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000100))
+							begin
+								out[7:0]=out[7:0]+8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+			   else if ((out[7:0]<8'b10000100)&&(out[7:0]>=8'b01100000))
+							begin
+								out[7:0]=out[7:0]+8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b01100000)&&(out[7:0]>=8'b01001000))
+							begin
+								out[7:0]=out[7:0]+8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b01001000)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]+8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+							end
+				else	
+				begin
+					out[7:0]=out[7:0]+8'b00000011;
+					out[16:8]=out[16:8]+9'b000000001;
+					POSIN=1'b0;
+				end
 			end
-	else if(currentState==BGstate)
-			currentState=nextState;
-		
-	always@(*)
-	case(currentState)
-		resetState:begin
-		if(~k1)
-			nextState=gameState;
-		else
-			nextState=resetState;
+
+		1'b1:begin
+				if(out[7:0]<=8'b00111100)//Going up
+				begin    
+					POSIN=1'b0;
+				end
+				else if(out[7:0]<=8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]-8'b00000101;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000100))
+							begin
+								out[7:0]=out[7:0]-8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+			   else if ((out[7:0]<8'b10000100)&&(out[7:0]>=8'b01100000))
+							begin
+								out[7:0]=out[7:0]-8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b01100000)&&(out[7:0]>=8'b01001000))
+							begin
+								out[7:0]=out[7:0]-8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				else if ((out[7:0]<8'b01001000)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]-8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+							end
+				
+				//end
+				else 	
+					begin
+						out[7:0]=out[7:0]-8'b00000011;
+						out[16:8]=out[16:8]+9'b000000001;
+						POSIN=1'b1;
+					end
+					
+				end
+			endcase
 		end
-		gameState:nextState=waitState;
-		gameOverState:nextState=resetState;
-		waitState:begin
-		if(oneMinClockOut=??)
-			nextState=displayState;
-		else
-			nextState=waitState;
-		end
-		displayState:begin
-		if(oneMinClockOut=??)
-			nextState=waitState;
-		else
-			nextState=displayState;
-		end
-	endcase
-	
-	always@(*)
-	case(currentState)
-	resetState:
-	gameState:
-	gameOverState:
-	displayState:
-	waitState:
-	
-	
-	
-endmodule
-*/
+	end
+
+endmodule 
+
 module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 	wire POSOUT;
 	reg POSIN;
@@ -401,14 +575,7 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 	wire [8:0]first9;
 	assign first9=out[16:8];
 	wire [7:0]last8=out[7:0];
-	//always@(posedge clock60hz)
-	/*always@(posedge CLOCK_50)
-	if(!reset)
-		begin
-		out=17'b01000000011110000;
-		POSIN=1'b1;
-		end
-	*/	
+	
 	always@(posedge CLOCK_50) begin
 	if(~reset)
 		begin
@@ -512,6 +679,7 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 	end
 
 endmodule 
+
 
 module position(clock,out,reset,in);
 		input clock,reset;

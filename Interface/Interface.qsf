@@ -49,9 +49,6 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VERILOG_FILE Interface.v
-set_global_assignment -name QIP_FILE BG1.qip
-set_global_assignment -name QIP_FILE Robot20x30.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -313,9 +310,18 @@ set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
+set_global_assignment -name VERILOG_FILE PS2_Controller.v
+set_global_assignment -name VERILOG_FILE Mouse.v
+set_global_assignment -name VERILOG_FILE Altera_UP_PS2_Data_In.v
+set_global_assignment -name VERILOG_FILE Altera_UP_PS2_Command_Out.v
+set_global_assignment -name VERILOG_FILE Interface.v
+set_global_assignment -name QIP_FILE BG1.qip
+set_global_assignment -name QIP_FILE Robot20x30.qip
 set_global_assignment -name QIP_FILE BG.qip
 set_global_assignment -name QIP_FILE Robot24x30.qip
 set_global_assignment -name QIP_FILE BGbuffer.qip
 set_global_assignment -name QIP_FILE BG_New.qip
 set_global_assignment -name QIP_FILE lightSaber.qip
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
