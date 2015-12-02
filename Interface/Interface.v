@@ -52,11 +52,12 @@ module Interface
 	wire [2:0] colour;
 	wire [8:0] x;
 	wire [7:0] y;
-	wire writeEn,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
+	wire writeEn,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton;
 	wire [16:0]BG_Coor,bufferCounterOut;
 	wire[9:0]coor_gap,coor_gap_LS;
 	wire [16:0]coor,coor_LS;
 	wire [2:0]color_from_CP;
+	wire [11:0]buttonCounterOut;
 	// Create an Instance of a VGA controller - there can be only one!
 	// Define the number of colours as well as the initial background
 	// image file (.MIF) for the controller.
@@ -86,19 +87,23 @@ module Interface
     
     // Instanciate datapath
 	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,
-					displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS);
+					displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS,Dbutton,buttonCounterOut);
 					
 	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,
 						color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,
-						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[3:0],HEX0,HEX1);
+						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[9:0],HEX0,HEX1,Dbutton,buttonCounterOut,KEY[1]);
 
     // Instanciate FSM control
 endmodule
 
-module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS);
-	input resetKey,clock,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
+module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,
+					color_from_CP,displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,
+					LD_Y_LS,coor_gap_LS,Dbutton,buttonCounterOut);
+					
+	input resetKey,clock,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton;
 	input [16:0]BG_Coor,bufferCounterOut;
 	input [9:0]coor_gap,coor_gap_LS;
+	input [11:0]buttonCounterOut;
 	input [16:0]coordinate,coor_LS;
 	input[2:0]color;
 	input [2:0]color_from_CP;
@@ -153,7 +158,11 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackgroun
 					y_out=bufferCounterOut[7:0];
 					color_out=BgbutterOut;
 				end
-				
+	else if(Dbutton)begin
+			x_out=9'b010000010+{3'b0,buttonCounterOut[11:6]};
+			y_out=8'b10110100+{2'b0,buttonCounterOut[5:0]};
+			color_out=color_from_CP;
+			end
 	RegisterX X(coordinate[16:8],clock,resetKey,regisXout,LD_X);
 	RegisterY Y(coordinate[7:0],clock,resetKey,regisYout,LD_Y);
 	
@@ -164,42 +173,46 @@ endmodule
 
 module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCounterOut,coor,
 						LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,
-						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led,HEX0,HEX1);
-	input resetKey,clock;
+						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led,HEX0,HEX1,Dbutton,buttonCounterOut,startKey);
+	input resetKey,clock,startKey;
 	input [3:0]SW;
 	input [2:0]color;	
 	
-	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS;
+	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton;
 	output reg[16:0]coor;
 	output reg [16:0]coor_LS;
 	output reg[2:0]color_from_CP;
 	output [16:0]BGcounterOut,bufferCounterOut;
 	output [9:0]objCounterOut,lsCountOut;
-	output [3:0]led;
+	output [9:0]led;
 	output [6:0]HEX0,HEX1;
-	assign led[0]=colorIsNotObj;
-	assign led[1]=click;
-	assign led[3:2]=randomNumber1%3;
-	
-	
+	output [11:0]buttonCounterOut;
+		
+
 	inout PS2_DAT;
 	inout PS2_CLK;	
 	
 	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,
-						waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111;
+						waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111,
+						drawBG_AfterReset=4'b1000,drawButton_AfterReset=4'b1001,display_AfterReset=4'b1010;
 	reg  [3:0]currentState,nextState;
 
-	reg cenable,RCenable,NPenable,NPenable1,NPenable2,NPenable3,bufferEnable,LSCenable,colorIsNotObj;
+	reg cenable,RCenable,NPenable,NPenable1,NPenable2,NPenable3,bufferEnable,LSCenable,colorIsNotObj,BCenable,mimichalfHzclock;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out,lord_reg_out;
+	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out,lord_reg_out,button_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
-	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision;
+	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision,mimichalfHzclock1,mimichalfHzclock2,mimichalfHzclock3;
 	wire [16:0]coor_LLSS;
 	wire [7:0]randomNumber1,randomNumber2,randomNumber3;
 	wire [16:0]coor1,coor2,coor3;
 	reg [8:0] score; 
-	
+
+	assign led[0]=colorIsNotObj;
+	assign led[1]=click;
+	assign led[3:2]=randomNumber1%3;
+	assign led[4]=led[4]+mimichalfHzclock;
+	assign led[9:6]=currentState;
 	always@(posedge colorIsNotObj)
 		score=score+8'b00000001;
 		
@@ -214,16 +227,20 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 									,clock,3'b000,1'b0,bg_reg_out_AfterSlash);
 	
 	//Robot24x30 robot_reg({5'b00000,objCounterOut[9:5]}+10'b0000011000*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
+	
 	jet jet_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,jet_reg_out);
 	lord lord_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,lord_reg_out);
 	
 	
 	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
 	
+	button bt_reg({6'b00000,buttonCounterOut[11:6]}+12'b000000111000*{6'b00000,buttonCounterOut[5:0]},clock,3'b000,1'b0,button_reg_out);
+	
 	BGcounter BGC(clock,BGcounterOut,resetKey,cenable);
 	objCounter RC(clock,objCounterOut,resetKey,RCenable,mimic60HzClock4Robot);
 	BGcounter BufferCounter(clock,bufferCounterOut,resetKey,bufferEnable);
 	lightSaberCounter LScounter(clock,lsCountOut,resetKey,LSCenable,mimic60HzClock4LS);
+	ButtonCounter bcounter(clock,resetKey,BCenable,buttonCounterOut);
 	
 	always@(clock)
 	if(randomNumber1%3==0)
@@ -233,6 +250,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 		NPenable3=0;
 		coor=coor1;
 		colorIsNotObj=colorIsNotObj1;
+		mimichalfHzclock=mimichalfHzclock1;
 	end
 	else if(randomNumber1%3==1)
 	begin
@@ -241,6 +259,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 		NPenable3=0;
 		coor=coor2;
 		colorIsNotObj=colorIsNotObj2;
+		mimichalfHzclock=mimichalfHzclock2;
 	end
 	else if(randomNumber1%3==2)
 	begin
@@ -249,11 +268,12 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 		NPenable1=0;
 		coor=coor3;
 		colorIsNotObj=colorIsNotObj3;
+		mimichalfHzclock=mimichalfHzclock3;
 	end
 	
-	NextPosition1 NP1(clock,mimic60HzClock4Robot,coor1,resetKey,NPenable1,colorIsNotObj1,collision,randomNumber2);
-	NextPosition2 NP2(clock,mimic60HzClock4Robot,coor2,resetKey,NPenable2,colorIsNotObj2,collision,randomNumber2);
-	NextPosition3 NP3(clock,mimic60HzClock4Robot,coor3,resetKey,NPenable3,colorIsNotObj3,collision,randomNumber2);
+	NextPosition1 NP1(clock,mimic60HzClock4Robot,coor1,resetKey,NPenable1,colorIsNotObj1,collision,randomNumber2,mimichalfHzclock1);
+	NextPosition2 NP2(clock,mimic60HzClock4Robot,coor2,resetKey,NPenable2,colorIsNotObj2,collision,randomNumber2,mimichalfHzclock2);
+	NextPosition3 NP3(clock,mimic60HzClock4Robot,coor3,resetKey,NPenable3,colorIsNotObj3,collision,randomNumber2,mimichalfHzclock3);
 	
 	//LSmove ls_move(clock,mimic60HzClock4LS,resetKey,SW,coor_LS);
 	Mouse MouseCoor(clock, resetKey, PS2_CLK, PS2_DAT, coor_LLSS[16:8], coor_LLSS[7:0], click);
@@ -263,9 +283,9 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000111100001111,5'b01111,5'b1111,
 											click,collision,resetKey);
 	
-	randomNumberGenerator rng1(clock, resetKey,randomNumber1,8'b10101010);
-	randomNumberGenerator rng2(clock, resetKey,randomNumber2,8'b00111001);
-	randomNumberGenerator rng3(clock, resetKey,randomNumber3,8'b11101001);
+	randomNumberGenerator2 rng1(clock,mimichalfHzclock,resetKey,randomNumber1,8'b10101010);//trajectory
+	randomNumberGenerator2 rng2(clock,mimichalfHzclock,resetKey,randomNumber2,8'b00111001);//x coordinates
+	randomNumberGenerator2 rng3(clock, mimichalfHzclock,resetKey,randomNumber3,8'b11101001);//character
 	
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
@@ -278,6 +298,15 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 			currentState=resetState;
 		else	if (currentState==resetState)
 				currentState=nextState;
+		else	if (currentState==drawBG_AfterReset)
+				currentState=nextState;
+		else	if (currentState==drawButton_AfterReset)
+				currentState=nextState;
+		else	if (currentState==display_AfterReset)
+				begin 
+				if(~startKey)
+					currentState=nextState;
+				end
 		else if (currentState==writeObj2Buffer)
 					currentState=nextState;
 		else if(currentState==writeLS2buffer)
@@ -293,7 +322,19 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	always@(*)
 		case(currentState)
 			resetState:
-				nextState=writeBG2Buffer;
+				nextState=drawBG_AfterReset;
+			drawBG_AfterReset:if(BGcounterOut==17'b10100000011110000)
+						nextState=drawButton_AfterReset;
+					else
+						nextState=drawBG_AfterReset;
+			drawButton_AfterReset:if(buttonCounterOut==12'b111000111000)
+							nextState=display_AfterReset;
+						else
+							nextState=drawButton_AfterReset;
+			display_AfterReset:if(bufferCounterOut==17'b10100000011110000)
+						nextState=writeBG2Buffer;
+					else
+						nextState=display_AfterReset;
 			writeLS2buffer:if(lsCountOut==10'b1111011110)
 						nextState=displayState;
 					else
@@ -329,6 +370,65 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	LD_X_LS=0;
 	LD_Y_LS=0;
 	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
+	end
+	drawBG_AfterReset:begin
+	plotVGA=0;
+	cenable=1;
+	Dbackground=1;
+	RCenable=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=bg_reg_out;
+	bufferEnable=0;
+	displayOnVGA=0;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
+	end
+	drawButton_AfterReset:begin
+	plotVGA=0;
+	cenable=0;
+	RCenable=0;
+	Dbackground=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=button_reg_out;
+	bufferEnable=0;
+	displayOnVGA=0;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
+	Dbutton=1;
+	BCenable=1;
+	end
+	display_AfterReset:begin
+	plotVGA=1;
+	cenable=0;
+	Dbackground=0;
+	RCenable=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=bg_reg_out; //this line doesn't matter
+	bufferEnable=1;
+	displayOnVGA=1;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
 	end
 	writeObj2Buffer:begin
 	plotVGA=0;
@@ -353,6 +453,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	LD_X_LS=0;
 	LD_Y_LS=0;
 	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
 	end
 	writeLS2buffer:begin
 	plotVGA=0;
@@ -370,6 +472,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	LD_X_LS=1;
 	LD_Y_LS=1;
 	Dlightsaber=1;
+	Dbutton=0;
+	BCenable=0;
 	end
 	writeBG2Buffer:begin
 	plotVGA=0;
@@ -387,6 +491,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	LD_X_LS=0;
 	LD_Y_LS=0;
 	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
 	end
 	displayState:begin
 	plotVGA=1;
@@ -404,6 +510,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	LD_X_LS=0;
 	LD_Y_LS=0;
 	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
 	end
 	endcase
 	
@@ -439,34 +547,14 @@ module collisionDetector(clock,object_center_coor,ls_center_coor,radius_object_X
 			out=1'b0;
 endmodule
 
-module LSmove(CLOCK_50,clock60hz,resetKey,SW,out);
-	input clock60hz,resetKey,CLOCK_50;
-	input [3:0]SW;
-	output reg [16:0]out;
-	always@(posedge CLOCK_50) begin
-	if(~resetKey)
-		out=17'b00000010000001000;
-	else if(clock60hz)begin
-		if(SW[0]==1&&out[7:0]<8'b11010010)//going down
-			out[7:0]=out[7:0]+8'b00000001;
-		else if(SW[1]==1&&out[7:0]>8'b0)//going up
-				out[7:0]=out[7:0]-8'b00000001;
-		if(SW[2]==1&&out[16:8]<9'b100100010)//going right
-			out[16:8]=out[16:8]+9'b000000001;
-		else if(SW[3]==1&&out[16:8]>9'b0)//going left
-				out[16:8]=out[16:8]-9'b000000001;
-	end
-		
-	end
-endmodule
 
-module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2);
+module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2,mimichalfHzclock);
 	wire POSOUT;
 	reg POSIN;
 	input clock60hz,reset,enable,CLOCK_50,click;
 	input [7:0]randomNumber2;
 	output reg[16:0]out;
-	output reg colorIsNotObj;
+	output reg colorIsNotObj,mimichalfHzclock;
 	reg already_cut;
 	wire [8:0]randowX;
 	assign randowX={1'b0,randomNumber2/2};
@@ -487,6 +575,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 		out={randowX,8'b11110000};
 		POSIN=1'b1;
 		already_cut=0;
+		mimichalfHzclock=0;
 		end
 	else if(enable&&clock60hz)
 	begin
@@ -497,6 +586,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 					out[16:8]=randowX;
 					POSIN=1'b1;	
 					already_cut=0;
+					mimichalfHzclock=1;
 				end
 				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
 							begin
@@ -504,6 +594,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000100))
 							begin
@@ -511,6 +602,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 			   else if ((out[7:0]<8'b10000100)&&(out[7:0]>=8'b01100000))
 							begin
@@ -518,6 +610,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else if ((out[7:0]<8'b01100000)&&(out[7:0]>=8'b01001000))
 							begin
@@ -525,6 +618,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else if ((out[7:0]<8'b01001000)&&(out[7:0]>=8'b00111100))
 							begin
@@ -532,6 +626,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else	
 				begin
@@ -552,6 +647,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000100))
 							begin
@@ -559,6 +655,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 			   else if ((out[7:0]<8'b10000100)&&(out[7:0]>=8'b01100000))
 							begin
@@ -566,6 +663,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else if ((out[7:0]<8'b01100000)&&(out[7:0]>=8'b01001000))
 							begin
@@ -573,6 +671,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else if ((out[7:0]<8'b01001000)&&(out[7:0]>=8'b00111100))
 							begin
@@ -580,6 +679,7 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
 								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				
 				//end
@@ -596,104 +696,122 @@ module NextPosition1(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,ran
 	end
 
 endmodule 
-
-module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
+module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2,mimichalfHzclock);//43211234
 	wire POSOUT;
 	reg POSIN;
-	input clock60hz,reset,enable,CLOCK_50;
+	input clock60hz,reset,enable,CLOCK_50,click;
 	output reg[16:0]out;
+	output reg colorIsNotObj,mimichalfHzclock;
+	input [7:0]randomNumber2;
+	reg already_cut;
 	position p(CLOCK_50,POSOUT,reset,POSIN);
-	wire [8:0]first9;
-	assign first9=out[16:8];
-	wire [7:0]last8=out[7:0];
+	assign randowX={1'b0,randomNumber2/2};
+	always@(posedge CLOCK_50)begin
+		if(already_cut)
+			colorIsNotObj=1;
+		else
+			colorIsNotObj=0;
+			
+	end
 	
 	always@(posedge CLOCK_50) begin
 	if(~reset)
 		begin
-		out=17'b01000000011110000;
+		//out=17'b01000000010010110;
+		out={randowX,8'b11110000};
 		POSIN=1'b1;
+		already_cut=0;
+		mimichalfHzclock=0;
 		end
 	else if(enable&&clock60hz)
 	begin
 		case(POSOUT)
 		1'b0:begin
-				if(out[7:0]==8'b11110000)
-				begin	//Going down
-					out[16:8]=9'b010000000;
+				if(out[7:0]>=8'b11110000)begin
+					out[16:8]=randowX;
 					POSIN=1'b1;	
+					already_cut=0;
+					mimichalfHzclock=1;
 				end
-				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]+8'b00000101;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-							end
-				else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000100))
+				else if ((out[7:0]<8'b11110000)&&(out[7:0]>=8'b10110100))
 							begin
 								out[7:0]=out[7:0]+8'b00000100;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;								
 							end
-			   else if ((out[7:0]<8'b10000100)&&(out[7:0]>=8'b01100000))
+			   else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000111))
 							begin
 								out[7:0]=out[7:0]+8'b00000011;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
-				else if ((out[7:0]<8'b01100000)&&(out[7:0]>=8'b01001000))
+				else if ((out[7:0]<8'b10000111)&&(out[7:0]>=8'b01101001))
 							begin
 								out[7:0]=out[7:0]+8'b00000010;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
+							already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
-				else if ((out[7:0]<8'b01001000)&&(out[7:0]>=8'b00111100))
+				else if ((out[7:0]<8'b01101001)&&(out[7:0]>=8'b01011010))
 							begin
 								out[7:0]=out[7:0]+8'b00000001;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b0;
+							already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				else	
 				begin
 					out[7:0]=out[7:0]+8'b00000011;
 					out[16:8]=out[16:8]+9'b000000001;
 					POSIN=1'b0;
+				already_cut=already_cut|click;
+								mimichalfHzclock=0;
 				end
 			end
 
 		1'b1:begin
-				if(out[7:0]<=8'b00111100)//Going up
+				if(out[7:0]<=8'b01011010)//Going up
 				begin    
 					POSIN=1'b0;
+		
 				end
-				else if(out[7:0]<=8'b11110000&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]-8'b00000101;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-							end
-				else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000100))
+				else if ((out[7:0]<8'b11110000)&&(out[7:0]>=8'b10110100))
 							begin
 								out[7:0]=out[7:0]-8'b00000100;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
+						already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
-			   else if ((out[7:0]<8'b10000100)&&(out[7:0]>=8'b01100000))
+			   else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000111))
 							begin
 								out[7:0]=out[7:0]-8'b00000011;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
+			already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
-				else if ((out[7:0]<8'b01100000)&&(out[7:0]>=8'b01001000))
+				else if ((out[7:0]<8'b10000111)&&(out[7:0]>=8'b01101001))
 							begin
 								out[7:0]=out[7:0]-8'b00000010;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
+				already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
-				else if ((out[7:0]<8'b01001000)&&(out[7:0]>=8'b00111100))
+				else if ((out[7:0]<8'b01101001)&&(out[7:0]>=8'b01011010))
 							begin
 								out[7:0]=out[7:0]-8'b00000001;
 								out[16:8]=out[16:8]+9'b000000001;
 								POSIN=1'b1;
+			already_cut=already_cut|click;
+								mimichalfHzclock=0;
 							end
 				
 				//end
@@ -702,6 +820,8 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 						out[7:0]=out[7:0]-8'b00000011;
 						out[16:8]=out[16:8]+9'b000000001;
 						POSIN=1'b1;
+						already_cut=already_cut|click;
+								mimichalfHzclock=0;
 					end
 					
 				end
@@ -711,6 +831,173 @@ module nextPosition(CLOCK_50,clock60hz,out,reset,enable);
 
 endmodule 
 
+module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2,mimichalfHzclock);//654321123456
+	wire POSOUT;
+	reg POSIN;
+	input clock60hz,reset,enable,CLOCK_50,click;
+	output reg[16:0]out;
+	output reg colorIsNotObj,mimichalfHzclock;
+	input [7:0]randomNumber2;
+	reg already_cut;
+	assign randowX={1'b0,randomNumber2/2};
+	position p(CLOCK_50,POSOUT,reset,POSIN);
+	
+	always@(posedge CLOCK_50)begin
+		if(already_cut)
+			colorIsNotObj=1;
+		else
+			colorIsNotObj=0;
+			
+	end
+	
+	always@(posedge CLOCK_50) begin
+	if(~reset)
+		begin
+		//out=17'b01000000010010110;
+		out={randowX,8'b11110000};
+		POSIN=1'b1;
+		already_cut=0;
+		mimichalfHzclock=0;
+		end
+	else if(enable&&clock60hz)
+	begin
+		case(POSOUT)
+		1'b0:begin
+				if(out[7:0]>=8'b11101111)
+				begin
+					out[16:8]=randowX;
+					POSIN=1'b1;	
+					already_cut=1'b0;
+					mimichalfHzclock=1;
+				end
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]+8'b00000110;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if(out[7:0]<8'b10110100&&(out[7:0]>=8'b10000010))
+							begin
+								out[7:0]=out[7:0]+8'b00000101;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]+8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]+8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
+							begin
+								out[7:0]=out[7:0]+8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
+							begin
+								out[7:0]=out[7:0]+8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b0;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else	
+				begin
+					out[7:0]=out[7:0]+8'b00000011;
+					out[16:8]=out[16:8]+9'b000000001;
+					POSIN=1'b0;
+					already_cut=already_cut|click;
+								mimichalfHzclock=0;
+				end
+			end
+
+		1'b1:begin
+				if(out[7:0]<=8'b00011110)//Going up
+				begin    
+					POSIN=1'b0;
+				end
+				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
+							begin
+								out[7:0]=out[7:0]-8'b00000110;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if(out[7:0]<=8'b10110100&&(out[7:0]>=8'b10000010))
+							begin
+								out[7:0]=out[7:0]-8'b00000101;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
+							begin
+								out[7:0]=out[7:0]-8'b00000100;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
+							begin
+								out[7:0]=out[7:0]-8'b00000011;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
+							begin
+								out[7:0]=out[7:0]-8'b00000010;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
+							begin
+								out[7:0]=out[7:0]-8'b00000001;
+								out[16:8]=out[16:8]+9'b000000001;
+								POSIN=1'b1;
+								already_cut=already_cut|click;
+								mimichalfHzclock=0;
+							end
+				
+				//end
+				else 	
+					begin
+						out[7:0]=out[7:0]-8'b00000011;
+						out[16:8]=out[16:8]+9'b000000001;
+						POSIN=1'b1;
+						already_cut=already_cut|click;
+								mimichalfHzclock=0;
+					end
+					
+				end
+			endcase
+		end
+	end
+
+endmodule 
 
 module position(clock,out,reset,in);
 		input clock,reset;
@@ -745,22 +1032,6 @@ module oneMinClock(clock,reset,out,enable);
 		
 endmodule
 
-module twoSecClock(clock,reset,out,enable);
-	input clock,reset,enable;
-	output reg out;
-	reg [26:0]q;
-	
-	always @ (posedge clock)
-		if((~reset)||(q==27'd0)) begin
-			q<=27'b101111101011110000100000000;
-			out=1;
-		end
-		else begin
-			q<=q-27'b1;
-			out=0;
-		end
-		
-endmodule
 
 module scoreCounter(clock,reset,out,enable);
 	input clock,reset,enable;
@@ -793,22 +1064,7 @@ endmodule
 /***********************************************************************/
 /*SIMULATION PUEPOSE CLOCK. NEED TO BE CHANGED TO 60HZ AT THE END     */
 /**********************************************************************/
-module oneSecClock(clock,reset,out);
-	input clock,reset;
-	output reg out;
-	reg [25:0]q;
-	
-	always @ (posedge clock)
-		if((~reset)||(q==26'd0)) begin
-			q<=26'b10111110101111000010000000;
-			out=1;
-		end
-		else begin
-			q<=q-26'b1;
-			out=0;
-		end
-		
-endmodule
+
 
 module objCounter(clock,out,reset,enable,mimic60HzClock);
 	input clock,reset,enable;
@@ -910,426 +1166,33 @@ endmodule
 
 
 
-module NextPosition2(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2);//43211234
-	wire POSOUT;
-	reg POSIN;
-	input clock60hz,reset,enable,CLOCK_50,click;
-	output reg[16:0]out;
-	output reg colorIsNotObj;
-	input [7:0]randomNumber2;
-	reg already_cut;
-	position p(CLOCK_50,POSOUT,reset,POSIN);
-	assign randowX={1'b0,randomNumber2/2};
-	always@(posedge CLOCK_50)begin
-		if(already_cut)
-			colorIsNotObj=1;
-		else
-			colorIsNotObj=0;
-			
-	end
-	
-	always@(posedge CLOCK_50) begin
-	if(~reset)
-		begin
-		//out=17'b01000000010010110;
-		out={randowX,8'b11110000};
-		POSIN=1'b1;
-		already_cut=0;
-		end
-	else if(enable&&clock60hz)
-	begin
-		case(POSOUT)
-		1'b0:begin
-				if(out[7:0]>=8'b11110000)begin
-					out[16:8]=randowX;
-					POSIN=1'b1;	
-					already_cut=0;
-					
-				end
-				else if ((out[7:0]<8'b11110000)&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]+8'b00000100;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;								
-							end
-			   else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000111))
-							begin
-								out[7:0]=out[7:0]+8'b00000011;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b10000111)&&(out[7:0]>=8'b01101001))
-							begin
-								out[7:0]=out[7:0]+8'b00000010;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-							already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b01101001)&&(out[7:0]>=8'b01011010))
-							begin
-								out[7:0]=out[7:0]+8'b00000001;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-							already_cut=already_cut|click;
-							end
-				else	
-				begin
-					out[7:0]=out[7:0]+8'b00000011;
-					out[16:8]=out[16:8]+9'b000000001;
-					POSIN=1'b0;
-				already_cut=already_cut|click;
-				end
-			end
-
-		1'b1:begin
-				if(out[7:0]<=8'b01011010)//Going up
-				begin    
-					POSIN=1'b0;
-		
-				end
-				else if ((out[7:0]<8'b11110000)&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]-8'b00000100;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-						already_cut=already_cut|click;
-							end
-			   else if ((out[7:0]<8'b10110100)&&(out[7:0]>=8'b10000111))
-							begin
-								out[7:0]=out[7:0]-8'b00000011;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-			already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b10000111)&&(out[7:0]>=8'b01101001))
-							begin
-								out[7:0]=out[7:0]-8'b00000010;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-				already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b01101001)&&(out[7:0]>=8'b01011010))
-							begin
-								out[7:0]=out[7:0]-8'b00000001;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-			already_cut=already_cut|click;
-							end
-				
-				//end
-				else 	
-					begin
-						out[7:0]=out[7:0]-8'b00000011;
-						out[16:8]=out[16:8]+9'b000000001;
-						POSIN=1'b1;
-						already_cut=already_cut|click;
-					end
-					
-				end
-			endcase
-		end
-	end
-
-endmodule 
-
-module NextPosition3(CLOCK_50,clock60hz,out,reset,enable,colorIsNotObj,click,randomNumber2);//654321123456
-	wire POSOUT;
-	reg POSIN;
-	input clock60hz,reset,enable,CLOCK_50,click;
-	output reg[16:0]out;
-	output reg colorIsNotObj;
-	input [7:0]randomNumber2;
-	reg already_cut;
-	assign randowX={1'b0,randomNumber2/2};
-	position p(CLOCK_50,POSOUT,reset,POSIN);
-	
-	always@(posedge CLOCK_50)begin
-		if(already_cut)
-			colorIsNotObj=1;
-		else
-			colorIsNotObj=0;
-			
-	end
-	
-	always@(posedge CLOCK_50) begin
-	if(~reset)
-		begin
-		//out=17'b01000000010010110;
-		out={randowX,8'b11110000};
-		POSIN=1'b1;
-		already_cut=0;
-		end
-	else if(enable&&clock60hz)
-	begin
-		case(POSOUT)
-		1'b0:begin
-				if(out[7:0]>=8'b11101111)
-				begin
-					out[16:8]=randowX;
-					POSIN=1'b1;	
-					already_cut=1'b0;
-				end
-				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]+8'b00000110;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-				else if(out[7:0]<8'b10110100&&(out[7:0]>=8'b10000010))
-							begin
-								out[7:0]=out[7:0]+8'b00000101;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
-							begin
-								out[7:0]=out[7:0]+8'b00000100;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
-							begin
-								out[7:0]=out[7:0]+8'b00000011;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
-							begin
-								out[7:0]=out[7:0]+8'b00000010;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
-							begin
-								out[7:0]=out[7:0]+8'b00000001;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b0;
-								already_cut=already_cut|click;
-							end
-				else	
-				begin
-					out[7:0]=out[7:0]+8'b00000011;
-					out[16:8]=out[16:8]+9'b000000001;
-					POSIN=1'b0;
-					already_cut=already_cut|click;
-				end
-			end
-
-		1'b1:begin
-				if(out[7:0]<=8'b00011110)//Going up
-				begin    
-					POSIN=1'b0;
-				end
-				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]-8'b00000110;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-								already_cut=already_cut|click;
-							end
-				else if(out[7:0]<=8'b10110100&&(out[7:0]>=8'b10000010))
-							begin
-								out[7:0]=out[7:0]-8'b00000101;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
-							begin
-								out[7:0]=out[7:0]-8'b00000100;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-								already_cut=already_cut|click;
-							end
-			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
-							begin
-								out[7:0]=out[7:0]-8'b00000011;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
-							begin
-								out[7:0]=out[7:0]-8'b00000010;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-								already_cut=already_cut|click;
-							end
-				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
-							begin
-								out[7:0]=out[7:0]-8'b00000001;
-								out[16:8]=out[16:8]+9'b000000001;
-								POSIN=1'b1;
-								already_cut=already_cut|click;
-							end
-				
-				//end
-				else 	
-					begin
-						out[7:0]=out[7:0]-8'b00000011;
-						out[16:8]=out[16:8]+9'b000000001;
-						POSIN=1'b1;
-						already_cut=already_cut|click;
-					end
-					
-				end
-			endcase
-		end
-	end
-
-endmodule 
-
-module NextPosition3x2(CLOCK_50,clock60hz,out,reset,enable,fall);//654321123456 x2
-	wire POSOUT;
-	reg POSIN;
-	input clock60hz,reset,enable,CLOCK_50;
-	output reg[16:0]out;
-	output reg fall;
-	position p(CLOCK_50,POSOUT,reset,POSIN);
-
-	always@(posedge CLOCK_50) begin
-	if(~reset)
-		begin
-		//out=17'b01000000010010110;
-		out=17'b00000010011101111;
-		POSIN=1'b1;
-		fall = 0;
-		end
-	else if(enable&&clock60hz)
-	begin
-		case(POSOUT)
-		1'b0:begin
-				if(out[7:0]>=8'b11101111)
-					fall = 1;
-				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]+8'b00000110;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b0;
-								fall = 0;
-							end
-				else if(out[7:0]<8'b10110100&&(out[7:0]>=8'b10000010))
-							begin
-								out[7:0]=out[7:0]+8'b00000101;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b0;
-								fall = 0;
-							end
-				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
-							begin
-								out[7:0]=out[7:0]+8'b00000100;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b0;
-								fall = 0;
-							end
-			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
-							begin
-								out[7:0]=out[7:0]+8'b00000011;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b0;
-								fall = 0;
-							end
-				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
-							begin
-								out[7:0]=out[7:0]+8'b00000010;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b0;
-								fall = 0;
-							end
-				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
-							begin
-								out[7:0]=out[7:0]+8'b00000001;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b0;
-								fall = 0;
-							end
-				else	
-				begin
-					out[7:0]=out[7:0]+8'b00000011;
-					out[16:8]=out[16:8]+9'b000000001;
-					POSIN=1'b0;
-					fall = 0;
-				end
-			end
-
-		1'b1:begin
-				if(out[7:0]<=8'b00011110)//Going up
-				begin    
-					POSIN=1'b0;
-					fall = 0;
-				end
-				else if(out[7:0]<8'b11110000&&(out[7:0]>=8'b10110100))
-							begin
-								out[7:0]=out[7:0]-8'b00000110;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b1;
-								fall = 0;
-							end
-				else if(out[7:0]<=8'b10110100&&(out[7:0]>=8'b10000010))
-							begin
-								out[7:0]=out[7:0]-8'b00000101;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b1;
-								fall = 0;
-							end
-				else if ((out[7:0]<8'b10000010)&&(out[7:0]>=8'b01011010))
-							begin
-								out[7:0]=out[7:0]-8'b00000100;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b1;
-								fall = 0;
-							end
-			   else if ((out[7:0]<8'b01011010)&&(out[7:0]>=8'b00111100))
-							begin
-								out[7:0]=out[7:0]-8'b00000011;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b1;
-								fall = 0;
-							end
-				else if ((out[7:0]<8'b00111100)&&(out[7:0]>=8'b00101000))
-							begin
-								out[7:0]=out[7:0]-8'b00000010;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b1;
-								fall = 0;
-							end
-				else if ((out[7:0]<8'b00101000)&&(out[7:0]>=8'b00011110))
-							begin
-								out[7:0]=out[7:0]-8'b00000001;
-								out[16:8]=out[16:8]+9'b000000010;
-								POSIN=1'b1;
-								fall = 0;
-							end
-				
-				//end
-				else 	
-					begin
-						out[7:0]=out[7:0]-8'b00000011;
-						out[16:8]=out[16:8]+9'b000000010;
-						POSIN=1'b1;
-						fall = 0;
-					end
-					
-				end
-			endcase
-		end
-	end
-
-endmodule 
-
 module randomNumberGenerator(CLOCK, reset, out,seed);
 input  CLOCK, reset;
 input [7:0]seed;
 output reg [7:0] out;
 wire clk;
 ClockDivider1Hz CLK(CLOCK,reset,clk);
+always@(posedge CLOCK)
+if(!reset)
+out<=seed;
+else if(clk)
+begin
+out[7]<=out[6];
+out[6]<=out[5];
+out[5]<=out[4];
+out[4]<=out[3];
+out[3]<=out[2];
+out[2]<=out[1];
+out[1]<=out[0];
+out[0]<=out[3]^out[4]^out[5]^out[7];
+end
+endmodule
+
+module randomNumberGenerator2(CLOCK,clk, reset, out,seed);
+input  CLOCK, reset,clk;
+input [7:0]seed;
+output reg [7:0] out;
+wire clk;
 always@(posedge CLOCK)
 if(!reset)
 out<=seed;
@@ -1456,3 +1319,21 @@ module hex(SW,HEX0);
 		(c[0]|c[1]|~c[2]|~c[3]));
 		
 endmodule
+
+module ButtonCounter(clock,reset,enable,out);
+	input clock,reset,enable;
+	output reg[11:0]out;
+	always@(posedge clock)
+	if(!reset||!enable)
+		out=12'b0;
+	else if(enable&&(out!=12'b111000111000))
+		begin
+		if(out[5:0]==6'b111000)
+			out=out-12'b000000111000 + 12'b000001000000;
+		else 
+			out=out+12'b000000000001;
+		end
+	else if(enable&&(out==12'b111000111000))
+		out=12'b111000111000;
+
+endmodule 
