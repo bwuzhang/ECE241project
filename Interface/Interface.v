@@ -52,7 +52,7 @@ module Interface
 	wire [2:0] colour;
 	wire [8:0] x;
 	wire [7:0] y;
-	wire writeEn,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton;
+	wire writeEn,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton,Dgameover;
 	wire [16:0]BG_Coor,bufferCounterOut;
 	wire[9:0]coor_gap,coor_gap_LS;
 	wire [16:0]coor,coor_LS;
@@ -87,20 +87,20 @@ module Interface
     
     // Instanciate datapath
 	dataPath DP(coor,SW[9:7],x,y,colour,CLOCK_50,KEY[0],Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,color_from_CP,
-					displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS,Dbutton,buttonCounterOut);
+					displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,coor_gap_LS,Dbutton,buttonCounterOut,Dgameover);
 					
 	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,
 						color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,
-						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[9:0],HEX0,HEX1,Dbutton,buttonCounterOut,KEY[1]);
+						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[9:0],HEX0,HEX1,Dbutton,buttonCounterOut,KEY[1],Dgameover);
 
     // Instanciate FSM control
 endmodule
 
 module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackground,BG_Coor,coor_gap,LD_X,LD_Y,
 					color_from_CP,displayOnVGA,Dobject,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,
-					LD_Y_LS,coor_gap_LS,Dbutton,buttonCounterOut);
+					LD_Y_LS,coor_gap_LS,Dbutton,buttonCounterOut,Dgameover);
 					
-	input resetKey,clock,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton;
+	input resetKey,clock,LD_X,LD_Y,Dbackground,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton,Dgameover;
 	input [16:0]BG_Coor,bufferCounterOut;
 	input [9:0]coor_gap,coor_gap_LS;
 	input [11:0]buttonCounterOut;
@@ -131,7 +131,7 @@ module dataPath(coordinate,color,x_out,y_out,color_out,clock,resetKey,Dbackgroun
 		y_out=8'b0;
 		color_out=color_from_CP;
 	end
-	else if(Dbackground)begin
+	else if(Dbackground||Dgameover)begin
 		x_out=BG_Coor[16:8];
 		y_out=BG_Coor[7:0];
 		color_out=color_from_CP;
@@ -173,12 +173,13 @@ endmodule
 
 module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCounterOut,coor,
 						LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,
-						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led,HEX0,HEX1,Dbutton,buttonCounterOut,startKey);
+						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led,HEX0,HEX1,Dbutton,buttonCounterOut,
+						startKey,Dgameover);
 	input resetKey,clock,startKey;
 	input [3:0]SW;
 	input [2:0]color;	
 	
-	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton;
+	output reg plotVGA,Dbackground,LD_X,LD_Y,displayOnVGA,Dobject,Dlightsaber,LD_X_LS,LD_Y_LS,Dbutton,Dgameover;
 	output reg[16:0]coor;
 	output reg [16:0]coor_LS;
 	output reg[2:0]color_from_CP;
@@ -192,7 +193,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	inout PS2_DAT;
 	inout PS2_CLK;	
 	
-	parameter [3:0]resetState=4'b0000,gameState=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,
+	parameter [3:0]resetState=4'b0000,drawGameOver=4'b0001,gameOverState=4'b0010,writeObj2Buffer=4'b0011,
 						waitState=4'b0100,writeBG2Buffer=4'b0101,writeLS2buffer=4'b0110,displayState=4'b0111,
 						drawBG_AfterReset=4'b1000,drawButton_AfterReset=4'b1001,display_AfterReset=4'b1010;
 	reg  [3:0]currentState,nextState;
@@ -200,7 +201,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	reg cenable,RCenable,NPenable,NPenable1,NPenable2,NPenable3,bufferEnable,LSCenable,colorIsNotObj,BCenable,mimichalfHzclock;
 	wire clock60,clock1s;
 	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out,lord_reg_out,button_reg_out,
-			soilder_reg_out,hunter_reg_out,robot_reg_out,yoda_reg_out;
+			soilder_reg_out,hunter_reg_out,robot_reg_out,yoda_reg_out,go_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
 	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision,mimichalfHzclock1,mimichalfHzclock2,mimichalfHzclock3;
@@ -213,6 +214,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	assign led[1]=click;
 	assign led[3:2]=randomNumber1%3;
 	assign led[4]=led[4]+mimichalfHzclock;
+	assign led[5]=(randomNumber3%6==2);
 	assign led[9:6]=currentState;
 	always@(posedge colorIsNotObj)
 		score=score+8'b00000001;
@@ -226,6 +228,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	BG_New bg_reg({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,bg_reg_out);
 	BG_New bg_reg_AfterSlash(({8'b0,coor[16:8]}+{12'b00000,objCounterOut[9:5]})+17'b00000000101000000*({9'b0,coor[7:0]}+{17'b00000,objCounterOut[4:0]})
 									,clock,3'b000,1'b0,bg_reg_out_AfterSlash);
+	GO go({8'b0,BGcounterOut[16:8]}+17'b00000000101000000*{9'b0,BGcounterOut[7:0]},clock,3'b000,1'b0,go_reg_out);
+	
 	
 	//Robot24x30 robot_reg({5'b00000,objCounterOut[9:5]}+10'b0000011000*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,rebot_reg_out);
 	
@@ -312,15 +316,26 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 					currentState=nextState;
 				end
 		else if (currentState==writeObj2Buffer)
-					currentState=nextState;
+					//if(colorIsNotObj&&(randomNumber3%6==2))
+					//	currentState=drawGameOver;
+					//else
+						currentState=nextState;
 		else if(currentState==writeLS2buffer)
 					currentState=nextState;
 		else if(currentState==displayState)
 			begin
-				if(clock60)
+				if(clock60)begin
 					currentState=nextState;
+					end
 			end
 		else if(currentState==writeBG2Buffer)
+							if(colorIsNotObj&&(randomNumber3%6==2))
+					currentState=drawGameOver;
+					else
+			currentState=nextState;
+		else if(currentState==drawGameOver)
+			currentState=nextState;
+		else if(currentState==gameOverState)
 			currentState=nextState;
 			
 	always@(*)
@@ -355,6 +370,12 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 						nextState=writeBG2Buffer;
 					else
 						nextState=displayState;
+			drawGameOver:if(BGcounterOut==17'b10100000011110000)
+						nextState=gameOverState;
+					else
+						nextState=drawGameOver;
+			gameOverState:
+						nextState=gameOverState;
 		endcase
 	
 	always@(*)
@@ -376,6 +397,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
 	end
 	drawBG_AfterReset:begin
 	plotVGA=0;
@@ -395,6 +417,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
 	end
 	drawButton_AfterReset:begin
 	plotVGA=0;
@@ -414,6 +437,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=1;
 	BCenable=1;
+	Dgameover=0;
 	end
 	display_AfterReset:begin
 	plotVGA=1;
@@ -433,6 +457,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
 	end
 	writeObj2Buffer:begin
 	plotVGA=0;
@@ -468,6 +493,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
 	end
 	writeLS2buffer:begin
 	plotVGA=0;
@@ -487,6 +513,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=1;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
 	end
 	writeBG2Buffer:begin
 	plotVGA=0;
@@ -506,6 +533,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
 	end
 	displayState:begin
 	plotVGA=1;
@@ -525,6 +553,47 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	Dlightsaber=0;
 	Dbutton=0;
 	BCenable=0;
+	Dgameover=0;
+	end
+	drawGameOver:begin
+	plotVGA=0;
+	cenable=1;
+	Dbackground=0;
+	RCenable=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=go_reg_out;
+	bufferEnable=0;
+	displayOnVGA=0;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
+	Dgameover=1;
+	end
+	gameOverState:begin
+	plotVGA=1;
+	cenable=0;
+	Dbackground=0;
+	RCenable=0;
+	NPenable=0;
+	LD_X=0;
+	LD_Y=0;
+	color_from_CP=bg_reg_out; //this line doesn't matter
+	bufferEnable=1;
+	displayOnVGA=1;
+	Dobject=0;
+	LSCenable=0;
+	LD_X_LS=0;
+	LD_Y_LS=0;
+	Dlightsaber=0;
+	Dbutton=0;
+	BCenable=0;
+	Dgameover=0;	
 	end
 	endcase
 	

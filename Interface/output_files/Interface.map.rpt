@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Interface
-Tue Dec 01 23:18:15 2015
+Wed Dec 02 00:33:33 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
 
 
@@ -33,68 +33,71 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
  25. Source assignments for dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component|altsyncram_agm1:auto_generated
  26. Source assignments for controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated
  27. Source assignments for controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated
- 28. Source assignments for controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component|altsyncram_o4o1:auto_generated
- 29. Source assignments for controlPath:CP|lord:lord_reg|altsyncram:altsyncram_component|altsyncram_68o1:auto_generated
- 30. Source assignments for controlPath:CP|yoda:yoda_reg|altsyncram:altsyncram_component|altsyncram_28o1:auto_generated
- 31. Source assignments for controlPath:CP|soilder:soilder_reg|altsyncram:altsyncram_component|altsyncram_5so1:auto_generated
- 32. Source assignments for controlPath:CP|hunter:hunter_reg|altsyncram:altsyncram_component|altsyncram_bfo1:auto_generated
- 33. Source assignments for controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component|altsyncram_rbo1:auto_generated
- 34. Source assignments for controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component|altsyncram_50p1:auto_generated
- 35. Source assignments for controlPath:CP|button:bt_reg|altsyncram:altsyncram_component|altsyncram_7ho1:auto_generated
- 36. Parameter Settings for User Entity Instance: vga_adapter:VGA
- 37. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
- 38. Parameter Settings for User Entity Instance: vga_adapter:VGA|altsyncram:VideoMemory
- 39. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component
- 40. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller
- 41. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator
- 42. Parameter Settings for User Entity Instance: dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component
- 43. Parameter Settings for User Entity Instance: controlPath:CP
- 44. Parameter Settings for User Entity Instance: controlPath:CP|vga_address_translator:BGtranslator
- 45. Parameter Settings for User Entity Instance: controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component
- 46. Parameter Settings for User Entity Instance: controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component
- 47. Parameter Settings for User Entity Instance: controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component
- 48. Parameter Settings for User Entity Instance: controlPath:CP|lord:lord_reg|altsyncram:altsyncram_component
- 49. Parameter Settings for User Entity Instance: controlPath:CP|yoda:yoda_reg|altsyncram:altsyncram_component
- 50. Parameter Settings for User Entity Instance: controlPath:CP|soilder:soilder_reg|altsyncram:altsyncram_component
- 51. Parameter Settings for User Entity Instance: controlPath:CP|hunter:hunter_reg|altsyncram:altsyncram_component
- 52. Parameter Settings for User Entity Instance: controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component
- 53. Parameter Settings for User Entity Instance: controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component
- 54. Parameter Settings for User Entity Instance: controlPath:CP|button:bt_reg|altsyncram:altsyncram_component
- 55. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor
- 56. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse
- 57. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out
- 58. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1
- 59. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D2
- 60. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D3
- 61. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4
- 62. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5
- 63. Parameter Settings for Inferred Entity Instance: controlPath:CP|lpm_divide:Mod0
- 64. Parameter Settings for Inferred Entity Instance: controlPath:CP|lpm_divide:Mod1
- 65. altsyncram Parameter Settings by Entity Instance
- 66. altpll Parameter Settings by Entity Instance
- 67. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator2:rng3"
- 68. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator2:rng2"
- 69. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator2:rng1"
- 70. Port Connectivity Checks: "controlPath:CP|collisionDetector:collisionD"
- 71. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5"
- 72. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4"
- 73. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse"
- 74. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor"
- 75. Port Connectivity Checks: "controlPath:CP|button:bt_reg"
- 76. Port Connectivity Checks: "controlPath:CP|lightSaber:ls_reg"
- 77. Port Connectivity Checks: "controlPath:CP|robot:robot_reg"
- 78. Port Connectivity Checks: "controlPath:CP|hunter:hunter_reg"
- 79. Port Connectivity Checks: "controlPath:CP|soilder:soilder_reg"
- 80. Port Connectivity Checks: "controlPath:CP|yoda:yoda_reg"
- 81. Port Connectivity Checks: "controlPath:CP|lord:lord_reg"
- 82. Port Connectivity Checks: "controlPath:CP|jet:jet_reg"
- 83. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg_AfterSlash"
- 84. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg"
- 85. Port Connectivity Checks: "controlPath:CP|vga_address_translator:BGtranslator"
- 86. Post-Synthesis Netlist Statistics for Top Partition
- 87. Elapsed Time Per Partition
- 88. Analysis & Synthesis Messages
- 89. Analysis & Synthesis Suppressed Messages
+ 28. Source assignments for controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated
+ 29. Source assignments for controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component|altsyncram_o4o1:auto_generated
+ 30. Source assignments for controlPath:CP|lord:lord_reg|altsyncram:altsyncram_component|altsyncram_68o1:auto_generated
+ 31. Source assignments for controlPath:CP|yoda:yoda_reg|altsyncram:altsyncram_component|altsyncram_28o1:auto_generated
+ 32. Source assignments for controlPath:CP|soilder:soilder_reg|altsyncram:altsyncram_component|altsyncram_5so1:auto_generated
+ 33. Source assignments for controlPath:CP|hunter:hunter_reg|altsyncram:altsyncram_component|altsyncram_bfo1:auto_generated
+ 34. Source assignments for controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component|altsyncram_rbo1:auto_generated
+ 35. Source assignments for controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component|altsyncram_50p1:auto_generated
+ 36. Source assignments for controlPath:CP|button:bt_reg|altsyncram:altsyncram_component|altsyncram_7ho1:auto_generated
+ 37. Parameter Settings for User Entity Instance: vga_adapter:VGA
+ 38. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
+ 39. Parameter Settings for User Entity Instance: vga_adapter:VGA|altsyncram:VideoMemory
+ 40. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component
+ 41. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller
+ 42. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator
+ 43. Parameter Settings for User Entity Instance: dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component
+ 44. Parameter Settings for User Entity Instance: controlPath:CP
+ 45. Parameter Settings for User Entity Instance: controlPath:CP|vga_address_translator:BGtranslator
+ 46. Parameter Settings for User Entity Instance: controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component
+ 47. Parameter Settings for User Entity Instance: controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component
+ 48. Parameter Settings for User Entity Instance: controlPath:CP|GO:go|altsyncram:altsyncram_component
+ 49. Parameter Settings for User Entity Instance: controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component
+ 50. Parameter Settings for User Entity Instance: controlPath:CP|lord:lord_reg|altsyncram:altsyncram_component
+ 51. Parameter Settings for User Entity Instance: controlPath:CP|yoda:yoda_reg|altsyncram:altsyncram_component
+ 52. Parameter Settings for User Entity Instance: controlPath:CP|soilder:soilder_reg|altsyncram:altsyncram_component
+ 53. Parameter Settings for User Entity Instance: controlPath:CP|hunter:hunter_reg|altsyncram:altsyncram_component
+ 54. Parameter Settings for User Entity Instance: controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component
+ 55. Parameter Settings for User Entity Instance: controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component
+ 56. Parameter Settings for User Entity Instance: controlPath:CP|button:bt_reg|altsyncram:altsyncram_component
+ 57. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor
+ 58. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse
+ 59. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out
+ 60. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1
+ 61. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D2
+ 62. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D3
+ 63. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4
+ 64. Parameter Settings for User Entity Instance: controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5
+ 65. Parameter Settings for Inferred Entity Instance: controlPath:CP|lpm_divide:Mod0
+ 66. Parameter Settings for Inferred Entity Instance: controlPath:CP|lpm_divide:Mod1
+ 67. altsyncram Parameter Settings by Entity Instance
+ 68. altpll Parameter Settings by Entity Instance
+ 69. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator2:rng3"
+ 70. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator2:rng2"
+ 71. Port Connectivity Checks: "controlPath:CP|randomNumberGenerator2:rng1"
+ 72. Port Connectivity Checks: "controlPath:CP|collisionDetector:collisionD"
+ 73. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5"
+ 74. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D4"
+ 75. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse"
+ 76. Port Connectivity Checks: "controlPath:CP|Mouse:MouseCoor"
+ 77. Port Connectivity Checks: "controlPath:CP|button:bt_reg"
+ 78. Port Connectivity Checks: "controlPath:CP|lightSaber:ls_reg"
+ 79. Port Connectivity Checks: "controlPath:CP|robot:robot_reg"
+ 80. Port Connectivity Checks: "controlPath:CP|hunter:hunter_reg"
+ 81. Port Connectivity Checks: "controlPath:CP|soilder:soilder_reg"
+ 82. Port Connectivity Checks: "controlPath:CP|yoda:yoda_reg"
+ 83. Port Connectivity Checks: "controlPath:CP|lord:lord_reg"
+ 84. Port Connectivity Checks: "controlPath:CP|jet:jet_reg"
+ 85. Port Connectivity Checks: "controlPath:CP|GO:go"
+ 86. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg_AfterSlash"
+ 87. Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg"
+ 88. Port Connectivity Checks: "controlPath:CP|vga_address_translator:BGtranslator"
+ 89. Post-Synthesis Netlist Statistics for Top Partition
+ 90. Elapsed Time Per Partition
+ 91. Analysis & Synthesis Messages
+ 92. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -121,7 +124,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Dec 01 23:18:15 2015       ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 02 00:33:33 2015       ;
 ; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
 ; Revision Name                   ; Interface                                   ;
 ; Top-level Entity Name           ; Interface                                   ;
@@ -130,7 +133,7 @@ agreement for further details.
 ; Total registers                 ; 451                                         ;
 ; Total pins                      ; 76                                          ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 949,908                                     ;
+; Total block memory bits         ; 1,180,308                                   ;
 ; Total DSP Blocks                ; 0                                           ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -267,6 +270,7 @@ agreement for further details.
 ; robot.v                              ; yes             ; User Wizard-Generated File             ; W:/ECE241project/Interface/robot.v                                   ;         ;
 ; soilder.v                            ; yes             ; User Wizard-Generated File             ; W:/ECE241project/Interface/soilder.v                                 ;         ;
 ; yoda.v                               ; yes             ; User Wizard-Generated File             ; W:/ECE241project/Interface/yoda.v                                    ;         ;
+; GO.v                                 ; yes             ; User Wizard-Generated File             ; W:/ECE241project/Interface/GO.v                                      ;         ;
 ; vga_adapter/vga_adapter.v            ; yes             ; Auto-Found Verilog HDL File            ; W:/ECE241project/Interface/vga_adapter/vga_adapter.v                 ;         ;
 ; vga_adapter/vga_address_translator.v ; yes             ; Auto-Found Verilog HDL File            ; W:/ECE241project/Interface/vga_adapter/vga_address_translator.v      ;         ;
 ; vga_adapter/vga_controller.v         ; yes             ; Auto-Found Verilog HDL File            ; W:/ECE241project/Interface/vga_adapter/vga_controller.v              ;         ;
@@ -292,6 +296,8 @@ agreement for further details.
 ; db/altpll_80u.tdf                    ; yes             ; Auto-Generated Megafunction            ; W:/ECE241project/Interface/db/altpll_80u.tdf                         ;         ;
 ; db/altsyncram_agm1.tdf               ; yes             ; Auto-Generated Megafunction            ; W:/ECE241project/Interface/db/altsyncram_agm1.tdf                    ;         ;
 ; db/altsyncram_5mo1.tdf               ; yes             ; Auto-Generated Megafunction            ; W:/ECE241project/Interface/db/altsyncram_5mo1.tdf                    ;         ;
+; db/altsyncram_f6o1.tdf               ; yes             ; Auto-Generated Megafunction            ; W:/ECE241project/Interface/db/altsyncram_f6o1.tdf                    ;         ;
+; go1.mif                              ; yes             ; Auto-Found Memory Initialization File  ; W:/ECE241project/Interface/go1.mif                                   ;         ;
 ; db/altsyncram_o4o1.tdf               ; yes             ; Auto-Generated Megafunction            ; W:/ECE241project/Interface/db/altsyncram_o4o1.tdf                    ;         ;
 ; jet.mif                              ; yes             ; Auto-Found Memory Initialization File  ; W:/ECE241project/Interface/jet.mif                                   ;         ;
 ; db/altsyncram_68o1.tdf               ; yes             ; Auto-Generated Megafunction            ; W:/ECE241project/Interface/db/altsyncram_68o1.tdf                    ;         ;
@@ -326,20 +332,20 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 1000           ;
+; Estimate of Logic utilization (ALMs needed) ; 1031           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1703           ;
-;     -- 7 input functions                    ; 11             ;
-;     -- 6 input functions                    ; 279            ;
-;     -- 5 input functions                    ; 212            ;
-;     -- 4 input functions                    ; 224            ;
-;     -- <=3 input functions                  ; 977            ;
+; Combinational ALUT usage for logic          ; 1756           ;
+;     -- 7 input functions                    ; 12             ;
+;     -- 6 input functions                    ; 287            ;
+;     -- 5 input functions                    ; 223            ;
+;     -- 4 input functions                    ; 248            ;
+;     -- <=3 input functions                  ; 986            ;
 ;                                             ;                ;
 ; Dedicated logic registers                   ; 451            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 76             ;
 ; Total MLAB memory bits                      ; 0              ;
-; Total block memory bits                     ; 949908         ;
+; Total block memory bits                     ; 1180308        ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
@@ -347,9 +353,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 537            ;
-; Total fan-out                               ; 10055          ;
-; Average fan-out                             ; 4.10           ;
+; Maximum fan-out                             ; 567            ;
+; Total fan-out                               ; 10763          ;
+; Average fan-out                             ; 4.24           ;
 +---------------------------------------------+----------------+
 
 
@@ -358,20 +364,23 @@ agreement for further details.
 +---------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                              ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                      ; Library Name ;
 +---------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Interface                                              ; 1703 (1)          ; 451 (0)      ; 949908            ; 0          ; 76   ; 0            ; |Interface                                                                                                                               ; work         ;
-;    |controlPath:CP|                                     ; 1426 (270)        ; 413 (25)     ; 489108            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP                                                                                                                ; work         ;
+; |Interface                                              ; 1756 (1)          ; 451 (0)      ; 1180308           ; 0          ; 76   ; 0            ; |Interface                                                                                                                               ; work         ;
+;    |controlPath:CP|                                     ; 1478 (310)        ; 413 (25)     ; 719508            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP                                                                                                                ; work         ;
 ;       |BG_New:bg_reg_AfterSlash|                        ; 10 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash                                                                                       ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 10 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component                                                       ; work         ;
 ;             |altsyncram_5mo1:auto_generated|            ; 10 (0)            ; 4 (4)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated                        ; work         ;
 ;                |decode_g2a:rden_decode|                 ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|decode_g2a:rden_decode ; work         ;
-;       |BG_New:bg_reg|                                   ; 13 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg                                                                                                  ; work         ;
-;          |altsyncram:altsyncram_component|              ; 13 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component                                                                  ; work         ;
-;             |altsyncram_5mo1:auto_generated|            ; 13 (0)            ; 4 (4)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated                                   ; work         ;
+;       |BG_New:bg_reg|                                   ; 10 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg                                                                                                  ; work         ;
+;          |altsyncram:altsyncram_component|              ; 10 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component                                                                  ; work         ;
+;             |altsyncram_5mo1:auto_generated|            ; 10 (0)            ; 4 (4)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated                                   ; work         ;
 ;                |decode_g2a:rden_decode|                 ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|decode_g2a:rden_decode            ; work         ;
-;                |mux_2hb:mux2|                           ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|mux_2hb:mux2                      ; work         ;
-;       |BGcounter:BGC|                                   ; 46 (46)           ; 17 (17)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BGcounter:BGC                                                                                                  ; work         ;
-;       |BGcounter:BufferCounter|                         ; 46 (46)           ; 17 (17)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BGcounter:BufferCounter                                                                                        ; work         ;
+;       |BGcounter:BGC|                                   ; 49 (49)           ; 17 (17)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BGcounter:BGC                                                                                                  ; work         ;
+;       |BGcounter:BufferCounter|                         ; 47 (47)           ; 17 (17)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|BGcounter:BufferCounter                                                                                        ; work         ;
 ;       |ButtonCounter:bcounter|                          ; 33 (33)           ; 12 (12)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|ButtonCounter:bcounter                                                                                         ; work         ;
+;       |GO:go|                                           ; 10 (0)            ; 0 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|GO:go                                                                                                          ; work         ;
+;          |altsyncram:altsyncram_component|              ; 10 (0)            ; 0 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|GO:go|altsyncram:altsyncram_component                                                                          ; work         ;
+;             |altsyncram_f6o1:auto_generated|            ; 10 (0)            ; 0 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated                                           ; work         ;
+;                |decode_g2a:rden_decode|                 ; 10 (10)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated|decode_g2a:rden_decode                    ; work         ;
 ;       |Mouse:MouseCoor|                                 ; 311 (101)         ; 200 (23)     ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor                                                                                                ; work         ;
 ;          |DebouncingCircuit:D1|                         ; 27 (27)           ; 25 (25)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1                                                                           ; work         ;
 ;          |DebouncingCircuit:D2|                         ; 10 (10)           ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D2                                                                           ; work         ;
@@ -410,14 +419,14 @@ agreement for further details.
 ;          |lpm_divide_62m:auto_generated|                ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod0|lpm_divide_62m:auto_generated                                                                  ; work         ;
 ;             |sign_div_unsign_9kh:divider|               ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                                      ; work         ;
 ;                |alt_u_div_ose:divider|                  ; 40 (40)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider                ; work         ;
-;       |lpm_divide:Mod1|                                 ; 50 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1                                                                                                ; work         ;
-;          |lpm_divide_72m:auto_generated|                ; 50 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1|lpm_divide_72m:auto_generated                                                                  ; work         ;
-;             |sign_div_unsign_akh:divider|               ; 50 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1|lpm_divide_72m:auto_generated|sign_div_unsign_akh:divider                                      ; work         ;
-;                |alt_u_div_qse:divider|                  ; 50 (50)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1|lpm_divide_72m:auto_generated|sign_div_unsign_akh:divider|alt_u_div_qse:divider                ; work         ;
+;       |lpm_divide:Mod1|                                 ; 51 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1                                                                                                ; work         ;
+;          |lpm_divide_72m:auto_generated|                ; 51 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1|lpm_divide_72m:auto_generated                                                                  ; work         ;
+;             |sign_div_unsign_akh:divider|               ; 51 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1|lpm_divide_72m:auto_generated|sign_div_unsign_akh:divider                                      ; work         ;
+;                |alt_u_div_qse:divider|                  ; 51 (51)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|lpm_divide:Mod1|lpm_divide_72m:auto_generated|sign_div_unsign_akh:divider|alt_u_div_qse:divider                ; work         ;
 ;       |objCounter:RC|                                   ; 33 (33)           ; 11 (11)      ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|objCounter:RC                                                                                                  ; work         ;
 ;       |randomNumberGenerator2:rng1|                     ; 5 (5)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator2:rng1                                                                                    ; work         ;
-;       |randomNumberGenerator2:rng2|                     ; 4 (4)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator2:rng2                                                                                    ; work         ;
-;       |randomNumberGenerator2:rng3|                     ; 6 (6)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator2:rng3                                                                                    ; work         ;
+;       |randomNumberGenerator2:rng2|                     ; 5 (5)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator2:rng2                                                                                    ; work         ;
+;       |randomNumberGenerator2:rng3|                     ; 5 (5)             ; 8 (8)        ; 0                 ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|randomNumberGenerator2:rng3                                                                                    ; work         ;
 ;       |robot:robot_reg|                                 ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|robot:robot_reg                                                                                                ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component                                                                ; work         ;
 ;             |altsyncram_rbo1:auto_generated|            ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component|altsyncram_rbo1:auto_generated                                 ; work         ;
@@ -428,7 +437,7 @@ agreement for further details.
 ;       |yoda:yoda_reg|                                   ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|yoda:yoda_reg                                                                                                  ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|yoda:yoda_reg|altsyncram:altsyncram_component                                                                  ; work         ;
 ;             |altsyncram_28o1:auto_generated|            ; 0 (0)             ; 0 (0)        ; 2700              ; 0          ; 0    ; 0            ; |Interface|controlPath:CP|yoda:yoda_reg|altsyncram:altsyncram_component|altsyncram_28o1:auto_generated                                   ; work         ;
-;    |dataPath:DP|                                        ; 188 (131)         ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP                                                                                                                   ; work         ;
+;    |dataPath:DP|                                        ; 189 (132)         ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP                                                                                                                   ; work         ;
 ;       |BGbuffer:bgb|                                    ; 23 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP|BGbuffer:bgb                                                                                                      ; work         ;
 ;          |altsyncram:altsyncram_component|              ; 23 (0)            ; 4 (0)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component                                                                      ; work         ;
 ;             |altsyncram_agm1:auto_generated|            ; 23 (0)            ; 4 (4)        ; 230400            ; 0          ; 0    ; 0            ; |Interface|dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component|altsyncram_agm1:auto_generated                                       ; work         ;
@@ -462,6 +471,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-------------------+
 ; controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 76800        ; 3            ; --           ; --           ; 230400 ; ../BG_New.mif     ;
 ; controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|ALTSYNCRAM            ; AUTO ; Single Port      ; 76800        ; 3            ; --           ; --           ; 230400 ; ../BG_New.mif     ;
+; controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated|ALTSYNCRAM                    ; AUTO ; Single Port      ; 76800        ; 3            ; --           ; --           ; 230400 ; GO1.mif           ;
 ; controlPath:CP|button:bt_reg|altsyncram:altsyncram_component|altsyncram_7ho1:auto_generated|ALTSYNCRAM            ; AUTO ; Single Port      ; 3136         ; 3            ; --           ; --           ; 9408   ; button.mif        ;
 ; controlPath:CP|hunter:hunter_reg|altsyncram:altsyncram_component|altsyncram_bfo1:auto_generated|ALTSYNCRAM        ; AUTO ; Single Port      ; 900          ; 3            ; --           ; --           ; 2700   ; hunter.mif        ;
 ; controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component|altsyncram_o4o1:auto_generated|ALTSYNCRAM              ; AUTO ; Single Port      ; 900          ; 3            ; --           ; --           ; 2700   ; jet.mif           ;
@@ -483,6 +493,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|BG_New:bg_reg            ; BG_New.v        ;
 ; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|BG_New:bg_reg_AfterSlash ; BG_New.v        ;
 ; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|button:bt_reg            ; button.v        ;
+; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|GO:go                    ; GO.v            ;
 ; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|hunter:hunter_reg        ; hunter.v        ;
 ; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|jet:jet_reg              ; jet.v           ;
 ; Altera ; RAM: 1-PORT  ; 15.0    ; N/A          ; N/A          ; |Interface|controlPath:CP|lord:lord_reg            ; lord.v          ;
@@ -630,15 +641,17 @@ Encoding Type:  One-Hot
 ; Latch Name                                          ; Latch Enable Signal                                                                                                         ; Free of Timing Hazards ;
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+------------------------+
 ; controlPath:CP|colorIsNotObj                        ; controlPath:CP|coor[16]                                                                                                     ; yes                    ;
-; controlPath:CP|LSCenable                            ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
-; controlPath:CP|currentState.drawBG_AfterReset_787   ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
-; controlPath:CP|currentState.display_AfterReset_747  ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
-; controlPath:CP|currentState.resetState_887          ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
-; controlPath:CP|currentState.writeBG2Buffer_847      ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
-; controlPath:CP|BCenable                             ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
-; controlPath:CP|currentState.displayState_807        ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
+; controlPath:CP|currentState.gameOverState_1040      ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|LSCenable                            ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|currentState.drawBG_AfterReset_920   ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|currentState.display_AfterReset_872  ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|currentState.resetState_1088         ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|Dgameover                            ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|currentState.writeBG2Buffer_992      ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|BCenable                             ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
+; controlPath:CP|currentState.displayState_944        ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
 ; controlPath:CP|mimichalfHzclock                     ; controlPath:CP|coor[16]                                                                                                     ; yes                    ;
-; controlPath:CP|RCenable                             ; controlPath:CP|currentState.writeObj2Buffer                                                                                 ; yes                    ;
+; controlPath:CP|RCenable                             ; controlPath:CP|currentState.drawGameOver                                                                                    ; yes                    ;
 ; dataPath:DP|x_out[8]                                ; dataPath:DP|x_out[8]                                                                                                        ; yes                    ;
 ; dataPath:DP|x_out[7]                                ; dataPath:DP|x_out[8]                                                                                                        ; yes                    ;
 ; dataPath:DP|x_out[6]                                ; dataPath:DP|x_out[8]                                                                                                        ; yes                    ;
@@ -716,7 +729,7 @@ Encoding Type:  One-Hot
 ; controlPath:CP|coor[13]                             ; controlPath:CP|coor[16]                                                                                                     ; yes                    ;
 ; dataPath:DP|RegisterY:Y|out[0]                      ; controlPath:CP|RCenable                                                                                                     ; yes                    ;
 ; dataPath:DP|RegisterY:Y_LS|out[0]                   ; controlPath:CP|LSCenable                                                                                                    ; yes                    ;
-; Number of user-specified and inferred latches = 87  ;                                                                                                                             ;                        ;
+; Number of user-specified and inferred latches = 89  ;                                                                                                                             ;                        ;
 +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -807,6 +820,10 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5|count[16]                                                     ; Merged with controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D1|count[16]                                                ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[1,3,8]  ; Merged with controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0] ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[4..7]   ; Merged with controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2] ;
+; controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated|address_reg_a[3]              ; Merged with controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|address_reg_a[3] ;
+; controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated|address_reg_a[2]              ; Merged with controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|address_reg_a[2] ;
+; controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated|address_reg_a[1]              ; Merged with controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|address_reg_a[1] ;
+; controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated|address_reg_a[0]              ; Merged with controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated|address_reg_a[0] ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0]      ; Stuck at GND due to stuck port data_in                                                                                   ;
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5|curr_state~2                                                  ; Lost fanout                                                                                                              ;
 ; controlPath:CP|Mouse:MouseCoor|DebouncingCircuit:D5|curr_state~3                                                  ; Lost fanout                                                                                                              ;
@@ -831,7 +848,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~2            ; Lost fanout                                                                                                              ;
 ; controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~3            ; Lost fanout                                                                                                              ;
 ; controlPath:CP|score[8]                                                                                           ; Lost fanout                                                                                                              ;
-; Total Number of Removed Registers = 99                                                                            ;                                                                                                                          ;
+; Total Number of Removed Registers = 103                                                                           ;                                                                                                                          ;
 +-------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -872,46 +889,47 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------+
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|received_data[16]                   ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|data_received[0]                                                                           ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator2:rng3|out[1]                                                                         ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator2:rng3|out[3]                                                                         ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[6]                   ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Interface|vga_adapter:VGA|vga_controller:controller|yCounter[1]                                                                     ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|objCounter:RC|out[6]                                                                                       ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|lightSaberCounter:LScounter|out[6]                                                                         ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[3]                                                                                       ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator2:rng1|out[4]                                                                         ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |Interface|controlPath:CP|randomNumberGenerator2:rng2|out[4]                                                                         ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[2]                   ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |Interface|vga_adapter:VGA|vga_controller:controller|yCounter[6]                                                                     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[2]                                                                                       ;
 ; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[12]                                                                                      ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[16]                                                                                      ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[1]                                                                             ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[8]                                                                             ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[16]                                                                            ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|idle_counter[5]                                                       ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[5] ;
-; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[15]         ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[1]                  ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[2]                       ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BGC|out[14]                                                                                      ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|objCounter:RC|out[4]                                                                                       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|lightSaberCounter:LScounter|out[7]                                                                         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[3]                                                                             ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[13]                                                                            ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|BGcounter:BufferCounter|out[4]                                                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|idle_counter[7]                                                       ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[9] ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[6]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[0]                  ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[3]                       ;
 ; 4:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[9]         ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |Interface|controlPath:CP|ButtonCounter:bcounter|out[0]                                                                              ;
-; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |Interface|controlPath:CP|ButtonCounter:bcounter|out[11]                                                                             ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[2]                                                                                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[1]                                                                                 ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; Yes        ; |Interface|controlPath:CP|ButtonCounter:bcounter|out[2]                                                                              ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |Interface|controlPath:CP|ButtonCounter:bcounter|out[5]                                                                              ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[3]                                                                                 ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[2]                                                                                 ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[16]                                                                                  ;
-; 6:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[14]                                                                                  ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[16]                                                                                  ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[15]                                                                                  ;
-; 14:1               ; 2 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[2]                                                                                   ;
-; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[5]                                                                                   ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[10]                                                                                  ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[10]                                                                                  ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[14]                                                                                  ;
+; 14:1               ; 2 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[3]                                                                                   ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition2:NP2|out[7]                                                                                   ;
 ; 16:1               ; 2 bits    ; 20 LEs        ; 14 LEs               ; 6 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[3]                                                                                   ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 28 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[4]                                                                                   ;
-; 18:1               ; 2 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[2]                                                                                   ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[4]                                                                                   ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 28 LEs               ; 12 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition1:NP1|out[7]                                                                                   ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[3]                                                                                   ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |Interface|controlPath:CP|NextPosition3:NP3|out[7]                                                                                   ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Xcoords[5]                                                                                 ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[3]                                                                                 ;
-; 3:1                ; 19 bits   ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|coor[6]                                                                                                    ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 9 LEs                ; 0 LEs                  ; No         ; |Interface|dataPath:DP|x_out[7]                                                                                                      ;
-; 5:1                ; 14 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |Interface|dataPath:DP|y_out[6]                                                                                                      ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Interface|controlPath:CP|Mouse:MouseCoor|Ycoords[5]                                                                                 ;
+; 3:1                ; 19 bits   ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|coor[8]                                                                                                    ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 9 LEs                ; 0 LEs                  ; No         ; |Interface|dataPath:DP|y_out[7]                                                                                                      ;
+; 5:1                ; 14 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |Interface|dataPath:DP|x_out[0]                                                                                                      ;
 ; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Interface|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_1bm1:auto_generated|mux_2hb:mux3|l4_w2_n0_mux_dataout                   ;
-; 14:1               ; 3 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; No         ; |Interface|dataPath:DP|color_out[1]                                                                                                  ;
-; 26:1               ; 3 bits    ; 51 LEs        ; 51 LEs               ; 0 LEs                  ; No         ; |Interface|controlPath:CP|Selector10                                                                                                 ;
+; 10:1               ; 7 bits    ; 42 LEs        ; 7 LEs                ; 35 LEs                 ; No         ; |Interface|controlPath:CP|currentState.writeLS2buffer                                                                                ;
+; 14:1               ; 3 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; No         ; |Interface|dataPath:DP|color_out[2]                                                                                                  ;
+; 35:1               ; 3 bits    ; 69 LEs        ; 72 LEs               ; -3 LEs                 ; No         ; |Interface|controlPath:CP|Selector11                                                                                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -949,6 +967,15 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +---------------------------------+--------------------+------+-----------------------------------------------------------------+
 ; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                               ;
 +---------------------------------+--------------------+------+-----------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Source assignments for controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                           ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                            ;
++---------------------------------+--------------------+------+----------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -1578,7 +1605,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Parameter Name        ; Value ; Type                        ;
 +-----------------------+-------+-----------------------------+
 ; resetState            ; 0000  ; Unsigned Binary             ;
-; gameState             ; 0001  ; Unsigned Binary             ;
+; drawGameOver          ; 0001  ; Unsigned Binary             ;
 ; gameOverState         ; 0010  ; Unsigned Binary             ;
 ; writeObj2Buffer       ; 0011  ; Unsigned Binary             ;
 ; waitState             ; 0100  ; Unsigned Binary             ;
@@ -1721,6 +1748,67 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                  ;
 ; CBXI_PARAMETER                     ; altsyncram_5mo1      ; Untyped                                                  ;
 +------------------------------------+----------------------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: controlPath:CP|GO:go|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------+
+; Parameter Name                     ; Value                ; Type                                  ;
++------------------------------------+----------------------+---------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                               ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                          ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                        ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                               ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                               ;
+; WIDTH_A                            ; 3                    ; Signed Integer                        ;
+; WIDTHAD_A                          ; 17                   ; Signed Integer                        ;
+; NUMWORDS_A                         ; 76800                ; Signed Integer                        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                               ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                               ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                               ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                               ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                               ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                               ;
+; WIDTH_B                            ; 1                    ; Untyped                               ;
+; WIDTHAD_B                          ; 1                    ; Untyped                               ;
+; NUMWORDS_B                         ; 1                    ; Untyped                               ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                               ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                               ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                               ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                               ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                               ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                               ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                               ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                               ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                               ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                               ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                               ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                               ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                               ;
+; BYTE_SIZE                          ; 8                    ; Untyped                               ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                               ;
+; INIT_FILE                          ; GO1.mif              ; Untyped                               ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                               ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                               ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                               ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                               ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                               ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                               ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                               ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                               ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                               ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                               ;
+; CBXI_PARAMETER                     ; altsyncram_f6o1      ; Untyped                               ;
++------------------------------------+----------------------+---------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -2403,7 +2491,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+-------------------------------------------------------------------------+
 ; Name                                      ; Value                                                                   ;
 +-------------------------------------------+-------------------------------------------------------------------------+
-; Number of entity instances                ; 12                                                                      ;
+; Number of entity instances                ; 13                                                                      ;
 ; Entity Instance                           ; vga_adapter:VGA|altsyncram:VideoMemory                                  ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT                                                               ;
 ;     -- WIDTH_A                            ; 3                                                                       ;
@@ -2438,6 +2526,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                    ;
 ;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                               ;
 ; Entity Instance                           ; controlPath:CP|BG_New:bg_reg_AfterSlash|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                             ;
+;     -- WIDTH_A                            ; 3                                                                       ;
+;     -- NUMWORDS_A                         ; 76800                                                                   ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                            ;
+;     -- WIDTH_B                            ; 1                                                                       ;
+;     -- NUMWORDS_B                         ; 1                                                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                               ;
+; Entity Instance                           ; controlPath:CP|GO:go|altsyncram:altsyncram_component                    ;
 ;     -- OPERATION_MODE                     ; SINGLE_PORT                                                             ;
 ;     -- WIDTH_A                            ; 3                                                                       ;
 ;     -- NUMWORDS_A                         ; 76800                                                                   ;
@@ -2733,6 +2832,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+------------------------------+
 
 
++--------------------------------------------------+
+; Port Connectivity Checks: "controlPath:CP|GO:go" ;
++------+-------+----------+------------------------+
+; Port ; Type  ; Severity ; Details                ;
++------+-------+----------+------------------------+
+; data ; Input ; Info     ; Stuck at GND           ;
+; wren ; Input ; Info     ; Stuck at GND           ;
++------+-------+----------+------------------------+
+
+
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "controlPath:CP|BG_New:bg_reg_AfterSlash"                                                                                                                                             ;
 +---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -2780,7 +2889,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SLD               ; 2                           ;
 ;     plain             ; 123                         ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 1718                        ;
+; arriav_lcell_comb     ; 1771                        ;
 ;     arith             ; 679                         ;
 ;         0 data inputs ; 20                          ;
 ;         1 data inputs ; 570                         ;
@@ -2788,27 +2897,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 20                          ;
 ;         4 data inputs ; 12                          ;
 ;         5 data inputs ; 2                           ;
-;     extend            ; 11                          ;
-;         7 data inputs ; 11                          ;
-;     normal            ; 955                         ;
+;     extend            ; 12                          ;
+;         7 data inputs ; 12                          ;
+;     normal            ; 996                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 21                          ;
-;         2 data inputs ; 116                         ;
-;         3 data inputs ; 115                         ;
-;         4 data inputs ; 212                         ;
-;         5 data inputs ; 210                         ;
-;         6 data inputs ; 279                         ;
-;     shared            ; 73                          ;
-;         0 data inputs ; 5                           ;
-;         1 data inputs ; 27                          ;
-;         2 data inputs ; 37                          ;
-;         3 data inputs ; 4                           ;
+;         2 data inputs ; 115                         ;
+;         3 data inputs ; 114                         ;
+;         4 data inputs ; 236                         ;
+;         5 data inputs ; 221                         ;
+;         6 data inputs ; 287                         ;
+;     shared            ; 84                          ;
+;         0 data inputs ; 6                           ;
+;         1 data inputs ; 29                          ;
+;         2 data inputs ; 44                          ;
+;         3 data inputs ; 5                           ;
 ; boundary_port         ; 76                          ;
 ; generic_pll           ; 1                           ;
-; stratixv_ram_block    ; 144                         ;
+; stratixv_ram_block    ; 174                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 14.70                       ;
-; Average LUT depth     ; 3.92                        ;
+; Max LUT depth         ; 15.70                       ;
+; Average LUT depth     ; 4.02                        ;
 +-----------------------+-----------------------------+
 
 
@@ -2827,7 +2936,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
-    Info: Processing started: Tue Dec 01 23:17:53 2015
+    Info: Processing started: Wed Dec 02 00:33:11 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Interface -c Interface
 Warning (125092): Tcl Script File BG1.qip not found
     Info (125063): set_global_assignment -name QIP_FILE BG1.qip
@@ -2894,8 +3003,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file soilder
     Info (12023): Found entity 1: soilder
 Info (12021): Found 1 design units, including 1 entities, in source file yoda.v
     Info (12023): Found entity 1: yoda
-Warning (10236): Verilog HDL Implicit Net warning at Interface.v(721): created implicit net for "randowX"
-Warning (10236): Verilog HDL Implicit Net warning at Interface.v(855): created implicit net for "randowX"
+Info (12021): Found 1 design units, including 1 entities, in source file go.v
+    Info (12023): Found entity 1: GO
+Warning (10236): Verilog HDL Implicit Net warning at Interface.v(790): created implicit net for "randowX"
+Warning (10236): Verilog HDL Implicit Net warning at Interface.v(924): created implicit net for "randowX"
 Info (12127): Elaborating entity "Interface" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at Interface.v(47): object "resetn" assigned a value but never read
 Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA"
@@ -2997,104 +3108,111 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_agm1
 Info (12128): Elaborating entity "altsyncram_agm1" for hierarchy "dataPath:DP|BGbuffer:bgb|altsyncram:altsyncram_component|altsyncram_agm1:auto_generated"
 Info (12128): Elaborating entity "RegisterX" for hierarchy "dataPath:DP|RegisterX:X"
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(1160): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "out[0]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[1]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[2]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[3]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[4]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[5]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[6]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[7]" at Interface.v(1162)
-Info (10041): Inferred latch for "out[8]" at Interface.v(1162)
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(1229): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "out[0]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[1]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[2]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[3]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[4]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[5]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[6]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[7]" at Interface.v(1231)
+Info (10041): Inferred latch for "out[8]" at Interface.v(1231)
 Info (12128): Elaborating entity "RegisterY" for hierarchy "dataPath:DP|RegisterY:Y"
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(1173): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "out[0]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[1]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[2]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[3]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[4]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[5]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[6]" at Interface.v(1175)
-Info (10041): Inferred latch for "out[7]" at Interface.v(1175)
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(1242): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "out[0]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[1]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[2]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[3]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[4]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[5]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[6]" at Interface.v(1244)
+Info (10041): Inferred latch for "out[7]" at Interface.v(1244)
 Info (12128): Elaborating entity "controlPath" for hierarchy "controlPath:CP"
-Warning (10230): Verilog HDL assignment warning at Interface.v(214): truncated value with size 32 to match size of target (2)
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(250): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(252): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(255): variable "coor1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(256): variable "colorIsNotObj1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(257): variable "mimichalfHzclock1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(259): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(261): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(264): variable "coor2" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(265): variable "colorIsNotObj2" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(266): variable "mimichalfHzclock2" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(268): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(270): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(273): variable "coor3" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(274): variable "colorIsNotObj3" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(275): variable "mimichalfHzclock3" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(249): inferring latch(es) for variable "NPenable1", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(249): inferring latch(es) for variable "NPenable2", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(249): inferring latch(es) for variable "NPenable3", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(249): inferring latch(es) for variable "coor", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(249): inferring latch(es) for variable "colorIsNotObj", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(249): inferring latch(es) for variable "mimichalfHzclock", which holds its previous value in one or more paths through the always construct
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(301): variable "resetKey" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(303): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(304): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(305): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(306): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10230): Verilog HDL assignment warning at Interface.v(215): truncated value with size 32 to match size of target (2)
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(254): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(256): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(259): variable "coor1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(260): variable "colorIsNotObj1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(261): variable "mimichalfHzclock1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(263): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(265): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(268): variable "coor2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(269): variable "colorIsNotObj2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(270): variable "mimichalfHzclock2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(272): variable "randomNumber1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(274): variable "NPenable" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(277): variable "coor3" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(278): variable "colorIsNotObj3" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(279): variable "mimichalfHzclock3" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(253): inferring latch(es) for variable "NPenable1", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(253): inferring latch(es) for variable "NPenable2", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(253): inferring latch(es) for variable "NPenable3", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(253): inferring latch(es) for variable "coor", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(253): inferring latch(es) for variable "colorIsNotObj", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(253): inferring latch(es) for variable "mimichalfHzclock", which holds its previous value in one or more paths through the always construct
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(305): variable "resetKey" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(307): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(308): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(309): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(311): variable "startKey" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(310): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(311): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(312): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(314): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(315): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(316): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(317): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(313): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(315): variable "startKey" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(316): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(318): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(320): variable "clock60" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10235): Verilog HDL Always Construct warning at Interface.v(321): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(322): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(323): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at Interface.v(324): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(300): inferring latch(es) for variable "currentState", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at Interface.v(361): inferring latch(es) for variable "color_from_CP", which holds its previous value in one or more paths through the always construct
-Warning (10034): Output port "led[5]" at Interface.v(187) has no driver
-Info (10041): Inferred latch for "color_from_CP[0]" at Interface.v(361)
-Info (10041): Inferred latch for "color_from_CP[1]" at Interface.v(361)
-Info (10041): Inferred latch for "color_from_CP[2]" at Interface.v(361)
-Info (10041): Inferred latch for "currentState.display_AfterReset" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.drawButton_AfterReset" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.drawBG_AfterReset" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.displayState" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.writeLS2buffer" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.writeBG2Buffer" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.writeObj2Buffer" at Interface.v(303)
-Info (10041): Inferred latch for "currentState.resetState" at Interface.v(303)
-Info (10041): Inferred latch for "mimichalfHzclock" at Interface.v(259)
-Info (10041): Inferred latch for "colorIsNotObj" at Interface.v(259)
-Info (10041): Inferred latch for "coor[0]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[1]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[2]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[3]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[4]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[5]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[6]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[7]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[8]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[9]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[10]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[11]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[12]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[13]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[14]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[15]" at Interface.v(259)
-Info (10041): Inferred latch for "coor[16]" at Interface.v(259)
-Info (10041): Inferred latch for "NPenable3" at Interface.v(259)
-Info (10041): Inferred latch for "NPenable2" at Interface.v(259)
-Info (10041): Inferred latch for "NPenable1" at Interface.v(259)
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(325): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(327): variable "clock60" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(328): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(331): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(332): variable "colorIsNotObj" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(332): variable "randomNumber3" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(335): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(336): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(337): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(338): variable "currentState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at Interface.v(339): variable "nextState" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(304): inferring latch(es) for variable "currentState", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Interface.v(382): inferring latch(es) for variable "color_from_CP", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "color_from_CP[0]" at Interface.v(382)
+Info (10041): Inferred latch for "color_from_CP[1]" at Interface.v(382)
+Info (10041): Inferred latch for "color_from_CP[2]" at Interface.v(382)
+Info (10041): Inferred latch for "currentState.display_AfterReset" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.drawButton_AfterReset" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.drawBG_AfterReset" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.displayState" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.writeLS2buffer" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.writeBG2Buffer" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.writeObj2Buffer" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.gameOverState" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.drawGameOver" at Interface.v(307)
+Info (10041): Inferred latch for "currentState.resetState" at Interface.v(307)
+Info (10041): Inferred latch for "mimichalfHzclock" at Interface.v(263)
+Info (10041): Inferred latch for "colorIsNotObj" at Interface.v(263)
+Info (10041): Inferred latch for "coor[0]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[1]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[2]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[3]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[4]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[5]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[6]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[7]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[8]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[9]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[10]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[11]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[12]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[13]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[14]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[15]" at Interface.v(263)
+Info (10041): Inferred latch for "coor[16]" at Interface.v(263)
+Info (10041): Inferred latch for "NPenable3" at Interface.v(263)
+Info (10041): Inferred latch for "NPenable2" at Interface.v(263)
+Info (10041): Inferred latch for "NPenable1" at Interface.v(263)
 Info (12128): Elaborating entity "hex" for hierarchy "controlPath:CP|hex:hex1"
 Info (12128): Elaborating entity "vga_address_translator" for hierarchy "controlPath:CP|vga_address_translator:BGtranslator"
 Info (12128): Elaborating entity "BG_New" for hierarchy "controlPath:CP|BG_New:bg_reg"
@@ -3119,6 +3237,28 @@ Info (12133): Instantiated megafunction "controlPath:CP|BG_New:bg_reg|altsyncram
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5mo1.tdf
     Info (12023): Found entity 1: altsyncram_5mo1
 Info (12128): Elaborating entity "altsyncram_5mo1" for hierarchy "controlPath:CP|BG_New:bg_reg|altsyncram:altsyncram_component|altsyncram_5mo1:auto_generated"
+Info (12128): Elaborating entity "GO" for hierarchy "controlPath:CP|GO:go"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "controlPath:CP|GO:go|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "controlPath:CP|GO:go|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "controlPath:CP|GO:go|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "GO1.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "76800"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "17"
+    Info (12134): Parameter "width_a" = "3"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_f6o1.tdf
+    Info (12023): Found entity 1: altsyncram_f6o1
+Info (12128): Elaborating entity "altsyncram_f6o1" for hierarchy "controlPath:CP|GO:go|altsyncram:altsyncram_component|altsyncram_f6o1:auto_generated"
 Info (12128): Elaborating entity "jet" for hierarchy "controlPath:CP|jet:jet_reg"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "controlPath:CP|jet:jet_reg|altsyncram:altsyncram_component"
@@ -3251,17 +3391,6 @@ Info (12133): Instantiated megafunction "controlPath:CP|robot:robot_reg|altsyncr
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_rbo1.tdf
     Info (12023): Found entity 1: altsyncram_rbo1
 Info (12128): Elaborating entity "altsyncram_rbo1" for hierarchy "controlPath:CP|robot:robot_reg|altsyncram:altsyncram_component|altsyncram_rbo1:auto_generated"
-Warning (113031): 900 out of 900 addresses are reinitialized. The latest initialized data will replace the existing data. There are 900 warnings found, and 10 warnings are reported.
-    Warning (113030): Memory Initialization File address 870 is reinitialized
-    Warning (113030): Memory Initialization File address 871 is reinitialized
-    Warning (113030): Memory Initialization File address 872 is reinitialized
-    Warning (113030): Memory Initialization File address 873 is reinitialized
-    Warning (113030): Memory Initialization File address 874 is reinitialized
-    Warning (113030): Memory Initialization File address 875 is reinitialized
-    Warning (113030): Memory Initialization File address 876 is reinitialized
-    Warning (113030): Memory Initialization File address 877 is reinitialized
-    Warning (113030): Memory Initialization File address 878 is reinitialized
-    Warning (113030): Memory Initialization File address 879 is reinitialized
 Info (12128): Elaborating entity "lightSaber" for hierarchy "controlPath:CP|lightSaber:ls_reg"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "controlPath:CP|lightSaber:ls_reg|altsyncram:altsyncram_component"
@@ -3311,12 +3440,12 @@ Info (12128): Elaborating entity "objCounter" for hierarchy "controlPath:CP|objC
 Info (12128): Elaborating entity "lightSaberCounter" for hierarchy "controlPath:CP|lightSaberCounter:LScounter"
 Info (12128): Elaborating entity "ButtonCounter" for hierarchy "controlPath:CP|ButtonCounter:bcounter"
 Info (12128): Elaborating entity "NextPosition1" for hierarchy "controlPath:CP|NextPosition1:NP1"
-Warning (10230): Verilog HDL assignment warning at Interface.v(573): truncated value with size 33 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at Interface.v(642): truncated value with size 33 to match size of target (9)
 Info (12128): Elaborating entity "position" for hierarchy "controlPath:CP|NextPosition1:NP1|position:p"
 Info (12128): Elaborating entity "NextPosition2" for hierarchy "controlPath:CP|NextPosition2:NP2"
-Warning (10230): Verilog HDL assignment warning at Interface.v(721): truncated value with size 33 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Interface.v(790): truncated value with size 33 to match size of target (1)
 Info (12128): Elaborating entity "NextPosition3" for hierarchy "controlPath:CP|NextPosition3:NP3"
-Warning (10230): Verilog HDL assignment warning at Interface.v(855): truncated value with size 33 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Interface.v(924): truncated value with size 33 to match size of target (1)
 Info (12128): Elaborating entity "Mouse" for hierarchy "controlPath:CP|Mouse:MouseCoor"
 Info (12128): Elaborating entity "PS2_Controller" for hierarchy "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse"
 Info (12128): Elaborating entity "Altera_UP_PS2_Data_In" for hierarchy "controlPath:CP|Mouse:MouseCoor|PS2_Controller:Mouse|Altera_UP_PS2_Data_In:PS2_Data_In"
@@ -3357,50 +3486,54 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alt_
 Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13012): Latch controlPath:CP|colorIsNotObj has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator2:rng1|out[0]
+Warning (13012): Latch controlPath:CP|currentState.gameOverState_1040 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.gameOverState_1040
 Warning (13012): Latch controlPath:CP|LSCenable has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
-Warning (13012): Latch controlPath:CP|currentState.drawBG_AfterReset_787 has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.resetState_887
-Warning (13012): Latch controlPath:CP|currentState.display_AfterReset_747 has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.display_AfterReset_747
-Warning (13012): Latch controlPath:CP|currentState.writeBG2Buffer_847 has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.displayState_807
+Warning (13012): Latch controlPath:CP|currentState.drawBG_AfterReset_920 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.resetState_1088
+Warning (13012): Latch controlPath:CP|currentState.display_AfterReset_872 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
+Warning (13012): Latch controlPath:CP|Dgameover has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
+Warning (13012): Latch controlPath:CP|currentState.writeBG2Buffer_992 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
 Warning (13012): Latch controlPath:CP|BCenable has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|BCenable
-Warning (13012): Latch controlPath:CP|currentState.displayState_807 has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.displayState_807
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
+Warning (13012): Latch controlPath:CP|currentState.displayState_944 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
 Warning (13012): Latch controlPath:CP|mimichalfHzclock has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator2:rng1|out[0]
 Warning (13012): Latch controlPath:CP|RCenable has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|currentState.writeBG2Buffer_847
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
 Warning (13012): Latch dataPath:DP|x_out[8] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[7] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[6] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[7] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[6] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|color_out[2] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal KEY[0]
 Warning (13012): Latch dataPath:DP|x_out[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|x_out[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|color_out[1] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal KEY[0]
 Warning (13012): Latch dataPath:DP|color_out[0] has unsafe behavior
@@ -3408,13 +3541,13 @@ Warning (13012): Latch dataPath:DP|color_out[0] has unsafe behavior
 Warning (13012): Latch controlPath:CP|color_from_CP[2] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
 Warning (13012): Latch dataPath:DP|y_out[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch dataPath:DP|y_out[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|cenable
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|WideOr13
 Warning (13012): Latch controlPath:CP|color_from_CP[1] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|RCenable
 Warning (13012): Latch controlPath:CP|color_from_CP[0] has unsafe behavior
@@ -3461,7 +3594,6 @@ Warning (13012): Latch controlPath:CP|coor[12] has unsafe behavior
 Warning (13012): Latch controlPath:CP|coor[13] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal controlPath:CP|randomNumberGenerator2:rng1|out[0]
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[5]" is stuck at GND
     Warning (13410): Pin "VGA_SYNC" is stuck at VCC
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 23 registers lost all their fanouts during netlist optimizations.
@@ -3483,16 +3615,16 @@ Warning (21074): Design contains 12 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 2004 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2087 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 59 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 1783 logic cells
-    Info (21064): Implemented 144 RAM segments
+    Info (21061): Implemented 1836 logic cells
+    Info (21064): Implemented 174 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 195 warnings
-    Info: Peak virtual memory: 771 megabytes
-    Info: Processing ended: Tue Dec 01 23:18:15 2015
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 192 warnings
+    Info: Peak virtual memory: 789 megabytes
+    Info: Processing ended: Wed Dec 02 00:33:33 2015
     Info: Elapsed time: 00:00:22
     Info: Total CPU time (on all processors): 00:00:33
 

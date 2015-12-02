@@ -1,8 +1,8 @@
-Info (10281): Verilog HDL Declaration information at Interface.v(188): object "HEX1" differs only in case from object "hex1" in the same scope
-Info (10281): Verilog HDL Declaration information at Interface.v(188): object "HEX0" differs only in case from object "hex0" in the same scope
-Warning (10268): Verilog HDL information at Interface.v(1036): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at Interface.v(1066): always construct contains both blocking and non-blocking assignments
-Info (10281): Verilog HDL Declaration information at Interface.v(1186): object "clk" differs only in case from object "CLK" in the same scope
-Info (10281): Verilog HDL Declaration information at Interface.v(1229): object "clk" differs only in case from object "CLK" in the same scope
-Info (10281): Verilog HDL Declaration information at Interface.v(1253): object "clk" differs only in case from object "CLK" in the same scope
-Warning (10268): Verilog HDL information at Interface.v(1278): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at Interface.v(189): object "HEX1" differs only in case from object "hex1" in the same scope
+Info (10281): Verilog HDL Declaration information at Interface.v(189): object "HEX0" differs only in case from object "hex0" in the same scope
+Warning (10268): Verilog HDL information at Interface.v(1105): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at Interface.v(1135): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at Interface.v(1255): object "clk" differs only in case from object "CLK" in the same scope
+Info (10281): Verilog HDL Declaration information at Interface.v(1298): object "clk" differs only in case from object "CLK" in the same scope
+Info (10281): Verilog HDL Declaration information at Interface.v(1322): object "clk" differs only in case from object "CLK" in the same scope
+Warning (10268): Verilog HDL information at Interface.v(1347): always construct contains both blocking and non-blocking assignments
