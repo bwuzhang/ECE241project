@@ -12,6 +12,8 @@ module Interface
 		  PS2_CLK,
 			PS2_DAT,
 			LEDR,
+			HEX0,
+			HEX1,
 		// The ports below are for the VGA output.  Do not change.
 		VGA_CLK,   						//	VGA Clock
 		VGA_HS,							//	VGA H_SYNC
@@ -30,7 +32,7 @@ module Interface
 
 	inout PS2_CLK;
 	inout PS2_DAT;
-	
+	output [6:0]HEX0,HEX1;
 	// Declare your inputs and outputs here
 	// Do not change the following outputs
 	output			VGA_CLK;   				//	VGA Clock
@@ -88,7 +90,7 @@ module Interface
 					
 	controlPath CP(CLOCK_50,writeEn,KEY[0],Dbackground,Dobject,BG_Coor,coor_gap,coor,LD_X,LD_Y,
 						color_from_CP,SW[9:7],displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,LD_X_LS,LD_Y_LS,
-						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[3:0]);
+						coor_gap_LS,SW[3:0],PS2_DAT,PS2_CLK,LEDR[3:0],HEX0,HEX1);
 
     // Instanciate FSM control
 endmodule
@@ -162,7 +164,7 @@ endmodule
 
 module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCounterOut,coor,
 						LD_X,LD_Y,color_from_CP,color,displayOnVGA,bufferCounterOut,Dlightsaber,coor_LS,
-						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led);
+						LD_X_LS,LD_Y_LS,lsCountOut,SW,PS2_DAT,PS2_CLK,led,HEX0,HEX1);
 	input resetKey,clock;
 	input [3:0]SW;
 	input [2:0]color;	
@@ -174,9 +176,9 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	output [16:0]BGcounterOut,bufferCounterOut;
 	output [9:0]objCounterOut,lsCountOut;
 	output [3:0]led;
-	
+	output [6:0]HEX0,HEX1;
 	assign led[0]=colorIsNotObj;
-	assign led[1]=clock;
+	assign led[1]=click;
 	assign led[3:2]=randomNumber1%3;
 	
 	
@@ -196,11 +198,13 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	wire [16:0]coor_LLSS;
 	wire [7:0]randomNumber1,randomNumber2,randomNumber3;
 	wire [16:0]coor1,coor2,coor3;
+	reg [8:0] score; 
 	
-
-
-
-	
+	always@(posedge colorIsNotObj)
+		score=score+8'b00000001;
+		
+	hex hex1(score[7:4],HEX1);
+	hex hex0(score[3:0],HEX0);
 	
 	vga_address_translator BGtranslator(BGcounterOut[16:8],BGcounterOut[7:0],BGtransferedAddress);
 
@@ -417,7 +421,7 @@ module collisionDetector(clock,object_center_coor,ls_center_coor,radius_object_X
 			out=1'b0;
 		end
 		
-		else if(~pressed)
+		else if(pressed)
 		begin
 			if((ls_center_coor[16:8]<object_center_coor[16:8]+{4'b0,radius_object_X})&&
 				(ls_center_coor[16:8]>object_center_coor[16:8]-{4'b0,radius_object_X})&&
@@ -1331,14 +1335,14 @@ if(!reset)
 out<=seed;
 else if(clk)
 begin
-out[0]<=out[1];
-out[1]<=out[2]^out[0];
-out[2]<=out[3]^out[0];
-out[3]<=out[4]^out[0];
-out[4]<=out[5];
-out[5]<=out[6];
-out[6]<=out[7];
-out[7]<=out[0];
+out[7]<=out[6];
+out[6]<=out[5];
+out[5]<=out[4];
+out[4]<=out[3];
+out[3]<=out[2];
+out[2]<=out[1];
+out[1]<=out[0];
+out[0]<=out[3]^out[4]^out[5]^out[7];
 end
 endmodule
 
@@ -1411,4 +1415,44 @@ module ClockDivider1Hz(CLOCK,reset,CLKout);
 			CLKout=0;
 			x<=x-1'b1;
 		end
+endmodule
+
+module hex(SW,HEX0);
+
+		input [3:0] SW;
+		output [6:0] HEX0;
+		wire [3:0] c;
+		
+		assign c=SW;
+		
+		assign HEX0[0]=~((~c[0]|c[1]|c[2]|c[3])&
+		(c[0]|c[1]|~c[2]|c[3])&(~c[0]|~c[1]|c[2]|~c[3])&
+		(~c[0]|c[1]|~c[2]|~c[3]));
+		
+		assign HEX0[1]=~((~c[0]|c[1]|~c[2]|c[3])&
+		(c[0]|~c[1]|~c[2]|c[3])&(~c[0]|~c[1]|c[2]|~c[3])&
+		(c[0]|c[1]|~c[2]|~c[3])&(c[0]|~c[1]|~c[2]|~c[3])&
+		(~c[0]|~c[1]|~c[2]|~c[3]));
+		
+		assign HEX0[2]=~((c[0]|~c[1]|c[2]|c[3])&
+		(c[0]|c[1]|~c[2]|~c[3])&(c[0]|~c[1]|~c[2]|~c[3])&
+		(~c[0]|~c[1]|~c[2]|~c[3]));
+		
+		assign HEX0[3]=~((~c[0]|c[1]|c[2]|c[3])&
+		(c[0]|c[1]|~c[2]|c[3])&(~c[0]|~c[1]|~c[2]|c[3])&
+		(c[0]|~c[1]|c[2]|~c[3])&(~c[0]|~c[1]|~c[2]|~c[3]));
+		
+		assign HEX0[4]=~((~c[0]|c[1]|c[2]|c[3])&
+		(~c[0]|~c[1]|c[2]|c[3])&(c[0]|c[1]|~c[2]|c[3])&
+		(~c[0]|c[1]|~c[2]|c[3])&(~c[0]|~c[1]|~c[2]|c[3])&
+		(~c[0]|c[1]|c[2]|~c[3]));
+		
+		assign HEX0[5]=~((~c[0]|c[1]|c[2]|c[3])&
+		(c[0]|~c[1]|c[2]|c[3])&(~c[0]|~c[1]|c[2]|c[3])&
+		(~c[0]|~c[1]|~c[2]|c[3])&(~c[0]|c[1]|~c[2]|~c[3]));
+		
+		assign HEX0[6]=~((c[0]|c[1]|c[2]|c[3])&
+		(~c[0]|c[1]|c[2]|c[3])&(~c[0]|~c[1]|~c[2]|c[3])&
+		(c[0]|c[1]|~c[2]|~c[3]));
+		
 endmodule
