@@ -240,7 +240,9 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	hunter hunter_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,hunter_reg_out);
 	robot robot_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,robot_reg_out);
 	
-	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
+	//lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
+	ls ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000000010*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
+	
 	
 	button bt_reg({6'b00000,buttonCounterOut[11:6]}+12'b000000111000*{6'b00000,buttonCounterOut[5:0]},clock,3'b000,1'b0,button_reg_out);
 	
@@ -288,7 +290,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	always@(posedge mimic60HzClock4LS)
 		coor_LS=coor_LLSS;
 	
-	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000111100001111,5'b01111,5'b1111,
+	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000000100001111,5'b01111,5'b1111,
 											click,collision,resetKey);
 	
 	randomNumberGenerator2 rng1(clock,mimichalfHzclock,resetKey,randomNumber1,8'b10101010);//trajectory
@@ -354,7 +356,7 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 						nextState=writeBG2Buffer;
 					else
 						nextState=display_AfterReset;
-			writeLS2buffer:if(lsCountOut==10'b1111011110)
+			writeLS2buffer:if(lsCountOut==10'b0001011110)
 						nextState=displayState;
 					else
 						nextState=writeLS2buffer;
@@ -1184,7 +1186,7 @@ module lightSaberCounter(clock,out,reset,enable,mimic60HzClock4LS);
 		out=10'b0;
 	   mimic60HzClock4LS=0;
 		end
-	else if(enable&&(out!=10'b1111011110))begin
+	else if(enable&&(out!=10'b0001011110))begin
 			if(out[4:0]==5'b11110)
 				out=out-10'b0000011110+10'b0000100000;
 			else begin out=out+10'b0000000001;
@@ -1194,8 +1196,8 @@ module lightSaberCounter(clock,out,reset,enable,mimic60HzClock4LS);
 				mimic60HzClock4LS=0;
 			end
 		end
-	else if(enable&&(out==10'b1111011110))
-		out=10'b1111011110;
+	else if(enable&&(out==10'b0001011110))
+		out=10'b0001011110;
 	else
 		out=10'b0;
 
