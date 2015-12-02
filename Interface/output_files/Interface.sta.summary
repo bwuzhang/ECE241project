@@ -3,147 +3,135 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -19.307
-TNS   : -368.499
-
-Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|LSCenable'
-Slack : -11.705
-TNS   : -242.168
-
-Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|BCenable'
-Slack : -11.622
-TNS   : -223.605
-
-Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|RCenable'
-Slack : -10.773
-TNS   : -264.864
-
-Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|currentState.resetState_790'
-Slack : -10.267
-TNS   : -89.873
-
-Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -8.944
-TNS   : -11485.047
-
-Type  : Slow 1100mV 85C Model Setup 'KEY[1]'
-Slack : -7.505
-TNS   : -46.247
-
-Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : -3.024
-TNS   : -48.448
+Slack : -17.522
+TNS   : -363.308
 
 Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|colorIsNotObj'
-Slack : -2.060
-TNS   : -22.061
+Slack : -15.210
+TNS   : -59.619
+
+Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|RCenable'
+Slack : -14.694
+TNS   : -312.227
+
+Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|LSCenable'
+Slack : -9.566
+TNS   : -245.588
+
+Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|BCenable'
+Slack : -9.546
+TNS   : -231.727
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -9.253
+TNS   : -11609.572
+
+Type  : Slow 1100mV 85C Model Setup 'KEY[1]'
+Slack : -6.780
+TNS   : -42.438
+
+Type  : Slow 1100mV 85C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
+Slack : -3.149
+TNS   : -49.702
 
 Type  : Slow 1100mV 85C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 30.396
+Slack : 30.457
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
-Slack : -0.608
-TNS   : -0.608
+Slack : -2.759
+TNS   : -3.213
 
 Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|LSCenable'
-Slack : -0.526
-TNS   : -0.617
-
-Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|BCenable'
-Slack : 0.029
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.130
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|currentState.resetState_790'
-Slack : 0.256
-TNS   : 0.000
+Slack : -0.685
+TNS   : -5.866
 
 Type  : Slow 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.324
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|RCenable'
-Slack : 0.372
+Slack : 0.334
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'KEY[1]'
-Slack : 0.534
+Slack : 0.448
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|RCenable'
+Slack : 0.469
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|colorIsNotObj'
-Slack : 0.818
+Slack : 0.479
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : 0.602
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|BCenable'
+Slack : 1.389
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : 1.909
+Slack : 1.932
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -16.186
-TNS   : -32.025
+Slack : -16.255
+TNS   : -32.247
 
 Type  : Slow 1100mV 85C Model Recovery 'controlPath:CP|LSCenable'
-Slack : -6.970
-TNS   : -6.970
+Slack : -6.785
+TNS   : -6.785
 
 Type  : Slow 1100mV 85C Model Recovery 'controlPath:CP|RCenable'
-Slack : -6.257
-TNS   : -6.257
+Slack : -5.913
+TNS   : -5.913
 
 Type  : Slow 1100mV 85C Model Recovery 'KEY[1]'
-Slack : -4.837
-TNS   : -4.837
+Slack : -4.403
+TNS   : -4.403
 
 Type  : Slow 1100mV 85C Model Removal 'KEY[1]'
-Slack : 0.047
-TNS   : 0.000
+Slack : -0.098
+TNS   : -0.098
 
 Type  : Slow 1100mV 85C Model Removal 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.598
+Slack : 0.700
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'controlPath:CP|RCenable'
-Slack : 1.480
+Slack : 0.845
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'controlPath:CP|LSCenable'
-Slack : 2.382
+Slack : 2.214
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -1.148
-TNS   : -89.068
+Slack : -0.931
+TNS   : -117.104
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
 Slack : -0.394
-TNS   : -9.814
+TNS   : -9.979
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|colorIsNotObj'
 Slack : -0.394
-TNS   : -7.797
-
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|BCenable'
-Slack : -0.212
-TNS   : -2.508
+TNS   : -5.292
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|LSCenable'
-Slack : -0.120
-TNS   : -0.957
+Slack : -0.081
+TNS   : -0.816
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|RCenable'
-Slack : -0.053
-TNS   : -0.340
+Slack : -0.003
+TNS   : -0.003
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'KEY[1]'
-Slack : 0.014
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|BCenable'
+Slack : 0.036
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|currentState.resetState_790'
-Slack : 0.143
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'KEY[1]'
+Slack : 0.107
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -151,155 +139,143 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.860
+Slack : 8.869
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 18.767
+Slack : 18.763
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -19.569
-TNS   : -375.752
-
-Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|LSCenable'
-Slack : -11.378
-TNS   : -239.511
-
-Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|BCenable'
-Slack : -11.304
-TNS   : -221.766
-
-Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|RCenable'
-Slack : -10.492
-TNS   : -263.575
-
-Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|currentState.resetState_790'
-Slack : -10.246
-TNS   : -90.039
-
-Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -8.832
-TNS   : -10554.054
-
-Type  : Slow 1100mV 0C Model Setup 'KEY[1]'
-Slack : -7.520
-TNS   : -46.626
-
-Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : -3.177
-TNS   : -50.861
+Slack : -17.858
+TNS   : -371.035
 
 Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|colorIsNotObj'
-Slack : -2.076
-TNS   : -22.371
+Slack : -15.644
+TNS   : -61.442
+
+Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|RCenable'
+Slack : -15.076
+TNS   : -309.334
+
+Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|LSCenable'
+Slack : -9.229
+TNS   : -239.656
+
+Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|BCenable'
+Slack : -9.223
+TNS   : -226.817
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -8.854
+TNS   : -10795.306
+
+Type  : Slow 1100mV 0C Model Setup 'KEY[1]'
+Slack : -6.929
+TNS   : -43.139
+
+Type  : Slow 1100mV 0C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
+Slack : -3.303
+TNS   : -51.996
 
 Type  : Slow 1100mV 0C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 30.754
+Slack : 30.964
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
-Slack : -0.705
-TNS   : -5.579
+Slack : -2.803
+TNS   : -5.200
 
 Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|LSCenable'
-Slack : -0.584
-TNS   : -0.834
-
-Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -0.022
-TNS   : -0.022
-
-Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|BCenable'
-Slack : -0.008
-TNS   : -0.008
-
-Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|currentState.resetState_790'
-Slack : 0.186
-TNS   : 0.000
+Slack : -0.704
+TNS   : -6.393
 
 Type  : Slow 1100mV 0C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.302
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|RCenable'
-Slack : 0.313
+Slack : 0.311
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'KEY[1]'
-Slack : 0.357
+Slack : 0.321
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|RCenable'
+Slack : 0.399
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : 0.485
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|colorIsNotObj'
-Slack : 0.815
+Slack : 0.541
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|BCenable'
+Slack : 1.320
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : 2.057
+Slack : 2.065
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -16.508
-TNS   : -32.831
+Slack : -16.698
+TNS   : -33.077
 
 Type  : Slow 1100mV 0C Model Recovery 'controlPath:CP|LSCenable'
-Slack : -6.791
-TNS   : -6.791
+Slack : -6.622
+TNS   : -6.622
 
 Type  : Slow 1100mV 0C Model Recovery 'controlPath:CP|RCenable'
-Slack : -6.145
-TNS   : -6.145
+Slack : -5.780
+TNS   : -5.780
 
 Type  : Slow 1100mV 0C Model Recovery 'KEY[1]'
-Slack : -4.686
-TNS   : -4.686
+Slack : -4.300
+TNS   : -4.300
 
 Type  : Slow 1100mV 0C Model Removal 'KEY[1]'
-Slack : -0.044
-TNS   : -0.044
+Slack : -0.137
+TNS   : -0.137
 
 Type  : Slow 1100mV 0C Model Removal 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.475
+Slack : 0.578
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'controlPath:CP|RCenable'
-Slack : 1.394
+Slack : 0.737
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'controlPath:CP|LSCenable'
-Slack : 2.208
+Slack : 2.075
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -1.205
-TNS   : -91.157
+Slack : -0.967
+TNS   : -128.873
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
 Slack : -0.394
-TNS   : -9.596
+TNS   : -9.703
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|colorIsNotObj'
 Slack : -0.394
-TNS   : -7.817
-
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|BCenable'
-Slack : -0.201
-TNS   : -2.609
+TNS   : -5.619
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|LSCenable'
-Slack : -0.085
-TNS   : -0.663
+Slack : -0.060
+TNS   : -0.299
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|RCenable'
-Slack : -0.022
-TNS   : -0.068
+Slack : -0.001
+TNS   : -0.001
 
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'KEY[1]'
-Slack : 0.015
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|BCenable'
+Slack : 0.063
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|currentState.resetState_790'
-Slack : 0.178
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'KEY[1]'
+Slack : 0.098
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -315,147 +291,135 @@ Slack : 18.746
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -10.889
-TNS   : -202.221
-
-Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|LSCenable'
-Slack : -6.897
-TNS   : -131.582
-
-Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|BCenable'
-Slack : -6.816
-TNS   : -124.874
-
-Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|RCenable'
-Slack : -6.289
-TNS   : -141.792
-
-Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|currentState.resetState_790'
-Slack : -5.840
-TNS   : -50.330
-
-Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -5.313
-TNS   : -7654.220
-
-Type  : Fast 1100mV 85C Model Setup 'KEY[1]'
-Slack : -4.196
-TNS   : -26.242
-
-Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : -1.413
-TNS   : -22.078
+Slack : -9.821
+TNS   : -202.193
 
 Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|colorIsNotObj'
-Slack : -0.894
-TNS   : -8.375
+Slack : -8.171
+TNS   : -29.246
+
+Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|RCenable'
+Slack : -7.694
+TNS   : -168.182
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -6.014
+TNS   : -7822.899
+
+Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|LSCenable'
+Slack : -5.759
+TNS   : -136.529
+
+Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|BCenable'
+Slack : -5.634
+TNS   : -132.452
+
+Type  : Fast 1100mV 85C Model Setup 'KEY[1]'
+Slack : -3.720
+TNS   : -24.099
+
+Type  : Fast 1100mV 85C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
+Slack : -1.445
+TNS   : -22.942
 
 Type  : Fast 1100mV 85C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 33.397
+Slack : 32.999
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
-Slack : -0.581
-TNS   : -0.581
+Slack : -1.591
+TNS   : -2.088
 
 Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|LSCenable'
-Slack : -0.404
-TNS   : -0.476
-
-Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|BCenable'
-Slack : -0.031
-TNS   : -0.031
-
-Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|currentState.resetState_790'
-Slack : 0.060
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.110
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|RCenable'
-Slack : 0.160
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.188
-TNS   : 0.000
+Slack : -0.562
+TNS   : -5.582
 
 Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|colorIsNotObj'
-Slack : 0.410
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'KEY[1]'
-Slack : 0.428
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : 0.883
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Recovery 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -8.674
-TNS   : -17.138
-
-Type  : Fast 1100mV 85C Model Recovery 'controlPath:CP|LSCenable'
-Slack : -3.974
-TNS   : -3.974
-
-Type  : Fast 1100mV 85C Model Recovery 'controlPath:CP|RCenable'
-Slack : -3.470
-TNS   : -3.470
-
-Type  : Fast 1100mV 85C Model Recovery 'KEY[1]'
-Slack : -3.036
-TNS   : -3.036
-
-Type  : Fast 1100mV 85C Model Removal 'KEY[1]'
-Slack : 0.208
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Removal 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.495
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Removal 'controlPath:CP|RCenable'
-Slack : 0.832
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Removal 'controlPath:CP|LSCenable'
-Slack : 1.445
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -0.429
-TNS   : -25.266
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'KEY[1]'
-Slack : -0.139
-TNS   : -0.296
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|BCenable'
-Slack : -0.089
-TNS   : -1.139
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|LSCenable'
-Slack : -0.032
-TNS   : -0.253
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|RCenable'
 Slack : 0.002
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : 0.010
+Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|RCenable'
+Slack : 0.141
 TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.197
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : 0.403
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'KEY[1]'
+Slack : 0.450
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|BCenable'
+Slack : 0.712
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
+Slack : 0.916
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : -9.001
+TNS   : -17.728
+
+Type  : Fast 1100mV 85C Model Recovery 'controlPath:CP|LSCenable'
+Slack : -3.854
+TNS   : -3.854
+
+Type  : Fast 1100mV 85C Model Recovery 'controlPath:CP|RCenable'
+Slack : -3.261
+TNS   : -3.261
+
+Type  : Fast 1100mV 85C Model Recovery 'KEY[1]'
+Slack : -2.744
+TNS   : -2.744
+
+Type  : Fast 1100mV 85C Model Removal 'KEY[1]'
+Slack : 0.177
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : 0.491
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'controlPath:CP|RCenable'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'controlPath:CP|LSCenable'
+Slack : 1.390
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : -0.337
+TNS   : -19.678
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'KEY[1]'
+Slack : -0.104
+TNS   : -0.348
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|LSCenable'
+Slack : -0.062
+TNS   : -0.678
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|colorIsNotObj'
-Slack : 0.027
+Slack : -0.017
+TNS   : -0.142
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
+Slack : -0.003
+TNS   : -0.013
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|RCenable'
+Slack : 0.080
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|currentState.resetState_790'
-Slack : 0.166
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'controlPath:CP|BCenable'
+Slack : 0.120
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -463,155 +427,143 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.807
+Slack : 8.785
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 18.886
+Slack : 18.887
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -10.187
-TNS   : -190.818
-
-Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|LSCenable'
-Slack : -6.171
-TNS   : -119.976
-
-Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|BCenable'
-Slack : -6.113
-TNS   : -114.221
-
-Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|RCenable'
-Slack : -5.644
-TNS   : -129.807
-
-Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|currentState.resetState_790'
-Slack : -5.426
-TNS   : -46.823
-
-Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -4.618
-TNS   : -6218.337
-
-Type  : Fast 1100mV 0C Model Setup 'KEY[1]'
-Slack : -3.801
-TNS   : -23.477
-
-Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : -1.411
-TNS   : -22.145
+Slack : -9.248
+TNS   : -190.842
 
 Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|colorIsNotObj'
-Slack : -0.773
-TNS   : -7.321
+Slack : -7.847
+TNS   : -27.750
+
+Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|RCenable'
+Slack : -7.329
+TNS   : -154.125
+
+Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|LSCenable'
+Slack : -5.142
+TNS   : -122.545
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -5.122
+TNS   : -6389.000
+
+Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|BCenable'
+Slack : -5.054
+TNS   : -119.987
+
+Type  : Fast 1100mV 0C Model Setup 'KEY[1]'
+Slack : -3.343
+TNS   : -21.471
+
+Type  : Fast 1100mV 0C Model Setup 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
+Slack : -1.443
+TNS   : -22.947
 
 Type  : Fast 1100mV 0C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 34.213
+Slack : 33.964
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
-Slack : -0.669
-TNS   : -1.007
+Slack : -1.592
+TNS   : -2.514
 
 Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|LSCenable'
-Slack : -0.335
-TNS   : -0.402
+Slack : -0.462
+TNS   : -4.470
 
-Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|BCenable'
-Slack : -0.031
-TNS   : -0.031
-
-Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|currentState.resetState_790'
-Slack : 0.053
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.068
+Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|colorIsNotObj'
+Slack : 0.064
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|RCenable'
-Slack : 0.142
+Slack : 0.156
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.170
+Slack : 0.177
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'KEY[1]'
-Slack : 0.260
+Slack : 0.267
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|colorIsNotObj'
-Slack : 0.384
+Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : 0.336
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|BCenable'
+Slack : 0.673
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : 0.912
+Slack : 0.940
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -8.208
-TNS   : -16.309
+Slack : -8.513
+TNS   : -16.792
 
 Type  : Fast 1100mV 0C Model Recovery 'controlPath:CP|LSCenable'
-Slack : -3.595
-TNS   : -3.595
+Slack : -3.503
+TNS   : -3.503
 
 Type  : Fast 1100mV 0C Model Recovery 'controlPath:CP|RCenable'
-Slack : -3.173
-TNS   : -3.173
+Slack : -2.982
+TNS   : -2.982
 
 Type  : Fast 1100mV 0C Model Recovery 'KEY[1]'
-Slack : -2.576
-TNS   : -2.576
+Slack : -2.329
+TNS   : -2.329
 
 Type  : Fast 1100mV 0C Model Removal 'KEY[1]'
-Slack : 0.102
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Removal 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : 0.436
+Slack : 0.051
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'controlPath:CP|RCenable'
-Slack : 0.766
+Slack : 0.438
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
+Slack : 0.441
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'controlPath:CP|LSCenable'
-Slack : 1.281
+Slack : 1.225
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|randomNumberGenerator2:rng1|out[0]'
-Slack : -0.381
-TNS   : -20.876
+Slack : -0.270
+TNS   : -17.878
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'KEY[1]'
-Slack : -0.129
-TNS   : -0.308
-
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|BCenable'
-Slack : 0.007
-TNS   : 0.000
+Slack : -0.096
+TNS   : -0.338
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|colorIsNotObj'
-Slack : 0.039
-TNS   : 0.000
+Slack : -0.006
+TNS   : -0.045
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|lightSaberCounter:LScounter|mimic60HzClock4LS'
-Slack : 0.041
+Slack : 0.030
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|LSCenable'
-Slack : 0.065
+Slack : 0.043
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|RCenable'
-Slack : 0.079
+Slack : 0.155
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|currentState.resetState_790'
-Slack : 0.234
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'controlPath:CP|BCenable'
+Slack : 0.187
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -619,7 +571,7 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.801
+Slack : 8.780
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'

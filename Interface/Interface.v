@@ -199,7 +199,8 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 
 	reg cenable,RCenable,NPenable,NPenable1,NPenable2,NPenable3,bufferEnable,LSCenable,colorIsNotObj,BCenable,mimichalfHzclock;
 	wire clock60,clock1s;
-	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out,lord_reg_out,button_reg_out;
+	wire [2:0]bg_reg_out,rebot_reg_out,ls_reg_out,bg_reg_out_AfterSlash,jet_reg_out,lord_reg_out,button_reg_out,
+			soilder_reg_out,hunter_reg_out,robot_reg_out,yoda_reg_out;
 	wire [16:0]BGtransferedAddress,robotTramsferedAddress;
 	wire mimic60HzClock4Robot,mimic60HzClock4LS;
 	wire click,colorIsNotObj1,colorIsNotObj2,colorIsNotObj3,collision,mimichalfHzclock1,mimichalfHzclock2,mimichalfHzclock3;
@@ -230,7 +231,10 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	
 	jet jet_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,jet_reg_out);
 	lord lord_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,lord_reg_out);
-	
+	yoda yoda_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,yoda_reg_out);
+	soilder soilder_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,soilder_reg_out);
+	hunter hunter_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,hunter_reg_out);
+	robot robot_reg ({5'b00000,objCounterOut[9:5]}+10'b0000011110*{5'b00000,objCounterOut[4:0]},clock,3'b000,1'b0,robot_reg_out);
 	
 	lightSaber ls_reg({5'b00000,lsCountOut[9:5]}+10'b0000011110*{5'b00000,lsCountOut[4:0]},clock,3'b000,1'b0,ls_reg_out);
 	
@@ -441,10 +445,19 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	begin
 	if(colorIsNotObj)
 		color_from_CP=bg_reg_out_AfterSlash;
-	else if(randomNumber3%2==0)
+	else if(randomNumber3%6==0)
 		color_from_CP=jet_reg_out;
-	else if(randomNumber3%2==1)
+	else if(randomNumber3%6==1)
 		color_from_CP=lord_reg_out;
+	else if(randomNumber3%6==2)
+		color_from_CP=yoda_reg_out;
+	else if(randomNumber3%6==3)
+		color_from_CP=robot_reg_out;
+	else if(randomNumber3%6==4)
+		color_from_CP=hunter_reg_out;
+	else if(randomNumber3%6==5)
+		color_from_CP=soilder_reg_out;
+	
 	end
 	bufferEnable=0;
 	displayOnVGA=0;
