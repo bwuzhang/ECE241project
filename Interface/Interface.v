@@ -293,9 +293,9 @@ module controlPath(clock,plotVGA,resetKey,Dbackground,Dobject,BGcounterOut,objCo
 	collisionDetector collisionD(clock,coor+17'b00000111100001111,coor_LS+17'b00000000100001111,5'b01111,5'b1111,
 											click,collision,resetKey);
 	
-	randomNumberGenerator2 rng1(clock,mimichalfHzclock,resetKey,randomNumber1,8'b10101010);//trajectory
-	randomNumberGenerator2 rng2(clock,mimichalfHzclock,resetKey,randomNumber2,8'b00111001);//x coordinates
-	randomNumberGenerator2 rng3(clock, mimichalfHzclock,resetKey,randomNumber3,8'b11101001);//character
+	randomNumberGenerator rng1(clock,mimichalfHzclock,resetKey,randomNumber1,8'b10101010);//trajectory
+	randomNumberGenerator rng2(clock,mimichalfHzclock,resetKey,randomNumber2,8'b00111001);//x coordinates
+	randomNumberGenerator rng3(clock, mimichalfHzclock,resetKey,randomNumber3,8'b11101001);//character
 	
 	//nextPosition NP(clock,clock60,coor,resetKey,NPenable);
 	sixtyHzClock CLK60(clock,clock60,resetKey);
@@ -1251,11 +1251,10 @@ endmodule
 
 
 module randomNumberGenerator(CLOCK, reset, out,seed);
-input  CLOCK, reset;
+input  CLOCK, reset,clk;
 input [7:0]seed;
 output reg [7:0] out;
 wire clk;
-ClockDivider1Hz CLK(CLOCK,reset,clk);
 always@(posedge CLOCK)
 if(!reset)
 out<=seed;
